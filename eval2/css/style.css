@@ -1,0 +1,293 @@
+:root {
+    --main-color: #1b8a20cb;
+    --black-color: rgb(10, 10, 10);
+    --soft-black-color: rgb(28, 48, 28);
+    --grey-color: rgb(35, 35, 35)
+}
+
+/* Scroll bar */
+::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+::-webkit-scrollbar-track { background: var(--black-color); }
+  
+::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+    border-radius: 25px;
+}
+
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+html {
+    background-color: var(--soft-black-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+body { margin: 0px; }
+
+ul { list-style: none; } /* Removing the list style by default cause we never needs it */
+
+h1, h2, h3, h4, h5, h6 { color: var(--main-color); }
+
+a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+a:hover { color: var(--main-color); }
+
+/* Main header, Only on the 'index' page */
+.mainHeader {
+    background-image: url("../images/background.jpg");
+    height: 100vh;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.mainHeader img { height: 25%; }
+
+.mainHeader nav { /* Apply blur and "shadow" to the background */
+    backdrop-filter: blur(10px) brightness(0.5);
+    height: 100%;
+}
+
+/* Nav bar */
+.nav-bar {
+    background-color: var(--black-color);
+    border-bottom: 2px solid var(--main-color);
+    top: 0;
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.nav-bar ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.currentPage {
+    background-color: var(--main-color);
+    border-radius: 10px;
+}
+
+.currentPage:hover {
+    background-color: var(--soft-black-color);
+    color: white;
+}
+
+/* Search box */
+.searchBox {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.searchBox input, .searchBox button {
+    background-color: var(--grey-color);
+    color: white;
+    border: 0;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.15em;
+    margin: 0.1rem;
+}
+
+.searchHeader {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+/* Article style, specific home page button */
+.seeAllNews {
+    text-align: center;
+    margin: 5% 20% 0 20%;
+}
+
+.seeAllNews:hover {
+    transform: scale(1.1);
+}
+
+.news a {
+    color: var(--main-color);
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    border: 1px solid var(--main-color);
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+}
+
+/* Articles */
+article {
+    background-color: var(--grey-color);
+    border-radius: 10px;
+    width: 20rem;
+    margin: 10px;
+    text-align: justify;
+}
+
+article p, article h3 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+article img {
+    width: 100%;
+    height: 35%;
+    border-radius: 10px 10px 0 0;
+}
+
+article footer {
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* Team members */
+.teamMember header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.teamMember img {
+    width: 40%;
+    height: 35%;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Administration actions buttons */
+article button {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    cursor: pointer;
+    color: white;
+    font-size: 0rem;
+}
+
+/* Cards style (News, Team members, Departmens, ... */
+.cardsContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Section style */
+section {
+    padding: 0 25px 0 25px;
+    margin-bottom: 5rem;
+}
+
+/* Footer style */
+footer {
+    background-color: var(--black-color);
+    border-top: 2px solid var(--main-color);
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+footer ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+footer a {
+    font-size: 0; /* Hide the text contained int the <a> tag wich is used for "referencement" */
+}
+
+/* Social medias */
+footer .fa {
+    font-size: 1.5rem;
+}
+
+footer .fa:hover {
+    transform: scale(1.2);
+}
+
+/* Hollow elements using span */
+span { color: var(--main-color); }
+
+/* Separator */
+hr {
+    border: 1px solid var(--main-color);
+    width: 75%;
+    margin-bottom: 5%;
+}
+
+
+/* "Details" section */
+details {
+    text-align: center;
+    margin: 1.2rem 0 1.2rem 0;
+}
+
+details summary {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--main-color);
+    margin: 1.5rem 0 1.5rem 0;
+}
+
+/* Forms */
+form input, form textarea, form button {
+    background-color: var(--grey-color);
+    border: 1px solid var(--main-color);
+    color: white;
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.6rem 0;
+    border-radius: 8px;
+}
+
+form button {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 0.6rem;
+    cursor: pointer;
+}
+
+form textarea { resize: vertical; }
+
+form label {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Useful links in the 'conctact' page */
+.usefulLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05em;
+}
+
+/* All kind of buttons should grow up when hovering */
+button:hover { transform: scale(1.08); }
+
+/* All kind of textareas or inputs should have a small white border when hovering */
+input:hover, textarea:hover { border: 1px solid white; }
+
+/* Serge */
+.serge {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--black-color);
+    color: var(--main-color);
+    text-align: center;
+    font-size: 2rem;
+}
