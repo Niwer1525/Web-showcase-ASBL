@@ -19,15 +19,15 @@
             </nav>
         </header>
         <main>
-            <!-- news section -->
             <section>
                 <div class="searchHeader">
-                    <h2>ACTUALITES PAR DEPARTEMENT</h2>
+                    <h2>NOTRE EQUIPE</h2>
                     <!-- Search container -->
                     <div class="searchBox">
-                        <button type="button"><span class="material-symbols-outlined">filter_alt</span></button>
-                        <input type="text" placeholder="Rechercher une actualité">
-                        <button type="button"><span class="material-symbols-outlined">search</span></button>
+                        <a class="searchButton" href="./teammateUpdate.php?type=add"><i class="fa fa-plus"></i></a>
+                        <a class="searchButton"><i class="fa fa-filter"></i></a>
+                        <input type="text" placeholder="Rechercher">
+                        <a class="searchButton"><i class="fa fa-search"></i></a>
                     </div>
                 </div>
                 <!-- First department -->
@@ -45,8 +45,8 @@
                                 <li><span>Gérant départements</span></li>
                             </ul>
                             <footer>
-                                <button type="button"><i class="fa fa-pencil"></i>Editer</button>
-                                <button type="button"><i class="fa fa-trash"></i>Supprimer</button>
+                                <a type="adminButton" href="./teammateUpdate.php?type=edition&name=GLUTEN Vladimir"><i class="fa fa-pencil"></i>Editer</a>
+                                <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
                             </footer>
                         </article>
                         <!-- Member 2 -->
@@ -59,8 +59,8 @@
                                 <li>Profession : Informaticien</li>
                             </ul>
                             <footer>
-                                <button type="button"><i class="fa fa-pencil"></i>Editer</button>
-                                <button type="button"><i class="fa fa-trash"></i>Supprimer</button>
+                                <a type="adminButton" href="./teammateUpdate.php?type=edition&name=MULLER Joseph"><i class="fa fa-pencil"></i>Editer</a>
+                                <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
                             </footer>
                         </article>
                         <!-- Generic -->
@@ -74,8 +74,8 @@
                                 <li>...</li>
                             </ul>
                             <footer>
-                                <button type="button"><i class="fa fa-pencil"></i>Editer</button>
-                                <button type="button"><i class="fa fa-trash"></i>Supprimer</button>
+                                <a type="adminButton"><i class="fa fa-pencil"></i>Editer</a>
+                                <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
                             </footer>
                         </article>
                     </div>
@@ -94,8 +94,8 @@
                                 <li><span>Gérante départements</span></li>
                             </ul>
                             <footer>
-                                <button type="button"><i class="fa fa-pencil"></i>Editer</button>
-                                <button type="button"><i class="fa fa-trash"></i>Supprimer</button>
+                                <a type="adminButton"><i class="fa fa-pencil"></i>Editer</a>
+                                <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
                             </footer>
                         </article>
                         <article class="teamMember">
@@ -107,8 +107,8 @@
                                 <li>Profession : Comptable</li>
                             </ul>
                             <footer>
-                                <button type="button"><i class="fa fa-pencil"></i>Editer</button>
-                                <button type="button"><i class="fa fa-trash"></i>Supprimer</button>
+                                <a type="adminButton"><i class="fa fa-pencil"></i>Editer</a>
+                                <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
                             </footer>
                         </article>
                     </div>

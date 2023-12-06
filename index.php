@@ -33,15 +33,7 @@
         </header>
         <!-- News section -->
         <section id="news" class="news">
-            <div class="searchHeader">
-                <h2>DERNIERE ACTUALITES</h2>
-                <!-- Search container -->
-                <div class="searchBox">
-                    <button type="button"><span class="material-symbols-outlined">filter_alt</span></button>
-                    <input type="text" placeholder="Rechercher une actualité">
-                    <button type="button"><span class="material-symbols-outlined">search</span></button>
-                </div>
-            </div>
+            <h2>DERNIERE ACTUALITES</h2>
             <div class="cardsContainer">
                 <!-- Latest article 1 -->
                 <article>

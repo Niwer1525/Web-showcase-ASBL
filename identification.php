@@ -23,8 +23,10 @@
             <section>
                 <form>
                     <h2>Se connecter</h2>
-                    <label>Votre email : <input type="text" placeholder="john.california@gmail.com"></label>
-                    <label>Mot de passe : <input type="password" placeholder="mot2pass3*"></label>
+                    <label for="mail">Votre email :</label>
+                    <input type="text" id="mail" placeholder="john.california@gmail.com">
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" placeholder="mot2pass3*">
                     <button type="submit">Se connecter</button>
                 </form>
             </section>
@@ -33,10 +35,14 @@
             <section>
                 <form>
                     <h2>Créer un compte</h2>
-                    <label>Votre email : <input type="text" placeholder="john.california@gmail.com"></label>
-                    <label>Votre nom : <input type="text" placeholder="John California"></label>
-                    <label>Mot de passe : <input type="password" placeholder="mot2pass3*"></label>
-                    <label>Age : <input type="number" placeholder="25" min="16" max="100"></label>
+                    <label for="mail">Votre email :</label>
+                    <input type="text" id="mail" placeholder="john.california@gmail.com">
+                    <label for="name">Votre nom :</label>
+                    <input type="text" id="name" placeholder="John California">
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" placeholder="mot2pass3*">
+                    <label for="age">Age :</label>
+                    <input type="number" id="age" placeholder="25" min="16" max="100">
                     <button type="submit">Créer un compte</button>
                 </form>
             </section>

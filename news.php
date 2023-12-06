@@ -19,15 +19,15 @@
             </nav>
         </header>
         <main>
-            <!-- news section -->
             <section>
                 <div class="searchHeader">
                     <h2>ACTUALITES PAR DEPARTEMENT</h2>
                     <!-- Search container -->
                     <div class="searchBox">
-                        <button type="button"><span class="material-symbols-outlined">filter_alt</span></button>
-                        <input type="text" placeholder="Rechercher une actualité">
-                        <button type="button"><span class="material-symbols-outlined">search</span></button>
+                        <a class="searchButton" href="./newsUpdate.php?type=add"><i class="fa fa-plus"></i></a>
+                        <a class="searchButton"><i class="fa fa-filter"></i></a>
+                        <input type="text" placeholder="Rechercher">
+                        <a class="searchButton"><i class="fa fa-search"></i></a>
                     </div>
                 </div>
                 <!-- First department -->
@@ -43,8 +43,8 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacus in erat ultrices, quis ultrices justo aliquam. Nam placerat eleifend nisi. Pellentesque a vulputate nisi. Cras rutrum odio a condimentum vehicula. Sed vel velit et orci porta imperdiet. Donec imperdiet diam quis leo porta, fringilla efficitur ex placerat. Vestibulum vehicula lacus id ultricies semper.</p>
                             <a href="./fullNews.php">Lire plus</a>
                             <footer>
-                                <button type="button"><i class="fa fa-pencil"></i>Editer</button>
-                                <button type="button"><i class="fa fa-trash"></i>Supprimer</button>
+                                <a type="adminButton" href="./newsUpdate.php?type=edition&name=Titre Article 1"><i class="fa fa-pencil"></i>Editer</a>
+                                <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
                                 <p>20 octobre 2023</p>
                             </footer>
                         </article>
@@ -57,8 +57,8 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacus in erat ultrices, quis ultrices justo aliquam. Nam placerat eleifend nisi. Pellentesque a vulputate nisi. Cras rutrum odio a condimentum vehicula. Sed vel velit et orci porta imperdiet. Donec imperdiet diam quis leo porta, fringilla efficitur ex placerat. Vestibulum vehicula lacus id ultricies semper.</p>
                             <a href="./fullNews.php">Lire plus</a>
                             <footer>
-                                <button type="button"><i class="fa fa-pencil"></i>Editer</button>
-                                <button type="button"><i class="fa fa-trash"></i>Supprimer</button>
+                                <a type="adminButton" href="./newsUpdate.php?type=edition&name=Titre Article 2"><i class="fa fa-pencil"></i>Editer</a>
+                                <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
                                 <p>10 octobre 2023</p>
                             </footer>
                         </article>
@@ -71,8 +71,8 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacus in erat ultrices, quis ultrices justo aliquam. Nam placerat eleifend nisi. Pellentesque a vulputate nisi. Cras rutrum odio a condimentum vehicula. Sed vel velit et orci porta imperdiet. Donec imperdiet diam quis leo porta, fringilla efficitur ex placerat. Vestibulum vehicula lacus id ultricies semper.</p>
                             <a href="./fullNews.php">Lire plus</a>
                             <footer>
-                                <button type="button"><i class="fa fa-pencil"></i>Editer</button>
-                                <button type="button"><i class="fa fa-trash"></i>Supprimer</button>
+                                <a type="adminButton"><i class="fa fa-pencil"></i>Editer</a>
+                                <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
                                 <p>15 mai 2023</p>
                             </footer>
                         </article>
@@ -91,8 +91,8 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacus in erat ultrices, quis ultrices justo aliquam. Nam placerat eleifend nisi. Pellentesque a vulputate nisi. Cras rutrum odio a condimentum vehicula. Sed vel velit et orci porta imperdiet. Donec imperdiet diam quis leo porta, fringilla efficitur ex placerat. Vestibulum vehicula lacus id ultricies semper.</p>
                             <a href="./fullNews.php">Lire plus</a>
                             <footer>
-                                <button type="button"><i class="fa fa-pencil"></i>Editer</button>
-                                <button type="button"><i class="fa fa-trash"></i>Supprimer</button>
+                                <a type="adminButton"><i class="fa fa-pencil"></i>Editer</a>
+                                <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
                                 <p>20 octobre 2023</p>
                             </footer>
                         </article>
@@ -105,8 +105,8 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacus in erat ultrices, quis ultrices justo aliquam. Nam placerat eleifend nisi. Pellentesque a vulputate nisi. Cras rutrum odio a condimentum vehicula. Sed vel velit et orci porta imperdiet. Donec imperdiet diam quis leo porta, fringilla efficitur ex placerat. Vestibulum vehicula lacus id ultricies semper.</p>
                             <a href="./fullNews.php">Lire plus</a>
                             <footer>
-                                <button type="button"><i class="fa fa-pencil"></i>Editer</button>
-                                <button type="button"><i class="fa fa-trash"></i>Supprimer</button>
+                                <a type="adminButton"><i class="fa fa-pencil"></i>Editer</a>
+                                <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
                                 <p>10 octobre 2023</p>
                             </footer>
                         </article>

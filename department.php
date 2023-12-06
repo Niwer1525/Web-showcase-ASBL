@@ -19,15 +19,15 @@
             </nav>
         </header>
         <main>
-            <!-- news section -->
             <section>
                 <div class="searchHeader">
-                    <h2>ACTUALITES PAR DEPARTEMENT</h2>
+                    <h2>DEPARTEMENTS</h2>
                     <!-- Search container -->
                     <div class="searchBox">
-                        <button type="button"><span class="material-symbols-outlined">filter_alt</span></button>
-                        <input type="text" placeholder="Rechercher une actualité">
-                        <button type="button"><span class="material-symbols-outlined">search</span></button>
+                        <a class="searchButton" href="./departmentUpdate.php?type=add"><i class="fa fa-plus"></i></a>
+                        <a class="searchButton"><i class="fa fa-filter"></i></a>
+                        <input type="text" placeholder="Rechercher">
+                        <a class="searchButton"><i class="fa fa-search"></i></a>
                     </div>
                 </div>
                 <div class="cardsContainer">
@@ -41,8 +41,8 @@
                             Chercher à créer de nouveaux produits ou améliorer les produits existants.<br>
                         </p>
                         <footer>
-                            <button type="button"><i class="fa fa-pencil"></i>Editer</button>
-                            <button type="button"><i class="fa fa-trash"></i>Supprimer</button>
+                            <a type="adminButton" href="./departmentUpdate.php?type=edition&name=Recherche et développement"><i class="fa fa-pencil"></i>Editer</a>
+                            <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
                         </footer>
                     </article>
                     <!-- Second department -->
@@ -55,8 +55,8 @@
                             Gérer les entrées et sorties d'argent dans l'ASBL, mais également les paiement de taxes et impôts ou même la réception de subside<br>
                         </p>
                         <footer>
-                            <button type="button"><i class="fa fa-pencil"></i>Editer</button>
-                            <button type="button" href="zeze"><i class="fa fa-trash"></i>Supprimer</button>
+                            <a type="adminButton" href="./departmentUpdate.php?type=edition&name=Compatbilité"><i class="fa fa-pencil"></i>Editer</a>
+                            <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
                         </footer>
                     </article>
                     <!-- Third department -->
@@ -69,12 +69,12 @@
                             Prendre des décisions de haute importance concernant tout genre de sujets<br>
                         </p>
                         <footer>
-                            <button type="button"><i class="fa fa-pencil"></i>Editer</button>
-                            <button type="button"><i class="fa fa-trash"></i>Supprimer</button>
+                            <a type="adminButton" href="./departmentUpdate.php?type=edition&name=Administratif"><i class="fa fa-pencil"></i>Editer</a>
+                            <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
                         </footer>
                     </article>
                 </div>
-            </section>
+            <section>
         </main>
         <?php
             include("inc/footer.inc.php");
