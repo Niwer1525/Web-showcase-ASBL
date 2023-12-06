@@ -17,9 +17,20 @@
         </nav>
     </header>
     <main>
-        <?php
-            include("inc/nav.inc.php");
-        ?>
+        <header class="nav-bar">
+            <nav>
+                <ul>
+                    <li><a href="./index.php" class="currentPage">Acceuil</a></li>
+                    <li><a href="./team.php">Notre équipe</a></li>
+                    <li><a href="./department.php">Départements</a></li>
+                    <li><a href="./contact.php">Contact</a></li>
+                    <li><a href="./news.php">Actualités</a></li>
+                    <li>
+                        <a href="./identification.php">Se connecter <i class="fa fa-user"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
         <!-- News section -->
         <section id="news" class="news">
             <div class="searchHeader">
@@ -39,6 +50,7 @@
                         <h3>Titre article 1</h3>
                     </header>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacus in erat ultrices, quis ultrices justo aliquam. Nam placerat eleifend nisi. Pellentesque a vulputate nisi. Cras rutrum odio a condimentum vehicula. Sed vel velit et orci porta imperdiet. Donec imperdiet diam quis leo porta, fringilla efficitur ex placerat. Vestibulum vehicula lacus id ultricies semper.</p>
+                    <a href="./fullNews.php">Lire plus</a>
                     <footer>
                         <p>20 octobre 2023</p>
                     </footer>
@@ -50,6 +62,7 @@
                         <h3>Titre article 2</h3>
                     </header>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacus in erat ultrices, quis ultrices justo aliquam. Nam placerat eleifend nisi. Pellentesque a vulputate nisi. Cras rutrum odio a condimentum vehicula. Sed vel velit et orci porta imperdiet. Donec imperdiet diam quis leo porta, fringilla efficitur ex placerat. Vestibulum vehicula lacus id ultricies semper.</p>
+                    <a href="./fullNews.php">Lire plus</a>
                     <footer>
                         <p>10 octobre 2023</p>
                     </footer>
@@ -57,7 +70,7 @@
             </div>
             <!-- View all news container and button -->
             <div class="seeAllNews">
-                <a href="./news.html">Toute l'actualité</a>
+                <a href="./news.php">Toute l'actualité</a>
             </div>
         </section>
         <!-- Description section -->

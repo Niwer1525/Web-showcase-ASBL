@@ -4,9 +4,20 @@
         include("inc/header.inc.php");
     ?>
     <body>
-        <?php
-            include("inc/nav.inc.php");
-        ?>
+        <header class="nav-bar">
+            <nav>
+                <ul>
+                    <li><a href="./index.php">Acceuil</a></li>
+                    <li><a href="./team.php">Notre équipe</a></li>
+                    <li><a href="./department.php" class="currentPage">Départements</a></li>
+                    <li><a href="./contact.php">Contact</a></li>
+                    <li><a href="./news.php">Actualités</a></li>
+                    <li>
+                        <a href="./identification.php">Se connecter <i class="fa fa-user"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
         <main>
             <!-- news section -->
             <section>
@@ -31,6 +42,7 @@
                         </p>
                         <footer>
                             <button type="button"><i class="fa fa-pencil"></i>Editer</button>
+                            <button type="button"><i class="fa fa-trash"></i>Supprimer</button>
                         </footer>
                     </article>
                     <!-- Second department -->
@@ -44,6 +56,7 @@
                         </p>
                         <footer>
                             <button type="button"><i class="fa fa-pencil"></i>Editer</button>
+                            <button type="button" href="zeze"><i class="fa fa-trash"></i>Supprimer</button>
                         </footer>
                     </article>
                     <!-- Third department -->
@@ -57,6 +70,7 @@
                         </p>
                         <footer>
                             <button type="button"><i class="fa fa-pencil"></i>Editer</button>
+                            <button type="button"><i class="fa fa-trash"></i>Supprimer</button>
                         </footer>
                     </article>
                 </div>

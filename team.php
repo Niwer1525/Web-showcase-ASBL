@@ -4,9 +4,20 @@
         include("inc/header.inc.php");
     ?>
     <body>
-        <?php
-            include("inc/nav.inc.php");
-        ?>
+        <header class="nav-bar">
+            <nav>
+                <ul>
+                    <li><a href="./index.php">Acceuil</a></li>
+                    <li><a href="./team.php" class="currentPage">Notre équipe</a></li>
+                    <li><a href="./department.php">Départements</a></li>
+                    <li><a href="./contact.php">Contact</a></li>
+                    <li><a href="./news.php">Actualités</a></li>
+                    <li>
+                        <a href="./identification.php">Se connecter <i class="fa fa-user"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
         <main>
             <!-- news section -->
             <section>

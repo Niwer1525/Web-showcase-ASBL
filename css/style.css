@@ -116,7 +116,7 @@ a:hover { color: var(--main-color); }
     transform: scale(1.1);
 }
 
-.news a {
+.seeAllNews {
     color: var(--main-color);
     text-decoration: none;
     font-size: 1.5em;
@@ -129,6 +129,17 @@ a:hover { color: var(--main-color); }
 }
 
 /* Articles */
+.largeArticle {
+    width: 50%;
+    text-align: center;
+}
+
+.largeArticle img {
+    border-radius: 0px 0px 0 0;
+    max-width: 50%;
+    height: 25%;
+}
+
 article {
     background-color: var(--grey-color);
     border-radius: 10px;
@@ -186,6 +197,7 @@ article button {
 section {
     padding: 0 25px 0 25px;
     margin-bottom: 5rem;
+    min-height: calc(100vh - 30.5%); /* Force the main footer to stay at the bottom of the page */
 }
 
 /* Footer style */
