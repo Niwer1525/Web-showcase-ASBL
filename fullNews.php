@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fr">
     <?php
         $title = 'Article 1';

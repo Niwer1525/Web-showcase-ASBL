@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fr">
     <?php
         $title = 'Equipe';
@@ -81,7 +82,7 @@
                     </div>
                 </details>
                 <!-- Second department -->
-                <details>
+                <details open>
                     <summary>Comptabilité</summary>
                     <div class="cardsContainer">
                         <article class="teamMember">
