@@ -2,23 +2,13 @@
 <html lang="fr">
     <?php
         $title = 'Equipe';
-        include("inc/header.inc.php");
+        require("inc/header.inc.php");
     ?>
     <body>
-        <header class="nav-bar">
-            <nav>
-                <ul>
-                    <li><a href="./index.php">Acceuil</a></li>
-                    <li><a href="./team.php" class="currentPage">Notre équipe</a></li>
-                    <li><a href="./department.php">Départements</a></li>
-                    <li><a href="./contact.php">Contact</a></li>
-                    <li><a href="./news.php">Actualités</a></li>
-                    <li>
-                        <a href="./identification.php">Se connecter <i class="fa fa-user"></i></a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        <?php
+            $pageName = 'team';
+            require("inc/nav.inc.php");
+        ?>
         <main>
             <section>
                 <div class="searchHeader">
@@ -46,8 +36,8 @@
                                 <li><span>Gérant départements</span></li>
                             </ul>
                             <footer>
-                                <a type="adminButton" href="./teammateUpdate.php?type=edition&name=GLUTEN Vladimir"><i class="fa fa-pencil"></i>Editer</a>
-                                <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
+                                <a class="adminButton" href="./teammateUpdate.php?type=edition&name=GLUTEN_Vladimir"><i class="fa fa-pencil"></i>Editer</a>
+                                <a class="adminButton" href="./teamUpdate.php?type=deletion"><i class="fa fa-trash"></i>Supprimer</a>
                             </footer>
                         </article>
                         <!-- Member 2 -->
@@ -60,23 +50,23 @@
                                 <li>Profession : Informaticien</li>
                             </ul>
                             <footer>
-                                <a type="adminButton" href="./teammateUpdate.php?type=edition&name=MULLER Joseph"><i class="fa fa-pencil"></i>Editer</a>
-                                <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
+                                <a class="adminButton" href="./teammateUpdate.php?type=edition&name=MULLER_Joseph"><i class="fa fa-pencil"></i>Editer</a>
+                                <a class="adminButton" href="./teamUpdate.php?type=deletion"><i class="fa fa-trash"></i>Supprimer</a>
                             </footer>
                         </article>
                         <!-- Generic -->
                         <article class="teamMember">
                             <header>
                                 <img src="./images/article1.jpg" alt="Image article 1">
-                                <h3>NOM Prénom</h3>
+                                <h3>PASTA Livia</h3>
                             </header>
                             <ul>
-                                <li><span>Administrateur site internet</span></li>
+                                <li><span>Administratrice site internet</span></li>
                                 <li>...</li>
                             </ul>
                             <footer>
-                                <a type="adminButton"><i class="fa fa-pencil"></i>Editer</a>
-                                <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
+                                <a class="adminButton" href="./teammateUpdate.php?type=edition&name=PASTA_Livia><i class="fa fa-pencil"></i>Editer</a>
+                                <a class="adminButton" href="./teamUpdate.php?type=deletion"><i class="fa fa-trash"></i>Supprimer</a>
                             </footer>
                         </article>
                     </div>
@@ -95,8 +85,8 @@
                                 <li><span>Gérante départements</span></li>
                             </ul>
                             <footer>
-                                <a type="adminButton"><i class="fa fa-pencil"></i>Editer</a>
-                                <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
+                                <a class="adminButton" href="./teammateUpdate.php?type=edition&name=DUPRE_Sylvia><i class="fa fa-pencil"></i>Editer</a>
+                                <a class="adminButton" href="./teamUpdate.php?type=deletion"><i class="fa fa-trash"></i>Supprimer</a>
                             </footer>
                         </article>
                         <article class="teamMember">
@@ -108,8 +98,8 @@
                                 <li>Profession : Comptable</li>
                             </ul>
                             <footer>
-                                <a type="adminButton"><i class="fa fa-pencil"></i>Editer</a>
-                                <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
+                                <a class="adminButton" href="./teammateUpdate.php?type=edition&name=SABBATINI_Isabella><i class="fa fa-pencil"></i>Editer</a>
+                                <a class="adminButton" href="./teamUpdate.php?type=deletion"><i class="fa fa-trash"></i>Supprimer</a>
                             </footer>
                         </article>
                     </div>
@@ -117,7 +107,7 @@
             </section>
         </main>
         <?php
-            include("inc/footer.inc.php");
+            require("inc/footer.inc.php");
         ?>
     </body>
 </html>

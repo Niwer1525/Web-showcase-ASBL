@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php
         $title = 'Ajout/Edition membre';
-        include("inc/header.inc.php");
+        require("inc/header.inc.php");
     ?>
     <body>
         <header class="nav-bar">
@@ -19,15 +19,15 @@
                         else echo "Edition membre (" . $_GET["name"] . ")";
                     ?>
                 </h2><hr>
-                <form>
+                <form action="./" method="get">
                     <label for="name">Nom</label>
-                    <input type="text" id="name" name="teammate_name" placeholder="Bernard">
+                    <input type="text" id="name" name="teammate_name" placeholder="Bernard" required>
                     <label for="prenom">Prénom</label>
-                    <input type="text" id="prenom" name="first_name" placeholder="Clément">
+                    <input type="text" id="prenom" name="first_name" placeholder="Clément required">
                     <label for="profession">Profession</label>
-                    <input type="text" id="profession" name="teammate_work" placeholder="Enseignant">
+                    <input type="text" id="profession" name="teammate_work" placeholder="Enseignant" required>
                     <label for="department">Département</label>
-                    <select id="department" name="department">
+                    <select id="department" name="department" required>
                         <option value="1">Recherche et développement</option>
                         <option value="2">Marketing</option>
                         <option value="3">Communication</option>
@@ -39,7 +39,7 @@
             </section>
         </main>
         <?php
-            include("inc/footer.inc.php");
+            require("inc/footer.inc.php");
         ?>
     </body>
 </html>

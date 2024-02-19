@@ -110,13 +110,6 @@ a:hover { color: var(--main-color); }
 .seeAllNews {
     text-align: center;
     margin: 5% 20% 0 20%;
-}
-
-.seeAllNews:hover {
-    transform: scale(1.1);
-}
-
-.seeAllNews {
     color: var(--main-color);
     text-decoration: none;
     font-size: 1.5em;
@@ -127,6 +120,8 @@ a:hover { color: var(--main-color); }
     flex-flow: column wrap;
     justify-content: space-between;
 }
+
+.seeAllNews:hover { transform: scale(1.1); }
 
 /* Articles */
 .largeArticle {
@@ -191,7 +186,7 @@ article button {
 /* Section style */
 section {
     padding: 0 25px 0 25px;
-    margin: 5rem 0 5rem 0;
+    margin: 3rem 0 3rem 0;
 }
 
 /* Footer style */
@@ -229,7 +224,7 @@ span { color: var(--main-color); }
 hr {
     border: 1px solid var(--main-color);
     width: 75%;
-    margin-bottom: 5%;
+    margin-bottom: 0%;
 }
 
 
@@ -252,6 +247,7 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 2rem 0 2rem 0;
 }
 
 form input, form textarea, form button, form select {

@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php
         $title = 'Article 1';
-        include("inc/header.inc.php");
+        require("inc/header.inc.php");
     ?>
     <body>
         <header class="nav-bar">
@@ -30,8 +30,8 @@
                         Vivamus auctor ligula vitae felis fringilla efficitur. Vestibulum pulvinar augue a ligula malesuada porta. Integer accumsan leo quis lacus ullamcorper porta. Praesent vel sem consequat, congue dolor sed, accumsan neque. Pellentesque ullamcorper velit sed orci rhoncus suscipit. Vivamus vulputate dapibus nisi in rhoncus. Cras vestibulum tristique massa, eu maximus metus commodo et. Quisque dapibus odio turpis, ut malesuada urna accumsan sit amet. Sed non venenatis sem. Sed sollicitudin sem sed lectus maximus, nec molestie mi iaculis. Nunc bibendum volutpat magna. Proin volutpat rhoncus facilisis. Etiam id posuere massa. Suspendisse at nisl nec ligula vulputate consectetur. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
                         </p>
                         <footer>
-                            <a type="adminButton" href="./newsUpdate.php?type=edition&name=Article en entier"><i class="fa fa-pencil"></i>Editer</a>
-                            <a type="adminButton"><i class="fa fa-trash"></i>Supprimer</a>
+                            <a class="adminButton" href="./newsUpdate.php?type=edition&name=Article_en_entier"><i class="fa fa-pencil"></i>Editer</a>
+                            <a class="adminButton" href="./newsUpdate.php?type=deletion"><i class="fa fa-trash"></i>Supprimer</a>
                             <p>20 octobre 2023</p>
                         </footer>
                     </article>
@@ -39,7 +39,7 @@
             </section>
         </main>
         <?php
-            include("inc/footer.inc.php");
+            require("inc/footer.inc.php");
         ?>
     </body>
 </html>

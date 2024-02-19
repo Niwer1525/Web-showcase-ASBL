@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php
         $title = 'Ajout/Edition département';
-        include("inc/header.inc.php");
+        require("inc/header.inc.php");
     ?>
     <body>
         <header class="nav-bar">
@@ -19,17 +19,17 @@
                         else echo "Edition département (" . $_GET["name"] . ")";
                     ?>
                 </h2><hr>
-                <form>
+                <form action="./" method="get">
                     <label for="name">Nom</label>
-                    <input type="text" id="name" name="department_name" placeholder="Recherche et développement">
+                    <input type="text" id="name" name="department_name" placeholder="Recherche et développement" required>
                     <label for="objectif">Objectif</label>
-                    <textarea id="objectif" name="department_objective" placeholder="Objectif du département"></textarea>
-                    <button type="submit">Envoyer</button>
+                    <textarea id="objectif" name="department_objective" placeholder="Objectif du département" required></textarea>
+                    <button type="submit">Modifier le département</button>
                 </form>
             </section>
         </main>
         <?php
-            include("inc/footer.inc.php");
+            require("inc/footer.inc.php");
         ?>
     </body>
 </html>

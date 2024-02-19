@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php
         $title = 'Accueil';
-        include("inc/header.inc.php"); 
+        require("inc/header.inc.php"); 
     ?>
     <body>
         <header class="mainHeader">
@@ -19,20 +19,10 @@
             </nav>
         </header>
         <main>
-            <header class="nav-bar">
-                <nav>
-                    <ul>
-                        <li><a href="./index.php" class="currentPage">Acceuil</a></li>
-                        <li><a href="./team.php">Notre équipe</a></li>
-                        <li><a href="./department.php">Départements</a></li>
-                        <li><a href="./contact.php">Contact</a></li>
-                        <li><a href="./news.php">Actualités</a></li>
-                        <li>
-                            <a href="./identification.php">Se connecter <i class="fa fa-user"></i></a>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
+            <?php
+                $pageName = 'index';
+                require("inc/nav.inc.php");
+            ?>
             <!-- News section -->
             <section id="news" class="news">
                 <h2>DERNIERE ACTUALITES</h2>
@@ -41,7 +31,7 @@
                     <article>
                         <header>
                             <img src="./images/article1.jpg" alt="Image article 1">
-                            <h3>Titre article 1</h3>
+                            <h2>Titre article 1</h2>
                         </header>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacus in erat ultrices, quis ultrices justo aliquam. Nam placerat eleifend nisi. Pellentesque a vulputate nisi. Cras rutrum odio a condimentum vehicula. Sed vel velit et orci porta imperdiet. Donec imperdiet diam quis leo porta, fringilla efficitur ex placerat. Vestibulum vehicula lacus id ultricies semper.</p>
                         <a href="./fullNews.php">Lire plus</a>
@@ -53,7 +43,7 @@
                     <article>
                         <header>
                             <img src="./images/article1.jpg" alt="Image article 2">
-                            <h3>Titre article 2</h3>
+                            <h2>Titre article 2</h2>
                         </header>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacus in erat ultrices, quis ultrices justo aliquam. Nam placerat eleifend nisi. Pellentesque a vulputate nisi. Cras rutrum odio a condimentum vehicula. Sed vel velit et orci porta imperdiet. Donec imperdiet diam quis leo porta, fringilla efficitur ex placerat. Vestibulum vehicula lacus id ultricies semper.</p>
                         <a href="./fullNews.php">Lire plus</a>
@@ -74,7 +64,7 @@
             </section>
         </main>
         <?php
-            include("inc/footer.inc.php");
+            require("inc/footer.inc.php");
         ?>
     </body>
 </html>

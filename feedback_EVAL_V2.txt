@@ -1,83 +1,12 @@
-[Langage HTML]: 
-
- 	Il reste des erreurs de standard HTML
-
-
 team.php: 
-
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
-		ligne 53: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
 
 		ligne 53: Bad value “./teammateUpdate.php?type=edition&name=GLUTEN Vladimir” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
 
-		ligne 54: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 54: Element “a” is missing required attribute “href”.
-
-		ligne 67: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
 		ligne 67: Bad value “./teammateUpdate.php?type=edition&name=MULLER Joseph” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
-
-		ligne 68: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 68: Element “a” is missing required attribute “href”.
-
-		ligne 82: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 82: Element “a” is missing required attribute “href”.
-
-		ligne 83: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 83: Element “a” is missing required attribute “href”.
-
-		ligne 102: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 102: Element “a” is missing required attribute “href”.
-
-		ligne 103: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 103: Element “a” is missing required attribute “href”.
-
-		ligne 115: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 115: Element “a” is missing required attribute “href”.
-
-		ligne 116: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 116: Element “a” is missing required attribute “href”.
-
-index.php: 
-
-		ligne 10: Stray start tag “html”.
 
 department.php: 
 
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
-		ligne 49: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
 		ligne 49: Bad value “./departmentUpdate.php?type=edition&name=Recherche et développement” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
-
-		ligne 50: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 50: Element “a” is missing required attribute “href”.
-
-		ligne 63: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 64: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 64: Element “a” is missing required attribute “href”.
-
-		ligne 77: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 78: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 78: Element “a” is missing required attribute “href”.
 
 		ligne 83: End tag “main” seen, but there were open elements.
 
@@ -85,179 +14,17 @@ department.php:
 
 		ligne 27: Unclosed element “section”.
 
-contact.php: 
-
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
-		ligne 43: Stray end tag “input”.
-
-news.php: 
-
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
-		ligne 51: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 51: Bad value “./newsUpdate.php?type=edition&name=Titre Article 1” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
-
-		ligne 52: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 52: Element “a” is missing required attribute “href”.
-
-		ligne 65: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 65: Bad value “./newsUpdate.php?type=edition&name=Titre Article 2” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
-
-		ligne 66: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 66: Element “a” is missing required attribute “href”.
-
-		ligne 79: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 79: Element “a” is missing required attribute “href”.
-
-		ligne 80: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 80: Element “a” is missing required attribute “href”.
-
-		ligne 99: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 99: Element “a” is missing required attribute “href”.
-
-		ligne 100: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 100: Element “a” is missing required attribute “href”.
-
-		ligne 113: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 113: Element “a” is missing required attribute “href”.
-
-		ligne 114: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 114: Element “a” is missing required attribute “href”.
-
-identification.php: 
-
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
-		ligne 44: Duplicate ID “mail”.
-
-		ligne 48: Duplicate ID “password”.
-
-error.php: 
-
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
-newsUpdate.php?type=add: 
-
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
 fullNews.php: 
-	
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
-		ligne 37: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
 
 		ligne 37: Bad value “./newsUpdate.php?type=edition&name=Article en entier” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
 
-		ligne 38: Bad value “adminButton” for attribute “type” on element “a”: Subtype missing.
-
-		ligne 38: Element “a” is missing required attribute “href”.
-
-newsUpdate.php?type=edition&name=Article en entier: 
-
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
-newsUpdate.php?type=edition&name=Titre Article 1: 
-
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
-newsUpdate.php?type=edition&name=Titre Article 2: 
-
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
-departmentUpdate.php?type=add: 
-
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
-departmentUpdate.php?type=edition&name=Recherche et développement: 
-
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
-departmentUpdate.php?type=edition&name=Compatbilité: 
-
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
-departmentUpdate.php?type=edition&name=Administratif: 
-
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
-index.php#news: 
-
-		ligne 10: Stray start tag “html”.
-
-teammateUpdate.php?type=add: 
-
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
-teammateUpdate.php?type=edition&name=GLUTEN Vladimir: 
-
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
-teammateUpdate.php?type=edition&name=MULLER Joseph: 
-
-		ligne 2: Stray start tag “html”.
-
-		ligne 11: Stray start tag “html”.
-
- - Vérifie que tes balises form contiennent les attributs action et method.
-
- - L'attribut placeholder ne doit pas être utilisé en tant qu'alternative à un label.
-
- - Utilise l'attribut required quand c'est nécessaire.
-
- - Tu ne peux pas définir html plusieurs fois. -> Maybe fixed ?
+ - L'attribut placeholder ne doit pas être utilisé en tant qu'alternative à un label. But it's not the case anywhere ?!
 
  - Evite l'utilisation de div.
 
- - Tu peux également utiliser la balise article pour lister les départements.
+ - Tu peux également utiliser la balise article pour lister les départements. It's already the case?
 
  - Pas de formulaire pour la recherche.
-
- - Tu peux utiliser h2 pour le titre de l'actualité.
-
- - Vérifie que tes balises form contiennent les attributs action et method.
-
- - La balise <form> doit contenir l'attribut enctype="multipart/form-data" pour pouvoir utiliser correctement un <input> de type="file".
 
 [Langage CSS]: 
  	Répétition de sélecteurs CSS identiques [CSSBurner: identical selectors]
@@ -279,8 +46,6 @@ teammateUpdate.php?type=edition&name=MULLER Joseph:
 
 		 - Dans tous les formulaires, utilise * pour spécifier à l'utilisateur les champs des formulaires qui sont obligatoires à l'encodage.
 
- - Le formulaire n'est pas visible facilement, essaie de le remonter vers le haut d'une façon ou d'une autre.
-
  	UC-A.4 Consulter équipe
 
 		 - Il y a de l'idée mais aligne mieux les différentes informations.
@@ -289,24 +54,7 @@ teammateUpdate.php?type=edition&name=MULLER Joseph:
 
 		 - Le header est trop grand sur la page d'accueil.
 
- 	UC-M.1 Editer actualité
-
-		 - Dans tous les formulaires, utilise * pour spécifier à l'utilisateur les champs des formulaires qui sont obligatoires à l'encodage.
-
- - Nomme mieux le bouton de soumission.
-
- 	UC-G.3 Gérer département
-
-		 - Dans tous les formulaires, utilise * pour spécifier à l'utilisateur les champs des formulaires qui sont obligatoires à l'encodage.
-
- - Nomme mieux ton bouton de soumission.
-
-
 [Fonctionnalités]: 
-
- UC-A.4 Consulter équipe:
-
- 		 - Affiche les membres de chaque département dès le départ. -> Should be done
 
  UC-A.5 Consulter actualités:
 
@@ -321,13 +69,3 @@ teammateUpdate.php?type=edition&name=MULLER Joseph:
  	L'affichage du statut visible ou non des actualités en tant que membre n'est pas fonctionnel ou incomplet
 
  		 - Non réalisé.
-
- UC-M.1 Editer actualité:
-
-	Le formulaire d'édition d'actualité ne contient pas tous les champs requis (date, intitulé, image, amorce, texte complet, visibilité, liaison facultative à un département)
-
- 		 - Pas de date, ni d'amorce ou texte complet, de visibilité ou de liaison facultative à un département.
-
- - L'image doit pouvoir être uploadée directement.
-
-UC-G.3 Gérer département:

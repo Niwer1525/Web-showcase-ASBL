@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php
         $title = 'Erreur';
-        include("inc/header.inc.php");
+        require("inc/header.inc.php");
     ?>
     <body>
         <div class="serge">
