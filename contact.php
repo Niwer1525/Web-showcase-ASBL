@@ -20,7 +20,7 @@
                 <hr>
             </section>
             <section>
-                <form action="./" method="get">
+                <form action="./php/sendMail.php" method="post">
                     <label for="mail">E-mail</label>
                     <input type="email" id="mail" name="user_mail" placeholder="john.california@gmail.com">
                     <label for="name">Nom Prénom</label>

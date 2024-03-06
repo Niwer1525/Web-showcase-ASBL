@@ -22,48 +22,19 @@
                     </div>
                 </div>
                 <div class="cardsContainer">
-                    <!-- First department -->
-                    <article>
-                        <header>
-                            <h3>Recherche et développement</h3>
-                        </header>
-                        <p>
-                            <span>Objectifs :</span><br>
-                            Chercher à créer de nouveaux produits ou améliorer les produits existants.<br>
-                        </p>
-                        <footer>
-                            <a class="adminButton" href="./departmentUpdate.php?type=edition&name=Recherche&développement"><i class="fa fa-pencil"></i>Editer</a>
-                            <a class="adminButton" href="./departmentUpdate.php?type=deletion"><i class="fa fa-trash"></i>Supprimer</a>
-                        </footer>
-                    </article>
-                    <!-- Second department -->
-                    <article>
-                        <header>
-                            <h3>Comptabilité</h3>
-                        </header>
-                        <p>
-                            <span>Objectifs :</span><br>
-                            Gérer les entrées et sorties d'argent dans l'ASBL, mais également les paiement de taxes et impôts ou même la réception de subside<br>
-                        </p>
-                        <footer>
-                            <a class="adminButton" href="./departmentUpdate.php?type=edition&name=Compatbilité"><i class="fa fa-pencil"></i>Editer</a>
-                            <a class="adminButton" href="./departmentUpdate.php?type=deletion"><i class="fa fa-trash"></i>Supprimer</a>
-                        </footer>
-                    </article>
-                    <!-- Third department -->
-                    <article>
-                        <header>
-                            <h3>Administratif</h3>
-                        </header>
-                        <p>
-                            <span>Objectifs :</span><br>
-                            Prendre des décisions de haute importance concernant tout genre de sujets<br>
-                        </p>
-                        <footer>
-                            <a class="adminButton" href="./departmentUpdate.php?type=edition&name=Administratif"><i class="fa fa-pencil"></i>Editer</a>
-                            <a class="adminButton" href="./departmentUpdate.php?type=deletion"><i class="fa fa-trash"></i>Supprimer</a>
-                        </footer>
-                    </article>
+                    <?php
+                        /* Get the datas from the database */
+                        foreach (Department::getDepartments() as $department) {
+                            echo '<article>
+                                <header><h3>' . $department . '</h3></header>
+                                <p><span>Objectifs :</span><br>' . $department . '</p>
+                                <footer>
+                                    <a class="adminButton" href="./departmentUpdate.php?type=edition&name=Recherche&développement"><i class="fa fa-pencil"></i>Editer</a>
+                                    <a class="adminButton" href="./departmentUpdate.php?type=deletion"><i class="fa fa-trash"></i>Supprimer</a>
+                                </footer>
+                            </article>';
+                        }
+                    ?>
                 </div>
             <section>
         </main>
