@@ -8,38 +8,68 @@
         <?php
             $pageName = 'identification';
             require("inc/nav.inc.php");
+            use DB\User;
+            
+            if (isset($_POST["email"]) && isset($_POST["password"])) {
+                if (isset($_POST["name"]) && isset($_POST["age"])) {
+                    $splittedName = explode(' ', $_POST["name"]); // Split the name into two parts (name and lastname) with the last space
+                    $name = implode(' ', array_slice($splittedName, 0, -1));
+                    $lastname = end($splittedName);
+
+                    $user = new User();
+                    $user->nameUser = $name;
+                    $user->lastnameUser = $lastname;
+                    $user->ageUser = $_POST["age"];
+                    $user->emailUser = $_POST["email"];
+                    $user->passwordUser = $_POST["password"];
+                    $user->addressUser = "";
+                    User::createUser($user->nameUser, $user->lastnameUser, $user->ageUser, $user->emailUser, $user->passwordUser, $user->addressUser);
+                    $_SESSION["temp_user"] = $user;
+                } else {
+                    $_SESSION["user"] = serialize(User::login($_POST["email"], $_POST["password"]));
+                    header("Location: ./");
+                }
+            }
+
+            function getTempEmail() {
+                // if (isset($_SESSION["temp_user"])) return $_SESSION["temp_user"]->emailUser;
+                return "";
+            }
+
+            function getTempPassword() {
+                // if (isset($_SESSION["temp_user"])) return $_SESSION["temp_user"]->passwordUser;
+                return "";
+            }
         ?>
         <main>
             <!-- Login section -->
             <section>
-                <form action="./" method="get">
+                <form action="./identification.php" method="post">
                     <h2>Se connecter</h2>
                     <label for="connect_mail">Votre email :</label>
-                    <input type="email" id="connect_mail" placeholder="john.california@gmail.com" required>
+                    <input type="email" id="connect_mail" name="email" placeholder="john.california@gmail.com" required <?php echo'value="'.getTempEmail().'"'?>>
                     <label for="connect_password">Mot de passe :</label>
-                    <input type="password" id="connect_password" placeholder="mot2pass3*" required>
+                    <input type="password" id="connect_password" name="password" placeholder="mot2pass3*" required <?php echo'value="'.getTempPassword().'"'?>>
                     <button type="submit">Se connecter</button>
                 </form>
             </section>
             <hr> <!-- Separator -->
             <!-- Create account section -->
             <section>
-                <form action="./" method="get">
+                <form action="./identification.php" method="post">
                     <h2>Créer un compte</h2>
                     <label for="create_mail">Votre email :</label>
-                    <input type="email" id="create_mail" placeholder="john.california@gmail.com" required>
+                    <input type="email" id="create_mail" name="email" placeholder="john.california@gmail.com" required>
                     <label for="create_name">Votre nom :</label>
-                    <input type="text" id="create_name" placeholder="John California" required>
+                    <input type="text" id="create_name" name="name" placeholder="John California" required>
                     <label for="create_password">Mot de passe :</label>
-                    <input type="password" id="create_password" placeholder="mot2pass3*" required>
+                    <input type="password" id="create_password" name="password" placeholder="mot2pass3*" required>
                     <label for="create_age">Age :</label>
-                    <input type="number" id="create_age" placeholder="25" min="16" max="100" required>
+                    <input type="number" id="create_age" name="age" placeholder="25" min="16" max="100" required>
                     <button type="submit">Créer un compte</button>
                 </form>
             </section>
         </main>
-        <?php
-            require("inc/footer.inc.php");
-        ?>
+        <?php require("inc/footer.inc.php"); ?>
     </body>
 </html>

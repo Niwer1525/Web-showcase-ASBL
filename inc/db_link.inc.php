@@ -19,4 +19,8 @@ class DBLink {
         } 
         return $link;
     }
+
+    public static function disconnect(&$link) {
+        // if ($link->ping()) $link->close();
+    }
 }

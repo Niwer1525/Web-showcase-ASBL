@@ -4,11 +4,9 @@
         $title = 'Erreur';
         require("inc/header.inc.php");
     ?>
-    <body>
-        <div class="serge">
-            <h1>Oooops</h1>
-            <p>La page demandée n'existe pas !</p>
-            <img src="./images/serge.png" alt="Serge">
-        </div>
+    <body class="serge">
+        <h1>Erreur</h1>
+        <p>Ooops... La page demandée n'existe pas !</p>
+        <img src="./images/serge.png" alt="Serge">
     </body>
 </html>

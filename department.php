@@ -10,36 +10,33 @@
             require("inc/nav.inc.php");
         ?>
         <main>
+            <section class="usefulLinks">
+                <h1>DEPARTEMENTS</h1>
+                <hr>
+            </section>
             <section>
-                <div class="searchHeader">
-                    <h2>DEPARTEMENTS</h2>
-                    <!-- Search container -->
-                    <div class="searchBox">
-                        <a class="searchButton" href="./departmentUpdate.php?type=add"><i class="fa fa-plus"></i></a>
-                        <a class="searchButton"><i class="fa fa-filter"></i></a>
-                        <input type="text" placeholder="Rechercher">
-                        <a class="searchButton"><i class="fa fa-search"></i></a>
-                    </div>
-                </div>
                 <div class="cardsContainer">
                     <?php
+                        require("./php/db_department.php");
+                        use DB\Department;
+                        
                         /* Get the datas from the database */
                         foreach (Department::getDepartments() as $department) {
                             echo '<article>
-                                <header><h3>' . $department . '</h3></header>
-                                <p><span>Objectifs :</span><br>' . $department . '</p>
-                                <footer>
-                                    <a class="adminButton" href="./departmentUpdate.php?type=edition&name=Recherche&développement"><i class="fa fa-pencil"></i>Editer</a>
-                                    <a class="adminButton" href="./departmentUpdate.php?type=deletion"><i class="fa fa-trash"></i>Supprimer</a>
-                                </footer>
+                                <header><h3>' . $department->nameDepartment . '</h3></header>
+                                <p><span>Objectifs :</span><br>' . $department->descDepartment . '</p>
+                                <footer>';
+                                if(isset($_SESSION["user"])) {
+                                    echo '<a class="adminButton" href="./update.php?type=department&mode=edition&name="'. $department->nameDepartment .'"><i class="fa fa-pencil"></i>Editer</a>
+                                    <a class="adminButton" href="./update.php?type=department&mode=deletion&name="'. $department->nameDepartment .'"><i class="fa fa-trash"></i>Supprimer</a>';
+                                }
+                                echo'</footer>
                             </article>';
                         }
                     ?>
                 </div>
             <section>
         </main>
-        <?php
-            require("inc/footer.inc.php");
-        ?>
+        <?php require("inc/footer.inc.php"); ?>
     </body>
 </html>

@@ -105,8 +105,6 @@
                 </details>
             </section>
         </main>
-        <?php
-            require("inc/footer.inc.php");
-        ?>
+        <?php require("inc/footer.inc.php"); ?>
     </body>
 </html>
