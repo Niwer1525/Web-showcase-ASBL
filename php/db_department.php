@@ -30,6 +30,21 @@ class Department {
         return $departments;
     }
     
+    public static function getDepartment($name) {
+        $db = DBLink::connect2db(MYDB, $message); // Connect to the database
+        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE nameDepartment = '" . $name . "'"; // SQL query     
+        
+        $result = $db->query($sql); // Execute the query
+        $row = $result->fetch_assoc();
+
+        $department = new Department();
+        $department->nameDepartment = $row['nameDepartment'];
+        $department->descDepartment = $row['descDepartment'];
+
+        DBLink::disconnect($db); // Disconnect from the database
+        return $department;
+    }
+
     public static function deleteDepartment($nameDepartment) {
         $db = DBLink::connect2db(MYDB, $message); // Connect to the database
         $sql = "DELETE FROM " . self::TABLE_NAME . " WHERE nameDepartment = '" . $nameDepartment . "'"; // SQL query

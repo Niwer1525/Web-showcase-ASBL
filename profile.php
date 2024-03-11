@@ -10,6 +10,7 @@
             switch($_GET["mode"]) {
                 case "disconnect":
                     User::logout();
+                    header("Location: ./");
                     break;
             }
         }

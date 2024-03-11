@@ -18,6 +18,6 @@
         sans votre consentement explicite.<br>
         <span>Responsabilité :</span> Toutes les images ont été crées en utilisant l'Intelligence Artificielle (OpenAI & Bing chat) <span>Excepté le fond de la page d'Accueil !</span>
     </p>
-    <!--  container -->
+    <!-- Copyright -->
     <p><span>2023 &copy; Lumière du Savoir - Tout droits réservé</span></p>
 </footer>

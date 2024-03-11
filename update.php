@@ -47,8 +47,13 @@
                 <hr>
             </section>
             <section>
-                <form action="./" method="get" enctype="multipart/form-data">
+                <form action="./inc/update_object.inc.php" method="get" enctype="multipart/form-data">
                     <?php
+                        require_once("./php/db_department.php");
+                        use DB\Department;
+
+                        /* Print two hidden form to send additional datas */
+                        echo'<input type="hidden" name="type" value="'.$type.'"><input type="hidden" name="mode" value="'.$mode.'">';
                         if($mode == "edition") {
                             switch($type) {
                                 case "news":
@@ -61,6 +66,12 @@
                                     <!-- Image -->
                                     <label for="image">Image</label>
                                     <input type="file" id="image" name="news_image" accept="image/*" required>
+                                    <!-- Primer -->
+                                    <label for="primer">Amorce</label>
+                                    <textarea id="primer" name="news_primer" placeholder="Amorce" required></textarea>
+                                    <!-- Full content -->
+                                    <label for="message">Texte complet</label>
+                                    <textarea id="message" name="news_message" placeholder="Message" required></textarea>
                                     <!-- Visibility -->
                                     <label for="visibility">Visibilité</label>
                                     <select id="visibility" name="news_visibility" required>
@@ -72,19 +83,16 @@
                                     <select id="Department" name="news_Department">
                                         <option value="empty" selected="selected">Aucun département</option>
                                         <option value="technic">Technique</option>
-                                    </select>
-                                    <!-- Primer -->
-                                    <label for="primer">Amorce</label>
-                                    <textarea id="primer" name="news_primer" placeholder="Amorce" required></textarea>
-                                    <!-- Full content -->
-                                    <label for="message">Texte complet</label>
-                                    <textarea id="message" name="news_message" placeholder="Message" required></textarea>';
+                                    </select>';
                                     break;
-                                case "department": //TODO add autocomplete
+                                case "department":
+                                    $department = Department::getDepartment($name);
+
+                                    /* Print the result */
                                     echo '<label for="name">Nom</label>
-                                    <input type="text" id="name" name="department_name" placeholder="Recherche et développement" required>
+                                    <input type="text" id="name" name="department_name" placeholder="Recherche et développement" required value="'.$department->nameDepartment.'">
                                     <label for="objectif">Objectif</label>
-                                    <textarea id="objectif" name="department_objective" placeholder="Objectif du département" required></textarea>';
+                                    <textarea id="objectif" name="department_objective" placeholder="Objectif du département" required>'.$department->descDepartment.'</textarea>';
                                     break;
                                 case "member":
                                     echo'<label for="name">Nom</label>

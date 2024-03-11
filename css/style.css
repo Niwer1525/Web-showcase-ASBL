@@ -132,15 +132,16 @@ a:hover { color: var(--main-color); }
 article {
     background-color: var(--grey-color);
     border-radius: 10px;
+    /* border: 1px solid var(--main-color); */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 20rem;
     margin: 10px;
-    text-align: justify;
+    text-align: left;
 }
 
-article p, article h3 {
+article p, article h2 {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -196,6 +197,9 @@ footer {
     font-weight: bold;
     text-align: center;
     padding: 0.5rem;
+    /* position: absolute;
+    bottom: 0;
+    width: 100%; */
 }
 
 footer ul {
@@ -227,7 +231,6 @@ hr {
     margin-bottom: 0%;
 }
 
-
 /* "Details" section */
 details {
     text-align: center;
@@ -239,6 +242,18 @@ details summary {
     font-weight: bold;
     color: var(--main-color);
     margin: 1.5rem 0 1.5rem 0;
+}
+
+.faq>details summary {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--main-color);
+    margin: 1.5rem 0 1.5rem 0;
+}
+
+.faq {
+    width: 50%;
+    text-align: center;
 }
 
 /* Forms */

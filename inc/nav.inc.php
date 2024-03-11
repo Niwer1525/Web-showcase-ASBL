@@ -25,12 +25,12 @@
                             $user = unserialize($_SESSION["user"]);
                             echo $user->nameUser . ' ' . $user->lastnameUser;
                         }
-                        echo'<i class="fa fa-user"></i></a>';
                     } else {
                         echo '<a href="./identification.php" ';
                         printClass($pageName, 'identification');
-                        echo'>Se connecter <i class="fa fa-user"></i></a>';
+                        echo'>Se connecter';
                     }
+                    echo' <i class="fa fa-user"></i></a>';
                 ?>
             </li>
         </ul>

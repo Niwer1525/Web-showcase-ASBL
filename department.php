@@ -23,12 +23,12 @@
                         /* Get the datas from the database */
                         foreach (Department::getDepartments() as $department) {
                             echo '<article>
-                                <header><h3>' . $department->nameDepartment . '</h3></header>
+                                <header><h2>' . $department->nameDepartment . '</h2></header>
                                 <p><span>Objectifs :</span><br>' . $department->descDepartment . '</p>
                                 <footer>';
                                 if(isset($_SESSION["user"])) {
-                                    echo '<a class="adminButton" href="./update.php?type=department&mode=edition&name="'. $department->nameDepartment .'"><i class="fa fa-pencil"></i>Editer</a>
-                                    <a class="adminButton" href="./update.php?type=department&mode=deletion&name="'. $department->nameDepartment .'"><i class="fa fa-trash"></i>Supprimer</a>';
+                                    echo '<a class="adminButton" href="./update.php?type=department&mode=edition&name='. $department->nameDepartment .'"><i class="fa fa-pencil"></i>Editer</a>
+                                    <a class="adminButton" href="./update.php?type=department&mode=deletion&name='. $department->nameDepartment .'"><i class="fa fa-trash"></i>Supprimer</a>';
                                 }
                                 echo'</footer>
                             </article>';
