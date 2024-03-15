@@ -58,15 +58,15 @@
             </section>
             <!-- Contact form -->
             <section>
-                <form action="./php/contact.php" method="post">
+                <form action="./contact.php" method="post">
                     <label for="mail">E-mail</label>
-                    <input type="email" id="mail" name="user_mail" placeholder="john.california@gmail.com" <?php getDefaultValue("user_mail") ?>>
+                    <input type="email" id="mail" name="user_mail" placeholder="john.california@gmail.com" <?php getDefaultValue("user_mail") ?> required>
                     <label for="name">Nom Prénom</label>
-                    <input type="text" id="name" name="user_name" placeholder="Jhon California" <?php getDefaultValue("user_name") ?>>
+                    <input type="text" id="name" name="user_name" placeholder="Jhon California" <?php getDefaultValue("user_name") ?> required>
                     <label for="subject">Sujet</label>
-                    <input type="text" id="subject" name="user_subject" placeholder="Votre sujet">
+                    <input type="text" id="subject" name="user_subject" placeholder="Votre sujet" required>
                     <label for="msg">Message</label>
-                    <textarea id="msg" name="user_message" placeholder="Votre message"></textarea>
+                    <textarea id="msg" name="user_message" placeholder="Votre message" required></textarea>
                     <button type="submit">Envoyer le message</button>
                 </form>
             </section>

@@ -10,99 +10,44 @@
             require("inc/nav.inc.php");
         ?>
         <main>
+            <section class="usefulLinks">
+                <h1>TOUTES LES ACUTALITES</h1>
+                <hr>
+                <?php
+                    if(isset($_SESSION["user"])) 
+                        echo '<a class="adminButton" href="./update.php?type=news&mode=addition"><i class="fa fa-plus"></i> Ajouter un article</a>';
+                ?>
+            </section>
+            <?php require("inc/search.inc.php"); ?>
             <section>
-                <div class="searchHeader">
-                    <h2>ACTUALITES PAR DEPARTEMENT</h2>
-                    <!-- Search container -->
-                    <div class="searchBox">
-                        <a class="searchButton" href="./newsUpdate.php?type=add"><i class="fa fa-plus"></i></a>
-                        <a class="searchButton"><i class="fa fa-filter"></i></a>
-                        <input type="text" placeholder="Rechercher">
-                        <a class="searchButton"><i class="fa fa-search"></i></a>
-                    </div>
-                </div>
-                <!-- First department -->
-                <details open>
-                    <summary>Recherche et développement</summary>
-                    <div class="cardsContainer">
-                        <!-- article 1 -->
-                        <article>
-                            <header>
-                                <img src="./images/article1.jpg" alt="Image article 1">
-                                <h2>Titre article 1</h2>
-                            </header>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacus in erat ultrices, quis ultrices justo aliquam. Nam placerat eleifend nisi. Pellentesque a vulputate nisi. Cras rutrum odio a condimentum vehicula. Sed vel velit et orci porta imperdiet. Donec imperdiet diam quis leo porta, fringilla efficitur ex placerat. Vestibulum vehicula lacus id ultricies semper.</p>
-                            <a href="./fullNews.php">Lire plus</a>
-                            <footer>
-                                <a class="adminButton" href="./newsUpdate.php?type=edition&name=Titre_Article_1"><i class="fa fa-pencil"></i>Editer</a>
-                                <a class="adminButton" href="./newsUpdate.php?type=deletion"><i class="fa fa-trash"></i>Supprimer</a>
-                                <p>20 octobre 2023</p>
-                            </footer>
-                        </article>
-                        <!-- article 2 -->
-                        <article>
-                            <header>
-                                <img src="./images/article2.jpg" alt="Image article 2">
-                                <h2>Titre article 2</h2>
-                            </header>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacus in erat ultrices, quis ultrices justo aliquam. Nam placerat eleifend nisi. Pellentesque a vulputate nisi. Cras rutrum odio a condimentum vehicula. Sed vel velit et orci porta imperdiet. Donec imperdiet diam quis leo porta, fringilla efficitur ex placerat. Vestibulum vehicula lacus id ultricies semper.</p>
-                            <a href="./fullNews.php">Lire plus</a>
-                            <footer>
-                                <a class="adminButton" href="./newsUpdate.php?type=edition&name=Titre_Article_2"><i class="fa fa-pencil"></i>Editer</a>
-                                <a class="adminButton" href="./newsUpdate.php?type=deletion"><i class="fa fa-trash"></i>Supprimer</a>
-                                <p>10 octobre 2023</p>
-                            </footer>
-                        </article>
-                        <!-- article 3 -->
-                        <article>
-                            <header>
-                                <img src="./images/article3.jpg" alt="Image article 3">
-                                <h2>Titre article 3</h2>
-                            </header>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacus in erat ultrices, quis ultrices justo aliquam. Nam placerat eleifend nisi. Pellentesque a vulputate nisi. Cras rutrum odio a condimentum vehicula. Sed vel velit et orci porta imperdiet. Donec imperdiet diam quis leo porta, fringilla efficitur ex placerat. Vestibulum vehicula lacus id ultricies semper.</p>
-                            <a href="./fullNews.php">Lire plus</a>
-                            <footer>
-                                <a class="adminButton" href="./newsUpdate.php?type=edition&name=Titre_Article_3"><i class="fa fa-pencil"></i>Editer</a>
-                                <a class="adminButton" href="./newsUpdate.php?type=deletion"><i class="fa fa-trash"></i>Supprimer</a>
-                                <p>15 mai 2023</p>
-                            </footer>
-                        </article>
-                    </div>
-                </details>
-                <!-- Second department -->
-                <details>
-                    <summary>Comptabilité</summary>
-                    <div class="cardsContainer">
-                        <!-- article 1 -->
-                        <article>
-                            <header>
-                                <img src="./images/article1.jpg" alt="Image article 1">
-                                <h2>Titre article 1</h2>
-                            </header>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacus in erat ultrices, quis ultrices justo aliquam. Nam placerat eleifend nisi. Pellentesque a vulputate nisi. Cras rutrum odio a condimentum vehicula. Sed vel velit et orci porta imperdiet. Donec imperdiet diam quis leo porta, fringilla efficitur ex placerat. Vestibulum vehicula lacus id ultricies semper.</p>
-                            <a href="./fullNews.php">Lire plus</a>
-                            <footer>
-                                <a class="adminButton" href="./newsUpdate.php?type=edition&name=Titre_Article_1"><i class="fa fa-pencil"></i>Editer</a>
-                                <a class="adminButton" href="./newsUpdate.php?type=deletion"><i class="fa fa-trash"></i>Supprimer</a>
-                                <p>20 octobre 2023</p>
-                            </footer>
-                        </article>
-                        <!-- article 2 -->
-                        <article>
-                            <header>
-                                <img src="./images/article2.jpg" alt="Image article 2">
-                                <h2>Titre article 2</h2>
-                            </header>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus lacus in erat ultrices, quis ultrices justo aliquam. Nam placerat eleifend nisi. Pellentesque a vulputate nisi. Cras rutrum odio a condimentum vehicula. Sed vel velit et orci porta imperdiet. Donec imperdiet diam quis leo porta, fringilla efficitur ex placerat. Vestibulum vehicula lacus id ultricies semper.</p>
-                            <a href="./fullNews.php">Lire plus</a>
-                            <footer>
-                                <a class="adminButton" href="./newsUpdate.php?type=edition&name=Titre_Article_2"><i class="fa fa-pencil"></i>Editer</a>
-                                <a class="adminButton" href="./newsUpdate.php?type=deletion"><i class="fa fa-trash"></i>Supprimer</a>
-                                <p>10 octobre 2023</p>
-                            </footer>
-                        </article>
-                    </div>
-                </details>
+                <?php
+                    require_once("./php/db_department.php");
+                    require_once("./php/db_article.php");
+                    use DB\Department;
+                    use DB\Article;
+
+                    foreach(Department::getDepartments() as $department) {
+                        echo '<details open><summary>'.$department->nameDepartment.'</summary>
+                            <div class="cardsContainer">';
+                            foreach(Article::getArticlesByDepartment($department->nameDepartment) as $article) {
+                                echo'<article>
+                                    <header>
+                                        <img src="./images/article1.jpg" alt="Image article 1">
+                                        <h2>'.$article->nameArticle.'</h2>
+                                    </header>
+                                    <p>'.$article->introArticle.'</p>
+                                    <a href="./fullNews.php?name='.$article->nameArticle.'">Lire plus</a>
+                                    <footer>';
+                                        if(isset($_SESSION["user"])) {
+                                            echo '<a class="adminButton" href="./update.php?type=news&mode=edition&name='. $article->nameArticle .'"><i class="fa fa-pencil"></i>Editer</a>
+                                            <a class="adminButton" href="./update.php?type=news&mode=deletion&name='. $article->nameArticle .'"><i class="fa fa-trash"></i>Supprimer</a>';
+                                        }
+                                       echo'<p>'.$article->datePublicationArticle.'</p>
+                                </article>';
+                            }
+                        echo'</div></details>';
+                    }
+                ?>
             </section>
         </main>
         <?php require("inc/footer.inc.php"); ?>

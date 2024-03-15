@@ -1,6 +1,6 @@
 <?php
 namespace DB;
-require './inc/config.inc.php';
+require_once('config.inc.php');
 use mysqli;
 
 class DBLink {

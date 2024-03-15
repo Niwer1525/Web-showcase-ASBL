@@ -30,6 +30,10 @@
                     <input type="hidden" name="mode" value="disconnect"></input>
                     <button type="submit">Se déconnecter</button>
                 </form>
+                <form action="./profile.php" method="get">
+                    <input type="hidden" name="mode" value="disconnect"></input>
+                    <button type="submit">Réinitialiser mon mot de passe</button>
+                </form>
             </section>
         </main>
         <?php require("inc/footer.inc.php"); ?>

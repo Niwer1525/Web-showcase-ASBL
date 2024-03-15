@@ -18,7 +18,10 @@
     border-radius: 25px;
 }
 
-::-webkit-scrollbar-thumb:hover { background: #555; }
+::-webkit-scrollbar-thumb:hover {
+    transition: 0.3s;
+    background: #555;
+}
 
 html {
     background-color: var(--soft-black-color);
@@ -38,7 +41,10 @@ a {
     padding: 0.5rem;
 }
 
-a:hover { color: var(--main-color); }
+a:hover {
+    transition: 0.3s;
+    color: var(--main-color);
+}
 
 /* Main header, Only on the 'index' page */
 .mainHeader {
@@ -80,14 +86,15 @@ a:hover { color: var(--main-color); }
 .currentPage:hover {
     background-color: var(--soft-black-color);
     color: white;
+    transition: 0.3s;
 }
 
 /* Search box */
 .searchBox {
+    width: 75%;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     flex-wrap: wrap;
-    align-items: center;
 }
 
 .searchBox input, .searchButton {
@@ -97,13 +104,7 @@ a:hover { color: var(--main-color); }
     border-radius: 8px;
     text-align: center;
     font-size: 1.15em;
-    margin: 0.1rem;
-}
-
-.searchHeader {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    margin: 0.2rem;
 }
 
 /* Article style, specific home page button */
@@ -121,7 +122,10 @@ a:hover { color: var(--main-color); }
     justify-content: space-between;
 }
 
-.seeAllNews:hover { transform: scale(1.1); }
+.seeAllNews:hover {
+    transition: 0.3s;
+    transform: scale(1.1); 
+}
 
 /* Articles */
 .largeArticle {
@@ -218,6 +222,7 @@ footer .fa {
 }
 
 footer .fa:hover {
+    transition: 0.3s;
     transform: scale(1.2);
 }
 
@@ -284,12 +289,27 @@ form button {
     cursor: pointer;
 }
 
-form textarea { resize: vertical; }
-
-form label {
-    display: flex;
-    flex-direction: column;
+form img {
+    width: 15%;
+    border-radius: 10px;
+    margin: 10px;
 }
+
+form>:required {
+
+}
+
+form>:required::after {
+    content: "*";
+    color: red;
+}
+
+form>:focus {
+    transition: 0.3s;
+    transform: scale(1.05);
+}
+
+form textarea { resize: vertical; }
 
 /* Useful links in the 'conctact' page */
 .usefulLinks {
@@ -301,17 +321,44 @@ form label {
 }
 
 /* All kind of buttons should grow up when hovering */
-button:hover, .searchButton:hover, .adminButton:hover { transform: scale(1.08); }
+button:hover, .searchButton:hover, .adminButton:hover {
+    transition: 0.3s;
+    transform: scale(1.05);
+}
 
 /* All kind of textareas or inputs should have a small white border when hovering */
-input:hover, textarea:hover, select:hover { border: 1px solid white; }
+input:hover, textarea:hover, select:hover {
+    transition: 0.3s;
+    border: 1px solid white;
+}
 
 /* Serge */
 .serge {
-    width: 100vw;
     height: 100vh;
     background-color: var(--black-color);
     color: var(--main-color);
     text-align: center;
     font-size: 2rem;
+}
+
+.serge>img {
+    animation: breath 10s infinite;
+}
+
+@keyframes breath {
+    0% {
+        transform: scale(1);
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: scale(1.1);
+        transform: rotate(5deg);
+    }
+    75% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: scale(1);
+        transform: rotate(0deg);
+    }
 }

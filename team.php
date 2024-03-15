@@ -10,17 +10,16 @@
             require("inc/nav.inc.php");
         ?>
         <main>
+            <section class="usefulLinks">
+                <h1>NOTRE EQUIPE</h1>
+                <hr>
+                <?php
+                    if(isset($_SESSION["user"])) 
+                        echo '<a class="adminButton" href="./update.php?type=member&mode=addition"><i class="fa fa-plus"></i> Ajouter un membre</a>';
+                ?>
+            </section>
+            <?php require("inc/search.inc.php"); ?>
             <section>
-                <div class="searchHeader">
-                    <h2>NOTRE EQUIPE</h2>
-                    <!-- Search container -->
-                    <div class="searchBox">
-                        <a class="searchButton" href="./teammateUpdate.php?type=add"><i class="fa fa-plus"></i></a>
-                        <a class="searchButton"><i class="fa fa-filter"></i></a>
-                        <input type="text" placeholder="Rechercher">
-                        <a class="searchButton"><i class="fa fa-search"></i></a>
-                    </div>
-                </div>
                 <!-- First department -->
                 <details open>
                     <summary>Recherche et développement</summary>

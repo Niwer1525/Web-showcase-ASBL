@@ -13,6 +13,10 @@
             <section class="usefulLinks">
                 <h1>DEPARTEMENTS</h1>
                 <hr>
+                <?php
+                    if(isset($_SESSION["user"])) 
+                        echo '<a class="adminButton" href="./update.php?type=department&mode=addition"><i class="fa fa-plus"></i> Ajouter un département</a>';
+                ?>
             </section>
             <section>
                 <div class="cardsContainer">
