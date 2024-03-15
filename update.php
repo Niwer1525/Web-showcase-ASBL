@@ -62,7 +62,7 @@
                                     <input type="text" id="title" name="news_title" placeholder="De nouveaux livres" required value="'.($isAddition ? "" : $article->nameArticle).'">
                                     
                                     <label for="date">Date</label>
-                                    <input type="text" id="date" name="news_date" placeholder="25/02/2019" required value="'.($isAddition ? '' : date("d-m-Y", strtotime($article->datePublicationArticle))).'">
+                                    <input type="date" id="date" name="news_date" placeholder="25/02/2019" required value="'.($isAddition ? '' : date("d-m-Y", strtotime($article->datePublicationArticle))).'">
                                     
                                     <label for="image">Image</label>'
                                     .(!$isAddition ? '<img src="./images/article1.jpg" alt="Current article image">' : ''). // Display the current article image
@@ -76,8 +76,8 @@
 
                                     <label for="visibility">Visibilité</label>
                                     <select id="visibility" name="news_visibility" required>
-                                        <option value="1" '.($isAddition ? 'selected="selected"' : ($article->visibility == 1 ? 'selected="selected"' : '')).'>Tout le monde</option>
-                                        <option value="0" '.($isAddition ? '' : ($article->visibility == 0 ? 'selected="selected"' : '')).'>Membre seulement</option>
+                                        <option value="0" '.($isAddition ? 'selected="selected"' : ($article->visibility == 1 ? 'selected="selected"' : '')).'>Tout le monde</option>
+                                        <option value="1" '.($isAddition ? '' : ($article->visibility == 0 ? 'selected="selected"' : '')).'>Membre seulement</option>
                                     </select>
 
                                     <label for="department">Département</label>

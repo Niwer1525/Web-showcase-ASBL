@@ -75,7 +75,7 @@ class Article {
      */
     public static function getHomeArticle() {
         $db = DBLink::connect2db(MYDB, $message); // Connect to the database
-        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE visibility IS NULL ORDER BY datePublicationArticle DESC LIMIT 2"; // SQL query
+        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE visibility = 0 ORDER BY datePublicationArticle DESC LIMIT 2"; // SQL query
 
         $result = $db->query($sql); // Execute the query
         $articles = [];
@@ -124,7 +124,7 @@ class Article {
 
         // Escape special characters in the values
         $nameArticle = $db->real_escape_string($nameArticle);
-        $datePublicationArticle = $db->real_escape_string($datePublicationArticle);
+        $datePublicationArticle = $db->real_escape_string(date('Y-m-d', strtotime($datePublicationArticle))); // Format the date value
         $contentArticle = $db->real_escape_string($contentArticle);
         $introArticle = $db->real_escape_string($introArticle);
         $department = $db->real_escape_string($department);
