@@ -30,10 +30,12 @@
                         echo '<details open><summary>'.$department->nameDepartment.'</summary>
                             <div class="cardsContainer">';
                             foreach(Article::getArticlesByDepartment($department->nameDepartment) as $article) {
+                                if($article->visibility != 0 && !isset($_SESSION["user"])) continue;
                                 echo'<article>
                                     <header>
-                                        <img src="./images/article1.jpg" alt="Image article 1">
-                                        <h2>'.$article->nameArticle.'</h2>
+                                        <img src="./uploads/'.$article->nameArticle.'/'.$article->imageArticle.'" alt="Image '.strtolower($article->nameArticle).'">'
+                                        .($article->visibility != 0 ? '<div class="membersOnly"><span>Seul les membres peuvent voir cet article</span></div>' : '').
+                                        '<h2>'.$article->nameArticle.'</h2>
                                     </header>
                                     <p>'.$article->introArticle.'</p>
                                     <a href="./fullNews.php?name='.$article->nameArticle.'">Lire plus</a>

@@ -47,8 +47,10 @@
                     <?php
                         require_once("./php/db_department.php");
                         require_once("./php/db_article.php");
+                        require_once("./php/db_account.php");
                         use DB\Department;
                         use DB\Article;
+                        use DB\Member;
 
                         /* Print two hidden form to send additional datas */
                         echo'<input type="hidden" name="type" value="'.$type.'"><input type="hidden" name="mode" value="'.$mode.'">';
@@ -56,16 +58,17 @@
                             switch($type) {
                                 case NEWS_TYPE:
                                     $article = $isAddition ? null : Article::getArticle($name);
+                                    $datePublication = $isAddition ? '' : strval(date("Y-m-d", strtotime($article->datePublicationArticle)));
 
                                     echo '
                                     <label for="title">Intitulé</label>
                                     <input type="text" id="title" name="news_title" placeholder="De nouveaux livres" required value="'.($isAddition ? "" : $article->nameArticle).'">
                                     
                                     <label for="date">Date</label>
-                                    <input type="date" id="date" name="news_date" placeholder="25/02/2019" required value="'.($isAddition ? '' : date("d-m-Y", strtotime($article->datePublicationArticle))).'">
+                                    <input type="date" id="date" name="news_date" placeholder="25/02/2019" required value="'.$datePublication.'">
                                     
                                     <label for="image">Image</label>'
-                                    .(!$isAddition ? '<img src="./images/article1.jpg" alt="Current article image">' : ''). // Display the current article image
+                                    .(!$isAddition ? '<img src="./uploads/'.$article->nameArticle.'/'.$article->imageArticle.'" alt="Image actuel">' : ''). // Display the current article image
                                     '<input type="file" id="image" name="news_image" accept="image/*">
 
                                     <label for="primer">Amorce</label>
@@ -96,19 +99,30 @@
                                     <textarea id="objectif" name="department_objective" placeholder="Imagine et test de nouveaux produits" required>' . ($isAddition ? "" : $department->descDepartment) . '</textarea>';
                                     break;
                                 case MEMBER_TYPE:
+                                    $member = $isAddition ? null : Mamber::getMember($name);
+
                                     echo
                                     '<label for="name">Nom</label>
                                     <input type="text" id="name" name="teammate_name" placeholder="Bernard" required>
 
                                     <label for="prenom">Prénom</label>
-                                    <input type="text" id="prenom" name="first_name" placeholder="Clément required">
+                                    <input type="text" id="prenom" name="first_name" placeholder="Clément" required>
+                                    
+                                    <label for="image">Photo de profile</label>'
+                                    .(!$isAddition ? '<img src="./uploads/'.$member->nameMember.'/'.$member->imageMember.'" alt="Photo de profile actuel">' : ''). // Display the current article image
+                                    '<input type="file" id="image" name="news_image" accept="image/*">
 
                                     <label for="profession">Profession</label>
                                     <input type="text" id="profession" name="teammate_work" placeholder="Enseignant" required>
 
                                     <label for="department">Département</label>
                                     <select id="department" name="department" required>';
-                                    Department::printDepartmentOptions($isAddition ? null : $article->nameArticle);
+                                    Role::printRoleOptions($isAddition ? null : $member->role->nameRole);
+                                    echo'</select>
+                                    
+                                    <label for="department">Département</label>
+                                    <select id="department" name="department" required>';
+                                    Department::printDepartmentOptions($isAddition ? null : $member->nameDepartment);
                                     echo'</select>';
                                     break;
                             }

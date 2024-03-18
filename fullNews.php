@@ -20,8 +20,9 @@
 
                         echo '<article class="largeArticle">
                         <header>
-                            <img src="./images/article1.jpg" alt="Image article 1">
-                            <h3>'.$article->nameArticle.'</h3>
+                            <img src="./uploads/'.$article->nameArticle.'/'.$article->imageArticle.'" alt="Image '.strtolower($article->nameArticle).'">'
+                            .($article->visibility != 0 ? '<div class="membersOnly"><span>Seul les membres peuvent voir cet article</span></div>' : '').
+                            '<h2>'.$article->nameArticle.'</h2>
                         </header>
                         <p>'.$article->contentArticle.'</p>
                         <footer>';

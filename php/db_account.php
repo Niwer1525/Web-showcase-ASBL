@@ -12,25 +12,23 @@ class Member {
     public $nameMember = "";
     public $lastNameMember = "";
     public $emailMember = "";
-    public $nameRole = "";
+    public $nameDepartment = "";
+    public $role = NULL;
 
-    public static function getMembers() {
+    public static function getMember($nameMember) {
         $db = DBLink::connect2db(MYDB, $message);
-        $sql = "SELECT * FROM " . self::TABLE_NAME;
+        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE nameMember = '".$nameMember."'";
 
         $result = $db->query($sql);
-        $members = [];
-        while ($row = $result->fetch_assoc()) {
-            $member = new Member();
-            $member->nameMember = $row["nameMember"];
-            $member->lastNameMember = $row["lastNameMember"];
-            $member->emailMember = $row["emailMember"];
-            $member->nameRole = $row["nameRole"];
-            $members[] = $member;
-        }
+        $row = $result->fetch_assoc();
+        $member = new Member();
+        $member->nameMember = $row["nameMember"];
+        $member->lastNameMember = $row["lastNameMember"];
+        $member->emailMember = $row["emailMember"];
+        $member->nameRole = Role::getRole($row["role"]);
 
         DBLink::disconnect($db); // Disconnect from the database
-        return $members;
+        return $member;
     }
 }
 

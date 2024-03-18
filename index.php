@@ -39,7 +39,7 @@
                         foreach (Article::getHomeArticle() as $article) {
                             echo '<article>
                                 <header>
-                                    <img src="./images/article1.jpg" alt="Image article 1">
+                                    <img src="./uploads/'.$article->nameArticle.'/'.$article->imageArticle.'" alt="Image '.strtolower($article->nameArticle).'">
                                     <h2>'.$article->nameArticle.'</h2>
                                 </header>
                                 <p>'.$article->introArticle.'</p>
