@@ -88,9 +88,8 @@ class Department {
      * @param string $name The name of the department to select
      */
     public static function printDepartmentOptions($name) {
-        $departments = Department::getDepartments();
         echo'<option value="empty" '.(!isset($name) ? 'selected="selected"' : '').'>Aucun département</option>'; // Print the empty option
-        foreach($departments as $department) {
+        foreach(Department::getDepartments() as $department) {
             echo'<option value="'.$department->nameDepartment.'" '.(isset($name) && $department->nameDepartment == $name ? 'selected="selected"' : '').'>'.$department->nameDepartment.'</option>';
         }
     }

@@ -33,12 +33,12 @@
 
             function getTempEmail() {
                 // if (isset($_SESSION["temp_user"])) return $_SESSION["temp_user"]->emailUser;
-                return "";
+                return "e.redote@student.helmo.be"; // For testing purposes
             }
 
             function getTempPassword() {
                 // if (isset($_SESSION["temp_user"])) return $_SESSION["temp_user"]->passwordUser;
-                return "";
+                return "passwordVisible"; // For testing purposes
             }
         ?>
         <main>
@@ -47,7 +47,7 @@
                 <form action="./identification.php" method="post">
                     <h2>Se connecter</h2>
                     <label for="connect_mail">Votre email :</label>
-                    <input type="email" id="connect_mail" name="email" placeholder="john.california@gmail.com" required <?php echo'value="'.getTempEmail().'"'?>>
+                    <input type="email" id="connect_mail" name="email" placeholder="john.california@gmail.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required <?php echo'value="'.getTempEmail().'"'?>>
                     <label for="connect_password">Mot de passe :</label>
                     <input type="password" id="connect_password" name="password" placeholder="mot2pass3*" required <?php echo'value="'.getTempPassword().'"'?>>
                     <button type="submit">Se connecter</button>
@@ -59,11 +59,11 @@
                 <form action="./identification.php" method="post">
                     <h2>Créer un compte</h2>
                     <label for="create_mail">Votre email :</label>
-                    <input type="email" id="create_mail" name="email" placeholder="john.california@gmail.com" required>
+                    <input type="email" id="create_mail" name="email" placeholder="john.california@gmail.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
                     <label for="create_name">Votre nom :</label>
                     <input type="text" id="create_name" name="name" placeholder="John California" required>
                     <label for="create_password">Mot de passe :</label>
-                    <input type="password" id="create_password" name="password" placeholder="mot2pass3*" required>
+                    <input type="password" id="create_password" name="password" placeholder="mot2pass3*" pattern="^(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$" title="Le mot de passe doit contenir au moins 8 caractères et un caractère spécial" required>
                     <label for="create_age">Age :</label>
                     <input type="number" id="create_age" name="age" placeholder="25" min="16" max="100" required>
                     <button type="submit">Créer un compte</button>

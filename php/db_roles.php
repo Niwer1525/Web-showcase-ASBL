@@ -1,5 +1,5 @@
 <?php
-namespace DB;
+namespace Main;
 
 /* Required files */
 require_once("./inc/db_link.inc.php");

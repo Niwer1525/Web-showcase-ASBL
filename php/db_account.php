@@ -12,8 +12,10 @@ class Member {
     public $nameMember = "";
     public $lastNameMember = "";
     public $emailMember = "";
+    public $workMember = "";
     public $nameDepartment = "";
-    public $role = NULL;
+    public $nameRole = "";
+    public $imageMember = "";
 
     public static function getMember($nameMember) {
         $db = DBLink::connect2db(MYDB, $message);
@@ -23,12 +25,76 @@ class Member {
         $row = $result->fetch_assoc();
         $member = new Member();
         $member->nameMember = $row["nameMember"];
-        $member->lastNameMember = $row["lastNameMember"];
+        $member->lastNameMember = $row["lastnameMember"];
         $member->emailMember = $row["emailMember"];
-        $member->nameRole = Role::getRole($row["role"]);
+        $member->workMember = $row["workMember"];
+        $member->nameDepartment = $row["nameDepartment"];
+        $member->nameRole = $row["role"];
+        $member->imageMember = $row["imageMember"];
 
         DBLink::disconnect($db); // Disconnect from the database
         return $member;
+    }
+
+    public static function getMemberByDepartment($nameDepartment) {
+        $db = DBLink::connect2db(MYDB, $message);
+        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE nameDepartment = '".$nameDepartment."' ORDER BY nameMember ASC";
+
+        $result = $db->query($sql);
+        $members = [];
+        while ($row = $result->fetch_assoc()) {
+            $member = new Member();
+            $member->nameMember = $row["nameMember"];
+            $member->lastNameMember = $row["lastnameMember"];
+            $member->emailMember = $row["emailMember"];
+            $member->workMember = $row["workMember"];
+            $member->nameDepartment = $row["nameDepartment"];
+            $member->nameRole = $row["role"];
+            $member->imageMember = $row["imageMember"];
+            $members[] = $member;
+        }
+
+        DBLink::disconnect($db); // Disconnect from the database
+        return $members;
+    }
+
+    public static function createMember($nameMember, $lastNameMember, $emailMember, $workMember, $nameDepartment, $role, $imageMember) {
+        $db = DBLink::connect2db(MYDB, $message);
+        $nameMember = $db->real_escape_string($nameMember); // Escape the nameMember value
+        $lastNameMember = $db->real_escape_string($lastNameMember); // Escape the lastNameMember value
+        $emailMember = $db->real_escape_string($emailMember); // Escape the emailMember value
+        $workMember = $db->real_escape_string($workMember); // Escape the workMember value
+        $nameDepartment = $db->real_escape_string($nameDepartment); // Escape the nameDepartment value
+        $role = $db->real_escape_string($role); // Escape the role value
+        $imageMember = $db->real_escape_string($imageMember); // Escape the role value
+
+        $sql = "INSERT INTO " . self::TABLE_NAME . " (nameMember, lastnameMember, emailMember, workMember, nameDepartment, role, imageMember) VALUES ('".$nameMember."', '".$lastNameMember."', '".$emailMember."', '".$workMember."', '".$nameDepartment."', '".$role."', '".$imageMember."')";
+        $db->query($sql);
+        DBLink::disconnect($db); // Disconnect from the database
+    }
+
+    public static function updateMember($nameMember, $lastNameMember, $emailMember, $workMember, $nameDepartment, $role, $imageMember) {
+        $db = DBLink::connect2db(MYDB, $message);
+        $nameMember = $db->real_escape_string($nameMember); // Escape the nameMember value
+        $lastNameMember = $db->real_escape_string($lastNameMember); // Escape the lastNameMember value
+        $emailMember = $db->real_escape_string($emailMember); // Escape the emailMember value
+        $workMember = $db->real_escape_string($workMember); // Escape the workMember value
+        $nameDepartment = $db->real_escape_string($nameDepartment); // Escape the nameDepartment value
+        $nameRole = $db->real_escape_string($role); // Escape the role value
+        $imageMember = $db->real_escape_string($imageMember); // Escape the role value
+
+        $sql = "UPDATE " . self::TABLE_NAME . " SET lastnameMember = '".$lastNameMember."', emailMember = '".$emailMember."', workMember = '".$workMember."', nameDepartment = '".$nameDepartment."', role = '".$role."', imageMember = '".$imageMember."' WHERE nameMember = '".$nameMember."'";
+        $db->query($sql);
+        DBLink::disconnect($db); // Disconnect from the database
+    }
+
+    /* VERRRRY DANGEROUS */
+    public static function deleteMember($nameMember) {
+        $db = DBLink::connect2db(MYDB, $message);
+        $nameMember = $db->real_escape_string($nameMember); // Escape the nameMember value
+        $sql = "DELETE FROM " . self::TABLE_NAME . " WHERE nameMember = '".$nameMember."'";
+        $db->query($sql);
+        DBLink::disconnect($db); // Disconnect from the database
     }
 }
 
@@ -69,6 +135,7 @@ class User {
         $ageUser = $db->real_escape_string($ageUser); // Escape the ageUser value
         $emailUser = $db->real_escape_string($emailUser); // Escape the emailUser value
         $passwordUser = $db->real_escape_string($passwordUser); // Escape the passwordUser value
+        $passwordUser = password_hash($passwordUser, PASSWORD_DEFAULT); // Hash the passwordUser value
         $addressUser = $db->real_escape_string($addressUser); // Escape the addressUser value
         
         $sql = "INSERT INTO " . self::TABLE_NAME . " (nameUser, lastnameUser, ageUser, emailUser, passwordUser, addressUser) VALUES ('".$nameUser."', '".$lastnameUser."', '".$ageUser."', '".$emailUser."', '".$passwordUser."', '".$addressUser."')";
@@ -81,6 +148,7 @@ class User {
         $db = DBLink::connect2db(MYDB, $message);
         $emailUser = $db->real_escape_string($emailUser); // Escape the emailUser value
         $passwordUser = $db->real_escape_string($passwordUser); // Escape the passwordUser value
+        $passwordUser = password_hash($passwordUser, PASSWORD_DEFAULT); // Hash the passwordUser value
         $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE emailUser = '".$emailUser."' AND passwordUser = '".$passwordUser."'";
         
         $result = $db->query($sql);

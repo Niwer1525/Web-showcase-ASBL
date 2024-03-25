@@ -45,6 +45,7 @@
                                             <a class="adminButton" href="./update.php?type=news&mode=deletion&name='. $article->nameArticle .'"><i class="fa fa-trash"></i>Supprimer</a>';
                                         }
                                        echo'<p>'.$article->datePublicationArticle.'</p>
+                                    </footer>
                                 </article>';
                             }
                         echo'</div></details>';

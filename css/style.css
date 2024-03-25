@@ -47,6 +47,20 @@ a:hover {
 }
 
 /* Main header, Only on the 'index' page */
+.phoneHeaderIcon {
+    display: none !important;
+}
+
+/* @media screen and (max-width: 600px){
+    .phoneHeaderIcon {
+        display: block !important;
+    }
+
+    .phoneHeaderText {
+        font-size: 0 !important;
+    }
+} */
+
 .mainHeader {
     background-image: url("../images/background.jpg");
     height: 100vh;
