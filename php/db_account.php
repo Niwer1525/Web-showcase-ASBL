@@ -75,15 +75,20 @@ class Member {
 
     public static function updateMember($nameMember, $lastNameMember, $emailMember, $workMember, $nameDepartment, $role, $imageMember) {
         $db = DBLink::connect2db(MYDB, $message);
+        $sql = "";
+        
         $nameMember = $db->real_escape_string($nameMember); // Escape the nameMember value
         $lastNameMember = $db->real_escape_string($lastNameMember); // Escape the lastNameMember value
         $emailMember = $db->real_escape_string($emailMember); // Escape the emailMember value
         $workMember = $db->real_escape_string($workMember); // Escape the workMember value
         $nameDepartment = $db->real_escape_string($nameDepartment); // Escape the nameDepartment value
         $nameRole = $db->real_escape_string($role); // Escape the role value
-        $imageMember = $db->real_escape_string($imageMember); // Escape the role value
-
-        $sql = "UPDATE " . self::TABLE_NAME . " SET lastnameMember = '".$lastNameMember."', emailMember = '".$emailMember."', workMember = '".$workMember."', nameDepartment = '".$nameDepartment."', role = '".$role."', imageMember = '".$imageMember."' WHERE nameMember = '".$nameMember."'";
+        if($imageMember != NULL) {
+            $imageMember = $db->real_escape_string($imageMember); // Escape the role value
+            $sql = "UPDATE " . self::TABLE_NAME . " SET lastnameMember = '".$lastNameMember."', emailMember = '".$emailMember."', workMember = '".$workMember."', nameDepartment = '".$nameDepartment."', role = '".$role."', imageMember = '".$imageMember."' WHERE nameMember = '".$nameMember."'";
+        } else 
+            $sql = "UPDATE " . self::TABLE_NAME . " SET lastnameMember = '".$lastNameMember."', emailMember = '".$emailMember."', workMember = '".$workMember."', nameDepartment = '".$nameDepartment."', role = '".$role."' WHERE nameMember = '".$nameMember."'";
+        
         $db->query($sql);
         DBLink::disconnect($db); // Disconnect from the database
     }
@@ -99,6 +104,7 @@ class Member {
 }
 
 class User {
+    const SALT = "your_static_salt_value";
     const TABLE_NAME = "devweb_users";
     public $nameUser = "";
     public $lastnameUser = "";
@@ -135,7 +141,7 @@ class User {
         $ageUser = $db->real_escape_string($ageUser); // Escape the ageUser value
         $emailUser = $db->real_escape_string($emailUser); // Escape the emailUser value
         $passwordUser = $db->real_escape_string($passwordUser); // Escape the passwordUser value
-        $passwordUser = password_hash($passwordUser, PASSWORD_DEFAULT); // Hash the passwordUser value
+        // $passwordUser = password_hash($passwordUser, PASSWORD_DEFAULT, ['salt' => self::SALT]); // Hash the passwordUser value
         $addressUser = $db->real_escape_string($addressUser); // Escape the addressUser value
         
         $sql = "INSERT INTO " . self::TABLE_NAME . " (nameUser, lastnameUser, ageUser, emailUser, passwordUser, addressUser) VALUES ('".$nameUser."', '".$lastnameUser."', '".$ageUser."', '".$emailUser."', '".$passwordUser."', '".$addressUser."')";
@@ -144,16 +150,36 @@ class User {
         DBLink::disconnect($db); // Disconnect from the database
     }
 
+    public static function updateUser($nameUser, $lastnameUser, $ageUser, $emailUser, $passwordUser, $addressUser) {
+        $db = DBLink::connect2db(MYDB, $message);
+        
+        $nameUser = $db->real_escape_string($nameUser); // Escape the nameUser value
+        $lastnameUser = $db->real_escape_string($lastnameUser); // Escape the lastnameUser value
+        $ageUser = $db->real_escape_string($ageUser); // Escape the ageUser value
+        $emailUser = $db->real_escape_string($emailUser); // Escape the emailUser value
+        $passwordUser = $db->real_escape_string($passwordUser); // Escape the passwordUser value
+        // $passwordUser = password_hash($passwordUser, PASSWORD_DEFAULT, ['salt' => self::SALT]); // Hash the passwordUser value
+        $addressUser = $db->real_escape_string($addressUser); // Escape the addressUser value
+        $sql = "UPDATE " . self::TABLE_NAME . " SET lastnameUser = '".$lastnameUser."', ageUser = '".$ageUser."', emailUser = '".$emailUser."', passwordUser = '".$passwordUser."', addressUser = '".$addressUser."' WHERE nameUser = '".$nameUser."'";
+        
+        $db->query($sql);
+        DBLink::disconnect($db); // Disconnect from the database
+    }
+
     public static function login($emailUser, $passwordUser) {
         $db = DBLink::connect2db(MYDB, $message);
         $emailUser = $db->real_escape_string($emailUser); // Escape the emailUser value
         $passwordUser = $db->real_escape_string($passwordUser); // Escape the passwordUser value
-        $passwordUser = password_hash($passwordUser, PASSWORD_DEFAULT); // Hash the passwordUser value
+        // $passwordUser = password_hash($passwordUser, PASSWORD_DEFAULT, ['salt' => self::SALT]); // Hash the passwordUser value with a static salt
         $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE emailUser = '".$emailUser."' AND passwordUser = '".$passwordUser."'";
         
         $result = $db->query($sql);
         $row = $result->fetch_assoc();
         
+        if($row == NULL) {
+            DBLink::disconnect($db); // Disconnect from the database
+            return NULL;
+        }
         $user = new User();
         $user->nameUser = $row["nameUser"];
         $user->lastnameUser = $row["lastnameUser"];

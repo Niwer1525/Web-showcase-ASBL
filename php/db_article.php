@@ -138,6 +138,7 @@ class Article {
 
     public static function updateArticle($nameArticle, $datePublicationArticle, $contentArticle, $introArticle, $department, $visibility, $imageArticle) {
         $db = DBLink::connect2db(MYDB, $message); // Connect to the database
+        $sql = "";
 
         // Escape special characters in the values
         $nameArticle = $db->real_escape_string($nameArticle);
@@ -146,9 +147,12 @@ class Article {
         $introArticle = $db->real_escape_string($introArticle);
         $department = $db->real_escape_string($department);
         $visibility = $db->real_escape_string($visibility);
-        $imageArticle = $db->real_escape_string($imageArticle);
+        if($imageArticle != null) {
+            $imageArticle = $db->real_escape_string($imageArticle);
+            $sql = "UPDATE " . self::TABLE_NAME . " SET datePublicationArticle = '".$datePublicationArticle."', contentArticle = '".$contentArticle."', introArticle = '".$introArticle."', department = '".$department."', visibility = '".$visibility."', imageArticle = '".$imageArticle."' WHERE nameArticle = '".$nameArticle."'"; // SQL query
+        } else 
+            $sql = "UPDATE " . self::TABLE_NAME . " SET datePublicationArticle = '".$datePublicationArticle."', contentArticle = '".$contentArticle."', introArticle = '".$introArticle."', department = '".$department."', visibility = '".$visibility."' WHERE nameArticle = '".$nameArticle."'"; // SQL query
 
-        $sql = "UPDATE " . self::TABLE_NAME . " SET datePublicationArticle = '".$datePublicationArticle."', contentArticle = '".$contentArticle."', introArticle = '".$introArticle."', department = '".$department."', visibility = '".$visibility."', imageArticle = '".$imageArticle."' WHERE nameArticle = '".$nameArticle."'"; // SQL query
         $db->query($sql); // Execute the query
         DBLink::disconnect($db); // Disconnect from the database
     }

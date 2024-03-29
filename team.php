@@ -10,7 +10,7 @@
             require("inc/nav.inc.php");
         ?>
         <main>
-            <section class="usefulLinks">
+            <section class="subHeader">
                 <h1>NOTRE EQUIPE</h1>
                 <hr>
                 <?php

@@ -24,7 +24,7 @@
                 require("inc/nav.inc.php");
             ?>
             <!-- Separator with title section -->
-            <section class="usefulLinks">
+            <section class="subHeader">
                 <h2>DERNIERE ACTUALITES</h2>
                 <hr>
             </section>
@@ -58,7 +58,7 @@
             </section>
 
             <!-- Separator with title section -->
-            <section class="usefulLinks">
+            <section class="subHeader">
                 <h2>QUI SOMMES NOUS ?</h2>
                 <hr>
             </section>

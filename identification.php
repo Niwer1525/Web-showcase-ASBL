@@ -26,8 +26,10 @@
                     User::createUser($user->nameUser, $user->lastnameUser, $user->ageUser, $user->emailUser, $user->passwordUser, $user->addressUser);
                     $_SESSION["temp_user"] = $user;
                 } else {
-                    $_SESSION["user"] = serialize(User::login($_POST["email"], $_POST["password"]));
-                    header("Location: ./");
+                    if (User::login($_POST["email"], $_POST["password"]) != NULL) {
+                        $_SESSION["user"] = serialize(User::login($_POST["email"], $_POST["password"]));
+                        header("Location: ./");
+                    }
                 }
             }
 

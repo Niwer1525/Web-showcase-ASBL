@@ -47,15 +47,16 @@
                     }
                     break;
                 case EDITION:
-                    $fileImage = file_get_contents($_FILES["news_image"]["tmp_name"]);
+                    $fileImage = $_FILES["teammate_image"]["tmp_name"] ? file_get_contents($_FILES["news_image"]["tmp_name"]) : NULL;
                     if(isset($_POST["news_title"]) && isset($_POST["news_date"]) && isset($_POST["news_message"]) 
-                    && isset($_POST["news_primer"]) && isset($_POST["news_visibility"]) && isset($_POST["news_Department"]) 
-                    && $fileImage != null) {
-                        $fileImageName = basename($_FILES["news_image"]["name"]);
-                        $targetPath = "./uploads/".$_POST["news_title"]."/";
-                        if (!file_exists($targetPath)) 
-                            mkdir($targetPath, 0777, true); // Create the directory if it doesn't exist (0777 is the permission for the directory)
-                        move_uploaded_file($_FILES["news_image"]["tmp_name"], $targetPath.$fileImageName);
+                    && isset($_POST["news_primer"]) && isset($_POST["news_visibility"]) && isset($_POST["news_Department"])) {
+                        if($fileImage != null) {
+                            $fileImageName = basename($_FILES["news_image"]["name"]);
+                            $targetPath = "./uploads/".$_POST["news_title"]."/";
+                            if (!file_exists($targetPath)) 
+                                mkdir($targetPath, 0777, true); // Create the directory if it doesn't exist (0777 is the permission for the directory)
+                            move_uploaded_file($_FILES["news_image"]["tmp_name"], $targetPath.$fileImageName);
+                        }
 
                         /* Add the article */
                         Article::updateArticle(
@@ -65,7 +66,7 @@
                             $_POST["news_primer"], 
                             $_POST["news_Department"], 
                             $_POST["news_visibility"], 
-                            $fileImageName
+                            $fileImage != null ? $fileImageName : NULL
                         );
                     }
                     break;
@@ -121,15 +122,17 @@
                     }
                     break;
                 case EDITION:
-                    $fileImage = file_get_contents($_FILES["teammate_image"]["tmp_name"]);
+                    $fileImage = $_FILES["teammate_image"]["tmp_name"] ? file_get_contents($_FILES["teammate_image"]["tmp_name"]) : NULL;
                     if(isset($_POST["teammate_name"]) && isset($_POST["teammate_first_name"]) && isset($_POST["teammate_work"]) 
-                    && isset($_POST["teammate_role"]) && isset($_POST["teammate_department"]) && isset($_POST["teammate_email"]) 
-                    && $fileImage != null) {
-                        $fileImageName = basename($_FILES["teammate_image"]["name"]);
-                        $targetPath = "./uploads/".$_POST["teammate_first_name"]."_".$_POST["teammate_name"]."/";
-                        if (!file_exists($targetPath)) 
-                            mkdir($targetPath, 0777, true); // Create the directory if it doesn't exist (0777 is the permission for the directory)
-                        move_uploaded_file($_FILES["teammate_image"]["tmp_name"], $targetPath.$fileImageName);
+                    && isset($_POST["teammate_role"]) && isset($_POST["teammate_department"]) && isset($_POST["teammate_email"])) {
+                        $fileImageName = "";
+                        if($fileImage != null) {
+                            $fileImageName = basename($_FILES["teammate_image"]["name"]);
+                            $targetPath = "./uploads/".$_POST["teammate_first_name"]."_".$_POST["teammate_name"]."/";
+                            if (!file_exists($targetPath)) 
+                                mkdir($targetPath, 0777, true); // Create the directory if it doesn't exist (0777 is the permission for the directory)
+                            move_uploaded_file($_FILES["teammate_image"]["tmp_name"], $targetPath.$fileImageName);
+                        }
 
                         /* Add the article */
                         Member::updateMember(
@@ -139,7 +142,7 @@
                             $_POST["teammate_work"],
                             $_POST["teammate_department"],
                             $_POST["teammate_role"],
-                            $fileImageName
+                            $fileImage != null ? $fileImageName : NULL
                         );
                     }
                     break;

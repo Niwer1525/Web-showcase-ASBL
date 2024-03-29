@@ -5,24 +5,30 @@
         require("inc/header.inc.php");
         require("./php/db_account.php");
         use DB\User;
-
+        
         if (isset($_GET["mode"])) {
             switch($_GET["mode"]) {
                 case "disconnect":
                     User::logout();
                     header("Location: ./");
                     break;
+                case "update_infos": 
+                    if (isset($_GET["passwordUser"]) && isset($_GET["passwordUserConfirm"]) && $_GET["passwordUser"] != $_GET["passwordUserConfirm"]) break;
+                    // User::updateInfos($_GET["nameUser"], $_GET["lastnameUser"], $_GET["ageUser"], $_GET["emailUser"], $_GET["passwordUser"]), $_GET["addressUser"]);
+                    // $user = unserialize($_SESSION["user"]);
+                    break;
+                }
             }
-        }
-    ?>
+            ?>
     <body>
         <?php
+            $user = unserialize($_SESSION["user"]);
             $pageName = 'profile';
             require("inc/nav.inc.php");
         ?>
         <main>
-            <section class="usefulLinks">
-                <h1>PROFILE</h1>
+            <section class="subHeader">
+                <h1>PROFILE DE <?php echo strtoupper($user->nameUser).' '.strtoupper($user->lastnameUser) ?></h1>
                 <hr>
             </section>
             <section>
@@ -30,9 +36,31 @@
                     <input type="hidden" name="mode" value="disconnect"></input>
                     <button type="submit">Se déconnecter</button>
                 </form>
+                <hr>
                 <form action="./profile.php" method="get">
-                    <input type="hidden" name="mode" value="disconnect"></input>
-                    <button type="submit">Réinitialiser mon mot de passe</button>
+                    <input type="hidden" name="mode" value="update_infos"></input>
+                    <label for="nameUser">Nom</label>
+                    <input type="text" name="nameUser" placeholder="Meyer" value="<?php echo $user->lastnameUser ?>"></input>
+
+                    <label for="lastnameUser">Prénom</label>
+                    <input type="text" name="lastnameUser" placeholder="Solann" value="<?php echo $user->nameUser ?>"></input>
+
+                    <label for="ageUser">Age</label>
+                    <input type="number" name="ageUser" placeholder="25" value="<?php echo $user->ageUser ?>"></input>
+
+                    <label for="emailUser">Email</label>
+                    <input type="email" name="emailUser" placeholder="john.california@gmail.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" value="<?php echo $user->emailUser ?>"></input>
+
+                    <label for="passwordUser">Mot de passe</label>
+                    <input type="password" name="passwordUser" placeholder="mot2pass3*" pattern="^(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$" title="Le mot de passe doit contenir au moins 8 caractères et un caractère spécial"></input>
+
+                    <label for="passwordUserConfirm">Confirmer le mot de passe</label>
+                    <input type="password" name="passwordUserConfirm" placeholder="mot2pass3*" pattern="^(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$" title="Le mot de passe doit contenir au moins 8 caractères et un caractère spécial"></input>
+
+                    <label for="addressUser">Adresse</label>
+                    <input type="text" name="addressUser" placeholder="12 rue des lilas" value="<?php echo $user->addressUser ?>"></input>
+
+                    <button type="submit">Mettre à jour mes informations</button>
                 </form>
             </section>
         </main>

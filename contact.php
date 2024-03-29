@@ -47,7 +47,7 @@
         ?>
         <main>
             <!-- Links that may be usefull for the user -->
-            <section class="usefulLinks">
+            <section class="subHeader">
                 <h1>NOUS CONTACTER</h1><hr>
                 <ul>
                     <li><i class="fa fa-map"></i><span> Adresse : </span>Rue de la Science, 23 - 1040 Bruxelles</li>

@@ -23,11 +23,12 @@
     background: #555;
 }
 
-html {
-    background-color: var(--soft-black-color);
+* {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
 }
+
+html { background-color: var(--soft-black-color); }
 
 body { margin: 0px; }
 
@@ -36,7 +37,6 @@ ul { list-style: none; } /* Removing the list style by default cause we never ne
 h1, h2, h3, h4, h5, h6 { color: var(--main-color); }
 
 a {
-    color: white;
     text-decoration: none;
     padding: 0.5rem;
 }
@@ -47,9 +47,7 @@ a:hover {
 }
 
 /* Main header, Only on the 'index' page */
-.phoneHeaderIcon {
-    display: none !important;
-}
+.phoneHeaderIcon { display: none !important; } /* Display icons instead of text while on mobile */
 
 /* @media screen and (max-width: 600px){
     .phoneHeaderIcon {
@@ -211,7 +209,7 @@ article button {
 
 /* Section style */
 section {
-    padding: 0 25px 0 25px;
+    padding: 0 25px;
     margin: 3rem 0 3rem 0;
 }
 
@@ -333,7 +331,7 @@ form>:focus {
 form textarea { resize: vertical; }
 
 /* Useful links in the 'conctact' page */
-.usefulLinks {
+.subHeader {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -367,7 +365,7 @@ input:hover, textarea:hover, select:hover {
 }
 
 @keyframes breath {
-    0% {
+    0%, 100% {
         transform: scale(1);
         transform: rotate(0deg);
     }
@@ -377,9 +375,5 @@ input:hover, textarea:hover, select:hover {
     }
     75% {
         transform: rotate(-5deg);
-    }
-    100% {
-        transform: scale(1);
-        transform: rotate(0deg);
     }
 }
