@@ -2,16 +2,16 @@
 <html lang="fr">
     <?php
         $title = 'Equipe';
-        require("inc/header.inc.php");
+        require("./inc/header.inc.php");
     ?>
     <body>
         <?php
             $pageName = 'contact';
-            require("inc/nav.inc.php");
+            require("./inc/nav.inc.php");
 
             function getDefaultValue($type) {
-                if(!isset($_SESSION["user"]) || !is_string($_SESSION["user"])) return "";
-                $user = unserialize($_SESSION["user"]);
+                if(!isset($_SESSION["debweb_user"]) || !is_string($_SESSION["debweb_user"])) return "";
+                $user = unserialize($_SESSION["debweb_user"]);
 
                 echo 'value="';
                 switch($type) {
@@ -91,6 +91,6 @@
                 </div>
             </section>
         </main>
-        <?php require("inc/footer.inc.php"); ?>
+        <?php require("./inc/footer.inc.php"); ?>
     </body>
 </html>

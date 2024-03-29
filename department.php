@@ -2,19 +2,19 @@
 <html lang="fr">
     <?php
         $title = 'Départements';
-        require("inc/header.inc.php");
+        require("./inc/header.inc.php");
     ?>
     <body>
         <?php
             $pageName = 'department';
-            require("inc/nav.inc.php");
+            require("./inc/nav.inc.php");
         ?>
         <main>
             <section class="subHeader">
                 <h1>DEPARTEMENTS</h1>
                 <hr>
                 <?php
-                    if(isset($_SESSION["user"])) 
+                    if(isset($_SESSION["debweb_user"])) 
                         echo '<a class="adminButton" href="./update.php?type=department&mode=addition"><i class="fa fa-plus"></i> Ajouter un département</a>';
                 ?>
             </section>
@@ -30,7 +30,7 @@
                                 <header><h2>' . $department->nameDepartment . '</h2></header>
                                 <p><span>Objectifs :</span><br>' . $department->descDepartment . '</p>
                                 <footer>';
-                                if(isset($_SESSION["user"])) {
+                                if(isset($_SESSION["debweb_user"])) {
                                     echo '<a class="adminButton" href="./update.php?type=department&mode=edition&name='. $department->nameDepartment .'"><i class="fa fa-pencil"></i>Editer</a>
                                     <a class="adminButton" href="./update.php?type=department&mode=deletion&name='. $department->nameDepartment .'"><i class="fa fa-trash"></i>Supprimer</a>';
                                 }
@@ -41,6 +41,6 @@
                 </div>
             <section>
         </main>
-        <?php require("inc/footer.inc.php"); ?>
+        <?php require("./inc/footer.inc.php"); ?>
     </body>
 </html>

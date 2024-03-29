@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php
         $title = 'Article 1';
-        require("inc/header.inc.php");
+        require("./inc/header.inc.php");
     ?>
     <body>
         <header class="nav-bar">
@@ -26,7 +26,7 @@
                         </header>
                         <p>'.$article->contentArticle.'</p>
                         <footer>';
-                        if(isset($_SESSION["user"])) {
+                        if(isset($_SESSION["debweb_user"])) {
                             echo'<a class="adminButton" href="./update.php?type=news&mode=edition&name='.$article->nameArticle.'"><i class="fa fa-pencil"></i>Editer</a>
                             <a class="adminButton" href="./update.php?type=news&mode=deletion&name='.$article->nameArticle.'"><i class="fa fa-trash"></i>Supprimer</a>';
                         }
@@ -37,6 +37,6 @@
                 </div>
             </section>
         </main>
-        <?php require("inc/footer.inc.php"); ?>
+        <?php require("./inc/footer.inc.php"); ?>
     </body>
 </html>

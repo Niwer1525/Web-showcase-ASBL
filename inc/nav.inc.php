@@ -16,13 +16,13 @@
                     require_once("./php/db_account.php");
                     use DB\User;
 
-                    if (isset($_SESSION["user"])) {
+                    if (isset($_SESSION["debweb_user"])) {
                         echo '<a href="./profile.php" ';
                         printClass($pageName, 'profile');
                         echo'>';
-                        if(!isset($_SESSION["user"]) || !is_string($_SESSION["user"])) echo'Unknown';
+                        if(!isset($_SESSION["debweb_user"]) || !is_string($_SESSION["debweb_user"])) echo'Unknown';
                         else {
-                            $user = unserialize($_SESSION["user"]);
+                            $user = unserialize($_SESSION["debweb_user"]);
                             echo $user->nameUser . ' ' . $user->lastnameUser;
                         }
                     } else {

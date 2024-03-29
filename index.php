@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php
         $title = 'Accueil';
-        require("inc/header.inc.php");
+        require("./inc/header.inc.php");
     ?>
     <body>
         <header class="mainHeader">
@@ -21,7 +21,7 @@
         <main>
             <?php
                 $pageName = 'index';
-                require("inc/nav.inc.php");
+                require("./inc/nav.inc.php");
             ?>
             <!-- Separator with title section -->
             <section class="subHeader">
@@ -67,6 +67,6 @@
                 <p>Nous sommes <span>"Lumière du Savoir"</span>, une ASBL dédiée à l'éclairage des esprits des jeunes en leur offrant un accès à une bibliothèque de connaissances en ligne. Notre mission est de fournir des ressources éducatives de qualité, y compris des livres, des articles et des vidéos, pour aider les jeunes à apprendre et à grandir. Nous croyons que chaque enfant a le droit d'accéder à une éducation de qualité, et nous nous engageons à faire de cette vision une réalité. Ensemble, nous pouvons illuminer le chemin de l'apprentissage pour les générations futures.</p>
             </section>
         </main>
-        <?php require("inc/footer.inc.php"); ?>
+        <?php require("./inc/footer.inc.php"); ?>
     </body>
 </html>

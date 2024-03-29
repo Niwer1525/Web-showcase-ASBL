@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php
         $title = 'Profile';
-        require("inc/header.inc.php");
+        require("./inc/header.inc.php");
         require("./php/db_account.php");
         use DB\User;
         
@@ -15,16 +15,16 @@
                 case "update_infos": 
                     if (isset($_GET["passwordUser"]) && isset($_GET["passwordUserConfirm"]) && $_GET["passwordUser"] != $_GET["passwordUserConfirm"]) break;
                     // User::updateInfos($_GET["nameUser"], $_GET["lastnameUser"], $_GET["ageUser"], $_GET["emailUser"], $_GET["passwordUser"]), $_GET["addressUser"]);
-                    // $user = unserialize($_SESSION["user"]);
+                    // $user = unserialize($_SESSION["debweb_user"]);
                     break;
                 }
             }
             ?>
     <body>
         <?php
-            $user = unserialize($_SESSION["user"]);
+            $user = unserialize($_SESSION["debweb_user"]);
             $pageName = 'profile';
-            require("inc/nav.inc.php");
+            require("./inc/nav.inc.php");
         ?>
         <main>
             <section class="subHeader">
@@ -64,6 +64,6 @@
                 </form>
             </section>
         </main>
-        <?php require("inc/footer.inc.php"); ?>
+        <?php require("./inc/footer.inc.php"); ?>
     </body>
 </html>

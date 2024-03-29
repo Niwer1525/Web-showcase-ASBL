@@ -2,12 +2,12 @@
 <html lang="fr">
     <?php
         $title = 'Identification';
-        require("inc/header.inc.php");
+        require("./inc/header.inc.php");
     ?>
     <body>
         <?php
             $pageName = 'identification';
-            require("inc/nav.inc.php");
+            require("./inc/nav.inc.php");
             use DB\User;
             
             if (isset($_POST["email"]) && isset($_POST["password"])) {
@@ -27,7 +27,7 @@
                     $_SESSION["temp_user"] = $user;
                 } else {
                     if (User::login($_POST["email"], $_POST["password"]) != NULL) {
-                        $_SESSION["user"] = serialize(User::login($_POST["email"], $_POST["password"]));
+                        $_SESSION["debweb_user"] = serialize(User::login($_POST["email"], $_POST["password"]));
                         header("Location: ./");
                     }
                 }
@@ -72,6 +72,6 @@
                 </form>
             </section>
         </main>
-        <?php require("inc/footer.inc.php"); ?>
+        <?php require("./inc/footer.inc.php"); ?>
     </body>
 </html>

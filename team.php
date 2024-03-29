@@ -2,23 +2,23 @@
 <html lang="fr">
     <?php
         $title = 'Equipe';
-        require("inc/header.inc.php");
+        require("./inc/header.inc.php");
     ?>
     <body>
         <?php
             $pageName = 'team';
-            require("inc/nav.inc.php");
+            require("./inc/nav.inc.php");
         ?>
         <main>
             <section class="subHeader">
                 <h1>NOTRE EQUIPE</h1>
                 <hr>
                 <?php
-                    if(isset($_SESSION["user"])) 
+                    if(isset($_SESSION["debweb_user"])) 
                         echo '<a class="adminButton" href="./update.php?type=member&mode=addition"><i class="fa fa-plus"></i> Ajouter un membre</a>';
                 ?>
             </section>
-            <?php require("inc/search.inc.php"); ?>
+            <?php require("./inc/search.inc.php"); ?>
             <section>
                 <?php
                     require_once("./php/db_roles.php");
@@ -44,7 +44,7 @@
                                         <li>Addresse E-Mail: '.$member->emailMember.'</li>
                                     </ul>
                                     <footer>';
-                                        if(isset($_SESSION["user"])) { //Very dangerous to use only the name of the member as a parameter
+                                        if(isset($_SESSION["debweb_user"])) { //Very dangerous to use only the name of the member as a parameter
                                             echo '<a class="adminButton" href="./update.php?type=member&mode=edition&name='. $member->nameMember .'"><i class="fa fa-pencil"></i>Editer</a>
                                             <a class="adminButton" href="./update.php?type=member&mode=deletion&name='. $member->nameMember .'"><i class="fa fa-trash"></i>Supprimer</a>';
                                         }
@@ -55,6 +55,6 @@
                 ?>
             </section>
         </main>
-        <?php require("inc/footer.inc.php"); ?>
+        <?php require("./inc/footer.inc.php"); ?>
     </body>
 </html>

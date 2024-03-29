@@ -14,7 +14,7 @@
         $isAddition = $mode == ADDITION_MODE; // Check if the mode is an addition
         $name = $isAddition ? "" : $_GET["name"]; // Name of the news, department or member
         $title = 'Ajout/Edition '.($type == NEWS_TYPE ? "article" : ($type == DEPARTMENT_TYPE ? "département" : "membre"));
-        require("inc/header.inc.php");
+        require("./inc/header.inc.php");
     ?>
     <body>
         <header class="nav-bar"><nav>
@@ -137,6 +137,6 @@
                 </form>
             </section>
         </main>
-        <?php require("inc/footer.inc.php"); ?>
+        <?php require("./inc/footer.inc.php"); ?>
     </body>
 </html>
