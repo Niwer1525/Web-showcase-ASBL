@@ -39,7 +39,7 @@
                         }
                     ?>
                 </div>
-            <section>
+            </section>
         </main>
         <?php require("./inc/footer.inc.php"); ?>
     </body>

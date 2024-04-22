@@ -18,7 +18,7 @@ class Role {
         $db = DBLink::connect2db(MYDB, $message); // Connect to the database
         $sql = "SELECT * FROM " . self::TABLE_NAME; // SQL query
         
-        $result = $db->query($sql); // Execute the query
+        $result = $db->execute_query($sql); // Execute the query
         $roles = [];
         while ($row = $result->fetch_assoc()) {
             $role = new Role();
@@ -36,9 +36,11 @@ class Role {
      */
     public static function getRole($name) {
         $db = DBLink::connect2db(MYDB, $message); // Connect to the database
+
+        $name = $db->real_escape_string($name); // Escape special characters in the values
+
         $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE nameRole = '" . $name . "'"; // SQL query     
-        
-        $result = $db->query($sql); // Execute the query
+        $result = $db->execute_query($sql); // Execute the query
         $row = $result->fetch_assoc();
 
         $role = new Role();

@@ -17,7 +17,7 @@ class FaqQuestion {
         $db = DBLink::connect2db(MYDB, $message); // Connect to the database
         $sql = "SELECT * FROM " . self::TABLE_NAME; // SQL query
 
-        $result = $db->query($sql); // Execute the query
+        $result = $db->execute_query($sql); // Execute the query
         $questions = [];
 
         while ($row = $result->fetch_assoc()) {

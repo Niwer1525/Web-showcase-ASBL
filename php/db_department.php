@@ -19,7 +19,7 @@ class Department {
         $db = DBLink::connect2db(MYDB, $message); // Connect to the database
         $sql = "SELECT * FROM " . self::TABLE_NAME; // SQL query
 
-        $result = $db->query($sql); // Execute the query
+        $result = $db->execute_query($sql); // Execute the query
         $departments = [];
 
         while ($row = $result->fetch_assoc()) {
@@ -39,9 +39,11 @@ class Department {
      */
     public static function getDepartment($name) {
         $db = DBLink::connect2db(MYDB, $message); // Connect to the database
-        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE nameDepartment = '" . $name . "'"; // SQL query     
         
-        $result = $db->query($sql); // Execute the query
+        $name = $db->real_escape_string($name); // Escape special characters in the values
+
+        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE nameDepartment = '" . $name . "'"; // SQL query     
+        $result = $db->execute_query($sql); // Execute the query
         $row = $result->fetch_assoc();
 
         $department = new Department();
@@ -60,7 +62,7 @@ class Department {
         $descDepartment = $db->real_escape_string($descDepartment);
 
         $sql = "UPDATE " . self::TABLE_NAME . " SET nameDepartment = '" . $nameDepartment . "', descDepartment = '" . $descDepartment . "' WHERE nameDepartment = '" . $nameDepartment . "'"; // SQL query
-        $db->query($sql); // Execute the query
+        $db->execute_query($sql); // Execute the query
         DBLink::disconnect($db); // Disconnect from the database
     }
 
@@ -72,14 +74,17 @@ class Department {
         $descDepartment = $db->real_escape_string($descDepartment);
         
         $sql = "INSERT INTO " . self::TABLE_NAME . " (nameDepartment, descDepartment) VALUES ('$nameDepartment', '$descDepartment')"; // SQL query
-        $db->query($sql); // Execute the query
+        $db->execute_query($sql); // Execute the query
         DBLink::disconnect($db); // Disconnect from the database
     }
 
     public static function deleteDepartment($nameDepartment) {
         $db = DBLink::connect2db(MYDB, $message); // Connect to the database
+
+        $nameDepartment = $db->real_escape_string($nameDepartment); // Escape special characters in the values
+
         $sql = "DELETE FROM " . self::TABLE_NAME . " WHERE nameDepartment = '" . $nameDepartment . "'"; // SQL query
-        $db->query($sql); // Execute the query
+        $db->execute_query($sql); // Execute the query
         DBLink::disconnect($db); // Disconnect from the database
     }
 

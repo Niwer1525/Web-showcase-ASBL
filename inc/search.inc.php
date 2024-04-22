@@ -1,6 +1,7 @@
 <section class="searchBox">
     <!-- <form> -->
-        <input type="text" placeholder="Rechercher">
+        <label for="search" class="searchLabel">Rechercher</label>
+        <input id="search" type="text" placeholder="livres, achat">
         <a class="searchButton"><i class="fa fa-search"></i></a>
     <!-- </form> -->
 </section>

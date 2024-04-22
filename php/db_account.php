@@ -19,9 +19,11 @@ class Member {
 
     public static function getMember($nameMember) {
         $db = DBLink::connect2db(MYDB, $message);
-        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE nameMember = '".$nameMember."'";
 
-        $result = $db->query($sql);
+        $nameMember = $db->real_escape_string($nameMember); // Escape the nameMember value
+
+        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE nameMember = '".$nameMember."'";
+        $result = $db->execute_query($sql);
         $row = $result->fetch_assoc();
         $member = new Member();
         $member->nameMember = $row["nameMember"];
@@ -38,9 +40,11 @@ class Member {
 
     public static function getMemberByDepartment($nameDepartment) {
         $db = DBLink::connect2db(MYDB, $message);
-        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE nameDepartment = '".$nameDepartment."' ORDER BY nameMember ASC";
 
-        $result = $db->query($sql);
+        $nameDepartment = $db->real_escape_string($nameDepartment); // Escape the nameDepartment value
+
+        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE nameDepartment = '".$nameDepartment."' ORDER BY nameMember ASC";
+        $result = $db->execute_query($sql);
         $members = [];
         while ($row = $result->fetch_assoc()) {
             $member = new Member();
@@ -69,7 +73,7 @@ class Member {
         $imageMember = $db->real_escape_string($imageMember); // Escape the role value
 
         $sql = "INSERT INTO " . self::TABLE_NAME . " (nameMember, lastnameMember, emailMember, workMember, nameDepartment, role, imageMember) VALUES ('".$nameMember."', '".$lastNameMember."', '".$emailMember."', '".$workMember."', '".$nameDepartment."', '".$role."', '".$imageMember."')";
-        $db->query($sql);
+        $db->execute_query($sql);
         DBLink::disconnect($db); // Disconnect from the database
     }
 
@@ -89,7 +93,7 @@ class Member {
         } else 
             $sql = "UPDATE " . self::TABLE_NAME . " SET lastnameMember = '".$lastNameMember."', emailMember = '".$emailMember."', workMember = '".$workMember."', nameDepartment = '".$nameDepartment."', role = '".$role."' WHERE nameMember = '".$nameMember."'";
         
-        $db->query($sql);
+        $db->execute_query($sql);
         DBLink::disconnect($db); // Disconnect from the database
     }
 
@@ -98,7 +102,7 @@ class Member {
         $db = DBLink::connect2db(MYDB, $message);
         $nameMember = $db->real_escape_string($nameMember); // Escape the nameMember value
         $sql = "DELETE FROM " . self::TABLE_NAME . " WHERE nameMember = '".$nameMember."'";
-        $db->query($sql);
+        $db->execute_query($sql);
         DBLink::disconnect($db); // Disconnect from the database
     }
 }
@@ -117,7 +121,7 @@ class User {
         $db = DBLink::connect2db(MYDB, $message);
         $sql = "SELECT * FROM " . self::TABLE_NAME;
 
-        $result = $db->query($sql);
+        $result = $db->execute_query($sql);
         $users = [];
         while ($row = $result->fetch_assoc()) {
             $user = new User();
@@ -146,7 +150,7 @@ class User {
         
         $sql = "INSERT INTO " . self::TABLE_NAME . " (nameUser, lastnameUser, ageUser, emailUser, passwordUser, addressUser) VALUES ('".$nameUser."', '".$lastnameUser."', '".$ageUser."', '".$emailUser."', '".$passwordUser."', '".$addressUser."')";
        
-        $db->query($sql);
+        $db->execute_query($sql);
         DBLink::disconnect($db); // Disconnect from the database
     }
 
@@ -162,7 +166,7 @@ class User {
         $addressUser = $db->real_escape_string($addressUser); // Escape the addressUser value
         $sql = "UPDATE " . self::TABLE_NAME . " SET lastnameUser = '".$lastnameUser."', ageUser = '".$ageUser."', emailUser = '".$emailUser."', passwordUser = '".$passwordUser."', addressUser = '".$addressUser."' WHERE nameUser = '".$nameUser."'";
         
-        $db->query($sql);
+        $db->execute_query($sql);
         DBLink::disconnect($db); // Disconnect from the database
     }
 
@@ -173,7 +177,7 @@ class User {
         // $passwordUser = password_hash($passwordUser, PASSWORD_DEFAULT, ['salt' => self::SALT]); // Hash the passwordUser value with a static salt
         $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE emailUser = '".$emailUser."' AND passwordUser = '".$passwordUser."'";
         
-        $result = $db->query($sql);
+        $result = $db->execute_query($sql);
         $row = $result->fetch_assoc();
         
         if($row == NULL) {
@@ -207,7 +211,7 @@ class Role {
         $db = DBLink::connect2db(MYDB, $message);
         $sql = "SELECT * FROM " . self::TABLE_NAME;
 
-        $result = $db->query($sql);
+        $result = $db->execute_query($sql);
         $roles = [];
 
         while ($row = $result->fetch_assoc()) {
