@@ -109,6 +109,14 @@ a:hover {
     flex-wrap: wrap;
 }
 
+.searchBox>form {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    margin: 0.5rem;
+}
+
 .searchBox input, .searchButton {
     background-color: var(--grey-color);
     color: white;

@@ -1,6 +1,6 @@
 [Langage HTML]: Il reste des erreurs de standard HTML
 
-index.php: 
+index.php:
 
 		ligne 48: Bad value “./uploads/Recherche de bénévoles/article2.jpg” for attribute “src” on element “img”: Illegal character in path segment: space is not allowed.
 
@@ -42,8 +42,6 @@ fullNews.php?name=Offrez vos livres et diffusez la connaissance !:
 
 		ligne 22: Bad value “./uploads/Offrez vos livres et diffusez la connaissance !/article1.jpg” for attribute “src” on element “img”: Illegal character in path segment: space is not allowed.
 
- 	C'est mieux, continue dans cette direction !
-
  - Pas de formulaire pour la recherche.
 
 [Langage CSS]: 
@@ -63,7 +61,7 @@ fullNews.php?name=Offrez vos livres et diffusez la connaissance !:
 
  	Tous les concepts (utilisateurs, groupes, dépenses, tags, factures et versements) ne sont pas modélisés par une classe PHP
 
- 		 - Pas toujours, tu as mélangé les deux concepts qui plus est. Sépare bien les classes "entités" et des "repository".
+ 		- Pas toujours, tu as mélangé les deux concepts qui plus est. Sépare bien les classes "entités" et des "repository".
 
  	Il ne faut pas réécrire des fonctions existantes de PHP et il faut isoler les fonctions personnalisées dans un fichier PHP dédié. (Ne pas insérer directement les fonctions dans les fichiers "vue")
 
@@ -77,17 +75,11 @@ fullNews.php?name=Offrez vos livres et diffusez la connaissance !:
 
  		 - Utilise un identifiant numérique ou une chaîne aléatoire (UUID).
 
-	Qualité globale du code PHP:
-
-		C'est un bon début, continue ainsi !
-
 [Ergonomie]: 
 
 	- Dans tous les formulaires, utilise * pour spécifier à l'utilisateur les champs des formulaires qui sont obligatoires à l'encodage.
 
 	- Attention aux fautes d'orthographe ou de frappe.
-
- - Les dates ne sont pas exprimées en français.
 
  	Lisibilité - Navigabilité - Langage:
 

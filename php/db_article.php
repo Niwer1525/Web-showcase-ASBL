@@ -30,7 +30,7 @@ class Article {
         while ($row = $result->fetch_assoc()) {
             $article = new Article();
             $article->nameArticle = $row['nameArticle'];
-            $article->datePublicationArticle = $row['datePublicationArticle'];
+            $article->datePublicationArticle = strftime('%d %B %Y', strtotime($row['datePublicationArticle']));
             $article->imageArticle = $row['imageArticle'];
             $article->contentArticle = $row['contentArticle'];
             $article->introArticle = $row['introArticle'];
@@ -59,7 +59,7 @@ class Article {
         while ($row = $result->fetch_assoc()) {
             $article = new Article();
             $article->nameArticle = $row['nameArticle'];
-            $article->datePublicationArticle = date('d F Y', strtotime($row['datePublicationArticle']));
+            $article->datePublicationArticle = strftime('%d %B %Y', strtotime($row['datePublicationArticle']));
             $article->imageArticle = $row['imageArticle'];
             $article->contentArticle = $row['contentArticle'];
             $article->introArticle = $row['introArticle'];
@@ -85,7 +85,7 @@ class Article {
         while ($row = $result->fetch_assoc()) {
             $article = new Article();
             $article->nameArticle = $row['nameArticle'];
-            $article->datePublicationArticle = date('d M Y', strtotime($row['datePublicationArticle']));
+            $article->datePublicationArticle = strftime('%d %B %Y', strtotime($row['datePublicationArticle']));
             $article->imageArticle = $row['imageArticle'];
             $article->contentArticle = $row['contentArticle'];
             $article->introArticle = $row['introArticle'];
@@ -112,7 +112,7 @@ class Article {
         $row = $result->fetch_assoc();
         $article = new Article();
         $article->nameArticle = $row['nameArticle'];
-        $article->datePublicationArticle = date('d F Y', strtotime($row['datePublicationArticle']));
+        $article->datePublicationArticle = strftime('%d %B %Y', strtotime($row['datePublicationArticle']));
         $article->imageArticle = $row['imageArticle'];
         $article->contentArticle = $row['contentArticle'];
         $article->introArticle = $row['introArticle'];
