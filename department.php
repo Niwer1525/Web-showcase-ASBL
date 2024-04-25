@@ -14,7 +14,7 @@
                 <h1>DEPARTEMENTS</h1>
                 <hr>
                 <?php
-                    if(isset($_SESSION["debweb_user"])) 
+                    if(isset($_SESSION["devweb_user"])) 
                         echo '<a class="adminButton" href="./update.php?type=department&mode=addition"><i class="fa fa-plus"></i> Ajouter un département</a>';
                 ?>
             </section>
@@ -30,7 +30,7 @@
                                 <header><h2>' . $department->nameDepartment . '</h2></header>
                                 <p><span>Objectifs :</span><br>' . $department->descDepartment . '</p>
                                 <footer>';
-                                if(isset($_SESSION["debweb_user"])) {
+                                if(isset($_SESSION["devweb_user"])) {
                                     echo '<a class="adminButton" href="./update.php?type=department&mode=edition&name='. $department->nameDepartment .'"><i class="fa fa-pencil"></i>Editer</a>
                                     <a class="adminButton" href="./update.php?type=department&mode=deletion&name='. $department->nameDepartment .'"><i class="fa fa-trash"></i>Supprimer</a>';
                                 }

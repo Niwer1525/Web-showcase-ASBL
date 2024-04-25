@@ -2,47 +2,23 @@
 
 index.php:
 
-		ligne 48: Bad value “./uploads/Recherche de bénévoles/article2.jpg” for attribute “src” on element “img”: Illegal character in path segment: space is not allowed.
-
 		ligne 52: Bad value “./fullNews.php?name=Recherche de bénévoles” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
-
-		ligne 58: Bad value “./uploads/Agrandissements des locaux/article3.jpg” for attribute “src” on element “img”: Illegal character in path segment: space is not allowed.
 
 		ligne 64: Bad value “./fullNews.php?name=Agrandissements des locaux” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
 
 index.php#news: 
 
-		ligne 48: Bad value “./uploads/Recherche de bénévoles/article2.jpg” for attribute “src” on element “img”: Illegal character in path segment: space is not allowed.
-
 		ligne 52: Bad value “./fullNews.php?name=Recherche de bénévoles” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
-
-		ligne 58: Bad value “./uploads/Agrandissements des locaux/article3.jpg” for attribute “src” on element “img”: Illegal character in path segment: space is not allowed.
 
 		ligne 64: Bad value “./fullNews.php?name=Agrandissements des locaux” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
 
 news.php: 
 
-		ligne 38: Bad value “./uploads/Recherche de bénévoles/article2.jpg” for attribute “src” on element “img”: Illegal character in path segment: space is not allowed.
-
 		ligne 41: Bad value “./fullNews.php?name=Recherche de bénévoles” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
-
-		ligne 46: Bad value “./uploads/Agrandissements des locaux/article3.jpg” for attribute “src” on element “img”: Illegal character in path segment: space is not allowed.
 
 		ligne 51: Bad value “./fullNews.php?name=Agrandissements des locaux” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
 
-		ligne 56: Bad value “./uploads/Offrez vos livres et diffusez la connaissance !/article1.jpg” for attribute “src” on element “img”: Illegal character in path segment: space is not allowed.
-
 		ligne 59: Bad value “./fullNews.php?name=Offrez vos livres et diffusez la connaissance !” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
-
-fullNews.php?name=Recherche de bénévoles: 
-
-		ligne 22: Bad value “./uploads/Recherche de bénévoles/article2.jpg” for attribute “src” on element “img”: Illegal character in path segment: space is not allowed.
-
-fullNews.php?name=Offrez vos livres et diffusez la connaissance !: 
-
-		ligne 22: Bad value “./uploads/Offrez vos livres et diffusez la connaissance !/article1.jpg” for attribute “src” on element “img”: Illegal character in path segment: space is not allowed.
-
- - Pas de formulaire pour la recherche.
 
 [Langage CSS]: 
 
@@ -86,7 +62,7 @@ fullNews.php?name=Offrez vos livres et diffusez la connaissance !:
 		Liens(s) brisé(s): fullNews.php?name=Agrandissements des locaux
 
 
-[Fonctionnalités]: 
+[Fonctionnalités]:
 
  UC-A.4 Consulter équipe:
 
@@ -94,18 +70,8 @@ fullNews.php?name=Offrez vos livres et diffusez la connaissance !:
 
  	La visualisation de la fiche complète d'un membre ne correspond pas au cahier des charges (photo, nom, prénom, départements+rôles, description, tél
 
- UC-A.5 Consulter actualités:
-
- 	L'affichage du statut visible ou non des actualités en tant que membre n'est pas fonctionnel ou incomplet
-
- 		 - Je ne suis pas parvenu à le faire fonctionner.
-
  UC-A.6 Filtrer actualités:
 
 	La recherche/filtre d'actualités n'est pas fonctionnelle (par département et/ou par mots-clefs de plus de 4 lettres)
 
  	Pas de message explicite si pas d'actualité trouvée
-
- UC-M.2 Supprimer actualité:
-
- 		 - Propose plutôt un bouton d'annuler qu'un lien de retour.

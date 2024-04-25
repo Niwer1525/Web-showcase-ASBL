@@ -27,7 +27,7 @@
                     $_SESSION["temp_user"] = $user;
                 } else {
                     if (User::login($_POST["email"], $_POST["password"]) != NULL) {
-                        $_SESSION["debweb_user"] = serialize(User::login($_POST["email"], $_POST["password"]));
+                        $_SESSION["devweb_user"] = serialize(User::login($_POST["email"], $_POST["password"]));
                         header("Location: ./");
                     }
                 }

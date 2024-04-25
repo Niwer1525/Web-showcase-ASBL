@@ -18,10 +18,10 @@
     ?>
     <body>
         <header class="nav-bar"><nav>
-            <ul><li><a <?php echo'href="./'.($type == NEWS_TYPE ? 'news' : ($type == DEPARTMENT_TYPE ? 'department' : 'team')).'.php"'; ?>>Retour</a></li></ul>
+            <ul><li><a <?php echo'href="./'.($type == NEWS_TYPE ? 'news' : ($type == DEPARTMENT_TYPE ? 'department' : 'team')).'.php"'; ?>>Annuler</a></li></ul>
         </nav></header>
         <main>
-            <section class="usefulLinks">
+            <section class="subHeader">
                 <h1>
                     <?php // Display the title of the page
                     if($isAddition) echo "Ajout d'un " . $type;
@@ -45,6 +45,7 @@
             <section>
                 <form action="./update_object.php" method="post" enctype="multipart/form-data">
                     <?php
+                        require_once("./php/util.php");
                         require_once("./php/db_department.php");
                         require_once("./php/db_article.php");
                         require_once("./php/db_account.php");
@@ -53,6 +54,7 @@
                         use DB\Article;
                         use DB\Member;
                         use Main\Role;
+                        use Utils\Util;
 
                         /* Print two hidden form to send additional datas */
                         echo'<input type="hidden" name="type" value="'.$type.'"><input type="hidden" name="mode" value="'.$mode.'">';
@@ -70,7 +72,7 @@
                                     <input type="date" id="date" name="news_date" placeholder="25/02/2019" required value="'.$datePublication.'">
                                     
                                     <label for="image">Image</label>'
-                                    .(!$isAddition ? '<img src="./uploads/'.$article->nameArticle.'/'.$article->imageArticle.'" alt="Image actuel">' : ''). // Display the current article image
+                                    .(!$isAddition ? '<img src="./uploads/'.Util::computeNameForPath($article->nameArticle).'/'.$article->imageArticle.'" alt="Image actuel">' : ''). // Display the current article image
                                     '<input type="file" id="image" name="news_image" accept="image/*">
 
                                     <label for="primer">Amorce</label>
@@ -81,8 +83,8 @@
 
                                     <label for="visibility">Visibilité</label>
                                     <select id="visibility" name="news_visibility" required>
-                                        <option value="0" '.($isAddition ? 'selected="selected"' : ($article->visibility == 1 ? 'selected="selected"' : '')).'>Tout le monde</option>
-                                        <option value="1" '.($isAddition ? '' : ($article->visibility == 0 ? 'selected="selected"' : '')).'>Membre seulement</option>
+                                        <option value="0" '.($isAddition ? 'selected="selected"' : ($article->visibility == 0 ? 'selected="selected"' : '')).'>Tout le monde</option>
+                                        <option value="1" '.($isAddition ? '' : ($article->visibility == 1 ? 'selected="selected"' : '')).'>Membre seulement</option>
                                     </select>
 
                                     <label for="department">Département</label>
@@ -114,7 +116,7 @@
                                     <input type="text" id="email" name="teammate_email" placeholder="clember@yahoo.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required value="' . ($isAddition ? "" : $member->emailMember) . '">
                                     
                                     <label for="image">Photo de profile</label>'
-                                    .(!$isAddition ? '<img src="./uploads/'.$member->nameMember.'_'.$member->lastNameMember.'/'.$member->imageMember.'" alt="Photo de profile actuel">' : ''). // Display the current article image
+                                    .(!$isAddition ? '<img src="./uploads/'.Util::computeNameForPath($member->nameMember.' '.$member->lastNameMember).'/'.$member->imageMember.'" alt="Photo de profile actuel">' : ''). // Display the current article image
                                     '<input type="file" id="image" name="teammate_image" accept="image/*">
 
                                     <label for="profession">Profession</label>

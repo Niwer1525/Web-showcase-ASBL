@@ -32,14 +32,16 @@
             <section id="news" class="news">
                 <div class="cardsContainer">
                     <?php
+                        require("./php/util.php");
                         require("./php/db_article.php");
                         use DB\Article;
+                        use Utils\Util;
 
                         /* Get the datas from the database */
                         foreach (Article::getHomeArticle() as $article) {
                             echo '<article>
                                 <header>
-                                    <img src="./uploads/'.$article->nameArticle.'/'.$article->imageArticle.'" alt="Image '.strtolower($article->nameArticle).'">
+                                    <img src="./uploads/'.Util::computeNameForPath($article->nameArticle).'/'.$article->imageArticle.'" alt="Image '.strtolower($article->nameArticle).'">
                                     <h2>'.$article->nameArticle.'</h2>
                                 </header>
                                 <p>'.$article->introArticle.'</p>

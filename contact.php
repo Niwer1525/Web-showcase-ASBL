@@ -10,8 +10,8 @@
             require("./inc/nav.inc.php");
 
             function getDefaultValue($type) {
-                if(!isset($_SESSION["debweb_user"]) || !is_string($_SESSION["debweb_user"])) return "";
-                $user = unserialize($_SESSION["debweb_user"]);
+                if(!isset($_SESSION["devweb_user"]) || !is_string($_SESSION["devweb_user"])) return "";
+                $user = unserialize($_SESSION["devweb_user"]);
 
                 echo 'value="';
                 switch($type) {

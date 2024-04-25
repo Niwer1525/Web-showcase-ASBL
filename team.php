@@ -14,19 +14,21 @@
                 <h1>NOTRE EQUIPE</h1>
                 <hr>
                 <?php
-                    if(isset($_SESSION["debweb_user"])) 
+                    if(isset($_SESSION["devweb_user"])) 
                         echo '<a class="adminButton" href="./update.php?type=member&mode=addition"><i class="fa fa-plus"></i> Ajouter un membre</a>';
                 ?>
             </section>
             <?php require("./inc/search.inc.php"); ?>
             <section>
                 <?php
+                    require_once("./php/util.php");
                     require_once("./php/db_roles.php");
                     require_once("./php/db_account.php");
                     require_once("./php/db_department.php");
                     use Main\Role;
                     use DB\Member;
                     use DB\Department;
+                    use Utils\Util;
 
                     foreach(Department::getDepartments() as $department) {
                         echo '<details open><summary>'.$department->nameDepartment.'</summary>
@@ -34,7 +36,7 @@
                             foreach(Member::getMemberByDepartment($department->nameDepartment) as $member) {
                                 echo'<article class="teamMembers">
                                     <header>
-                                        <img src="./uploads/'.$member->nameMember.'_'.$member->lastNameMember.'/'.$member->imageMember.'" alt="Photo de profile de '.$member->nameMember.' '.$member->lastNameMember.'">
+                                        <img src="./uploads/'.Util::computeNameForPath($member->nameMember.' '.$member->lastNameMember).'/'.$member->imageMember.'" alt="Photo de profile de '.$member->nameMember.' '.$member->lastNameMember.'">
                                         <h2>'.$member->nameMember.' '.$member->lastNameMember.'</h2>
                                     </header>
                                     <ul>
@@ -44,7 +46,7 @@
                                         <li>Addresse E-Mail: '.$member->emailMember.'</li>
                                     </ul>
                                     <footer>';
-                                        if(isset($_SESSION["debweb_user"])) { //Very dangerous to use only the name of the member as a parameter
+                                        if(isset($_SESSION["devweb_user"])) { //Very dangerous to use only the name of the member as a parameter
                                             echo '<a class="adminButton" href="./update.php?type=member&mode=edition&name='. $member->nameMember .'"><i class="fa fa-pencil"></i>Editer</a>
                                             <a class="adminButton" href="./update.php?type=member&mode=deletion&name='. $member->nameMember .'"><i class="fa fa-trash"></i>Supprimer</a>';
                                         }

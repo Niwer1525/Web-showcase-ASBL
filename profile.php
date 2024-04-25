@@ -15,14 +15,14 @@
                 case "update_infos": 
                     if (isset($_GET["passwordUser"]) && isset($_GET["passwordUserConfirm"]) && $_GET["passwordUser"] != $_GET["passwordUserConfirm"]) break;
                     // User::updateInfos($_GET["nameUser"], $_GET["lastnameUser"], $_GET["ageUser"], $_GET["emailUser"], $_GET["passwordUser"]), $_GET["addressUser"]);
-                    // $user = unserialize($_SESSION["debweb_user"]);
+                    // $user = unserialize($_SESSION["devweb_user"]);
                     break;
                 }
             }
             ?>
     <body>
         <?php
-            $user = unserialize($_SESSION["debweb_user"]);
+            $user = unserialize($_SESSION["devweb_user"]);
             $pageName = 'profile';
             require("./inc/nav.inc.php");
         ?>
