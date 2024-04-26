@@ -28,11 +28,22 @@
                     use DB\Article;
                     use Utils\Util;
 
+                    $searchDepartmentResult = isset($_GET["searchDepartmentResult"]) ? $_GET["searchDepartmentResult"] : null;
                     foreach(Department::getDepartments() as $department) {
+                        if($searchDepartmentResult != null && !Util::search($searchDepartmentResult, $department->nameDepartment)) 
+                            continue; //TODO Fix empty
                         echo '<details open><summary>'.$department->nameDepartment.'</summary>
                             <div class="cardsContainer">';
+                            $searchResult = isset($_GET["search"]) ? $_GET["search"] : null;
                             foreach(Article::getArticlesByDepartment($department->nameDepartment) as $article) {
                                 if($article->visibility != 0 && !isset($_SESSION["devweb_user"])) continue;
+                                if($searchResult != null && (
+                                    !Util::search($searchResult, $article->nameArticle)
+                                    || !Util::search($searchResult, $article->introArticle)
+                                    || !Util::search($searchResult, $article->contentArticle)
+                                )) {
+                                    continue;
+                                }
                                 echo'<article>
                                     <header>
                                         <img src="./uploads/'.Util::computeNameForPath($article->nameArticle).'/'.$article->imageArticle.'" alt="Image '.strtolower($article->nameArticle).'">'

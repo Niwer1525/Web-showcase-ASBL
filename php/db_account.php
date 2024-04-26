@@ -201,6 +201,16 @@ class User {
         setcookie("PHPSESSID", "", time()-3600, "/");
         session_destroy();
     }
+
+    public static function getTempEmail() {
+        // if (isset($_SESSION["temp_user"])) return $_SESSION["temp_user"]->emailUser;
+        return "e.redote@student.helmo.be"; // For testing purposes
+    }
+
+    public static function getTempPassword() {
+        // if (isset($_SESSION["temp_user"])) return $_SESSION["temp_user"]->passwordUser;
+        return "passwordVisible"; // For testing purposes
+    }
 }
 
 class Role {

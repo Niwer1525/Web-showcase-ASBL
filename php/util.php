@@ -13,6 +13,10 @@ class Util {
         }
     }
 
+    static function printClass($expected, $current) {
+        echo 'class="'.(!strcasecmp($expected, $current) ? 'currentPage' : '') . ' phoneHeaderText"';
+    }
+
     /**
      * Compute the name for a path
      * (remove all unwanted chars, trim the string, replacing spaces by underscores, etc.)
@@ -37,6 +41,14 @@ class Util {
         $name = strtolower($name);
                 
         return $name;
+    }
+
+    /**
+     * Search for a string in another string (case insensitive)
+     * @return bool true if the search result is found in the string, false otherwise
+     */
+    static function search($searchResult, $string) {
+        return str_contains(strtolower($string), strtolower($searchResult));
     }
 }
 ?>

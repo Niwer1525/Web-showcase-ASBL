@@ -32,16 +32,6 @@
                     }
                 }
             }
-
-            function getTempEmail() {
-                // if (isset($_SESSION["temp_user"])) return $_SESSION["temp_user"]->emailUser;
-                return "e.redote@student.helmo.be"; // For testing purposes
-            }
-
-            function getTempPassword() {
-                // if (isset($_SESSION["temp_user"])) return $_SESSION["temp_user"]->passwordUser;
-                return "passwordVisible"; // For testing purposes
-            }
         ?>
         <main>
             <!-- Login section -->
@@ -49,9 +39,9 @@
                 <form action="./identification.php" method="post">
                     <h2>Se connecter</h2>
                     <label for="connect_mail">Votre email :</label>
-                    <input type="email" id="connect_mail" name="email" placeholder="john.california@gmail.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required <?php echo'value="'.getTempEmail().'"'?>>
+                    <input type="email" id="connect_mail" name="email" placeholder="john.california@gmail.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required <?php echo'value="'.User::getTempEmail().'"'?>>
                     <label for="connect_password">Mot de passe :</label>
-                    <input type="password" id="connect_password" name="password" placeholder="mot2pass3*" required <?php echo'value="'.getTempPassword().'"'?>>
+                    <input type="password" id="connect_password" name="password" placeholder="mot2pass3*" required <?php echo'value="'.User::getTempPassword().'"'?>>
                     <button type="submit">Se connecter</button>
                 </form>
             </section>
