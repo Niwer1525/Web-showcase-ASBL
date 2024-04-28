@@ -2,12 +2,12 @@
 <html lang="fr">
     <?php
         $title = 'Départements';
-        require("./inc/header.inc.php");
+        require_once("./inc/header.inc.php");
     ?>
     <body>
         <?php
             $pageName = 'department';
-            require("./inc/nav.inc.php");
+            require_once("./inc/nav.inc.php");
         ?>
         <main>
             <section class="subHeader">
@@ -21,7 +21,7 @@
             <section>
                 <div class="cardsContainer">
                     <?php
-                        require("./php/db_department.php");
+                        require_once("./php/db_department.php");
                         use DB\Department;
                         
                         /* Get the datas from the database */
@@ -31,8 +31,8 @@
                                 <p><span>Objectifs :</span><br>' . $department->descDepartment . '</p>
                                 <footer>';
                                 if(isset($_SESSION["devweb_user"])) {
-                                    echo '<a class="adminButton" href="./update.php?type=department&mode=edition&name='. $department->nameDepartment .'"><i class="fa fa-pencil"></i>Editer</a>
-                                    <a class="adminButton" href="./update.php?type=department&mode=deletion&name='. $department->nameDepartment .'"><i class="fa fa-trash"></i>Supprimer</a>';
+                                    echo '<a class="adminButton" href="./update.php?type=department&mode=edition&id='. $department->id .'"><i class="fa fa-pencil"></i>Editer</a>
+                                    <a class="adminButton" href="./update.php?type=department&mode=deletion&id='. $department->id .'"><i class="fa fa-trash"></i>Supprimer</a>';
                                 }
                                 echo'</footer>
                             </article>';
@@ -41,6 +41,6 @@
                 </div>
             </section>
         </main>
-        <?php require("./inc/footer.inc.php"); ?>
+        <?php require_once("./inc/footer.inc.php"); ?>
     </body>
 </html>

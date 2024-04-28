@@ -1,66 +1,23 @@
 [Langage HTML]: Il reste des erreurs de standard HTML
 
-index.php:
-
-		ligne 52: Bad value “./fullNews.php?name=Recherche de bénévoles” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
-
-		ligne 64: Bad value “./fullNews.php?name=Agrandissements des locaux” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
-
-index.php#news: 
-
-		ligne 52: Bad value “./fullNews.php?name=Recherche de bénévoles” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
-
-		ligne 64: Bad value “./fullNews.php?name=Agrandissements des locaux” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
-
-news.php: 
-
-		ligne 41: Bad value “./fullNews.php?name=Recherche de bénévoles” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
-
-		ligne 51: Bad value “./fullNews.php?name=Agrandissements des locaux” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
-
-		ligne 59: Bad value “./fullNews.php?name=Offrez vos livres et diffusez la connaissance !” for attribute “href” on element “a”: Illegal character in query: space is not allowed.
-
 [Langage CSS]: 
 
  	Répétition de blocs de propriétés CSS identiques [CSSBurner: declaration blocks which are identical]
-
  		4 occurrences.
 
  	Trop de valeurs de propriété non optimisées [CSSBurner: unoptimized property values > 20 occurrences]
-
  		39 occurrences.
-
- 	C'est bien, continue ainsi pour la suite.
-
 
 [Langage PHP]:
 
  	Tous les concepts (utilisateurs, groupes, dépenses, tags, factures et versements) ne sont pas modélisés par une classe PHP
-
  		- Pas toujours, tu as mélangé les deux concepts qui plus est. Sépare bien les classes "entités" et des "repository".
-
- 	Il ne faut pas réécrire des fonctions existantes de PHP et il faut isoler les fonctions personnalisées dans un fichier PHP dédié. (Ne pas insérer directement les fonctions dans les fichiers "vue")
 
  	Les données de formulaire doivent toujours être vérifiées côté serveur (attribut required en html ou type='email' ne suffit pas), toutes les erreurs sont affichées et le formulaire contient les données encodées
 
- 		 - Pas toujours et pas entièrement.
-
- 	Il faut préférer des requêtes multitables plutôt que plusieurs requêtes sur une seule table à la fois
-
- 	Les types des colonnes des tables en BD pas toujours cohérents avec types de données stockées
-
- 		 - Utilise un identifiant numérique ou une chaîne aléatoire (UUID).
-
 [Ergonomie]: 
 
-	- Dans tous les formulaires, utilise * pour spécifier à l'utilisateur les champs des formulaires qui sont obligatoires à l'encodage.
-
 	- Attention aux fautes d'orthographe ou de frappe.
-
- 	Lisibilité - Navigabilité - Langage:
-
-		Liens(s) brisé(s): fullNews.php?name=Agrandissements des locaux
-
 
 [Fonctionnalités]:
 
@@ -69,9 +26,3 @@ news.php:
  		 - Une image ne se charge pas.
 
  	La visualisation de la fiche complète d'un membre ne correspond pas au cahier des charges (photo, nom, prénom, départements+rôles, description, tél
-
- UC-A.6 Filtrer actualités:
-
-	La recherche/filtre d'actualités n'est pas fonctionnelle (par département et/ou par mots-clefs de plus de 4 lettres)
-
- 	Pas de message explicite si pas d'actualité trouvée

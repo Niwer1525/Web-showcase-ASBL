@@ -9,6 +9,7 @@ use DB\DBLink;
 
 class Article {
     const TABLE_NAME = "devweb_articles";
+    public $id = 0;
     public $nameArticle = "";
     public $datePublicationArticle = "";
     public $imageArticle = "";
@@ -29,6 +30,7 @@ class Article {
 
         while ($row = $result->fetch_assoc()) {
             $article = new Article();
+            $article->id = $row['id'];
             $article->nameArticle = $row['nameArticle'];
             $article->datePublicationArticle = strftime('%d/%m/%Y', strtotime($row['datePublicationArticle']));
             $article->imageArticle = $row['imageArticle'];
@@ -58,6 +60,7 @@ class Article {
 
         while ($row = $result->fetch_assoc()) {
             $article = new Article();
+            $article->id = $row['id'];
             $article->nameArticle = $row['nameArticle'];
             $article->datePublicationArticle = strftime('%d/%m/%Y', strtotime($row['datePublicationArticle']));
             $article->imageArticle = $row['imageArticle'];
@@ -84,6 +87,7 @@ class Article {
 
         while ($row = $result->fetch_assoc()) {
             $article = new Article();
+            $article->id = $row['id'];
             $article->nameArticle = $row['nameArticle'];
             $article->datePublicationArticle = strftime('%d/%m/%Y', strtotime($row['datePublicationArticle']));
             $article->imageArticle = $row['imageArticle'];
@@ -99,18 +103,19 @@ class Article {
     }
 
     /**
-     * Get an article by its name
-     * @param string $name The name of the article
+     * Get an article by its id
+     * @param string $id The id of the article
      */
-    public static function getArticle($name) {
+    public static function getArticle($id) {
         $db = DBLink::connect2db(MYDB, $message); // Connect to the database
         
-        $name = $db->real_escape_string($name); // Escape special characters in the values
+        $id = $db->real_escape_string($id); // Escape special characters in the values
         
-        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE nameArticle = '".$name."'"; // Corrected SQL query
+        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id = '".$id."'"; // Corrected SQL query
         $result = $db->execute_query($sql); // Execute the query
         $row = $result->fetch_assoc();
         $article = new Article();
+        $article->id = $row['id'];
         $article->nameArticle = $row['nameArticle'];
         $article->datePublicationArticle = strftime('%d/%m/%Y', strtotime($row['datePublicationArticle']));
         $article->imageArticle = $row['imageArticle'];
@@ -140,11 +145,12 @@ class Article {
         DBLink::disconnect($db); // Disconnect from the database
     }
 
-    public static function updateArticle($nameArticle, $datePublicationArticle, $contentArticle, $introArticle, $department, $visibility, $imageArticle) {
+    public static function updateArticle($id, $nameArticle, $datePublicationArticle, $contentArticle, $introArticle, $department, $visibility, $imageArticle) {
         $db = DBLink::connect2db(MYDB, $message); // Connect to the database
         $sql = "";
 
         // Escape special characters in the values
+        $id = $db->real_escape_string($id);
         $nameArticle = $db->real_escape_string($nameArticle);
         $datePublicationArticle = $db->real_escape_string($datePublicationArticle);
         $contentArticle = $db->real_escape_string($contentArticle);
@@ -154,21 +160,21 @@ class Article {
         $imageArticle = $db->real_escape_string($imageArticle);
         if($imageArticle != null) {
             $imageArticle = $db->real_escape_string($imageArticle);
-            $sql = "UPDATE " . self::TABLE_NAME . " SET datePublicationArticle = '".$datePublicationArticle."', contentArticle = '".$contentArticle."', introArticle = '".$introArticle."', department = '".$department."', visibility = '".$visibility."', imageArticle = '".$imageArticle."' WHERE nameArticle = '".$nameArticle."'"; // SQL query
+            $sql = "UPDATE " . self::TABLE_NAME . " SET nameArticle = '".$nameArticle."', datePublicationArticle = '".$datePublicationArticle."', contentArticle = '".$contentArticle."', introArticle = '".$introArticle."', department = '".$department."', visibility = '".$visibility."', imageArticle = '".$imageArticle."' WHERE id = '".$id."'"; // SQL query
         } else 
-            $sql = "UPDATE " . self::TABLE_NAME . " SET datePublicationArticle = '".$datePublicationArticle."', contentArticle = '".$contentArticle."', introArticle = '".$introArticle."', department = '".$department."', visibility = '".$visibility."' WHERE nameArticle = '".$nameArticle."'"; // SQL query
+            $sql = "UPDATE " . self::TABLE_NAME . " SET nameArticle = '".$nameArticle."', datePublicationArticle = '".$datePublicationArticle."', contentArticle = '".$contentArticle."', introArticle = '".$introArticle."', department = '".$department."', visibility = '".$visibility."' WHERE id = '".$id."'"; // SQL query
 
         $db->execute_query($sql); // Execute the query
         DBLink::disconnect($db); // Disconnect from the database
     }
 
-    public static function deleteArticle($nameArticle) {
+    public static function deleteArticle($id) {
         $db = DBLink::connect2db(MYDB, $message); // Connect to the database
 
         // Escape special characters in the values
-        $nameArticle = $db->real_escape_string($nameArticle);
+        $id = $db->real_escape_string($id);
 
-        $sql = "DELETE FROM " . self::TABLE_NAME . " WHERE nameArticle = '".$nameArticle."'"; // SQL query
+        $sql = "DELETE FROM " . self::TABLE_NAME . " WHERE id = '".$id."'"; // SQL query
         $db->execute_query($sql); // Execute the query
         DBLink::disconnect($db); // Disconnect from the database
     }

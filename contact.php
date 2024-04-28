@@ -2,12 +2,12 @@
 <html lang="fr">
     <?php
         $title = 'Equipe';
-        require("./inc/header.inc.php");
+        require_once("./inc/header.inc.php");
     ?>
     <body>
         <?php
             $pageName = 'contact';
-            require("./inc/nav.inc.php");
+            require_once("./inc/nav.inc.php");
 
             function getDefaultValue($type) {
                 if(!isset($_SESSION["devweb_user"]) || !is_string($_SESSION["devweb_user"])) return "";
@@ -59,13 +59,13 @@
             <!-- Contact form -->
             <section>
                 <form action="./contact.php" method="post">
-                    <label for="mail">E-mail</label>
+                    <label for="mail">E-mail<span class="required">*</span></label>
                     <input type="email" id="mail" name="user_mail" placeholder="john.california@gmail.com" <?php getDefaultValue("user_mail") ?> required>
-                    <label for="name">Nom Prénom</label>
+                    <label for="name">Nom Prénom<span class="required">*</span></label>
                     <input type="text" id="name" name="user_name" placeholder="Jhon California" <?php getDefaultValue("user_name") ?> required>
-                    <label for="subject">Sujet</label>
+                    <label for="subject">Sujet<span class="required">*</span></label>
                     <input type="text" id="subject" name="user_subject" placeholder="Votre sujet" required>
-                    <label for="msg">Message</label>
+                    <label for="msg">Message<span class="required">*</span></label>
                     <textarea id="msg" name="user_message" placeholder="Votre message" required></textarea>
                     <button type="submit">Envoyer le message</button>
                 </form>
@@ -91,6 +91,6 @@
                 </div>
             </section>
         </main>
-        <?php require("./inc/footer.inc.php"); ?>
+        <?php require_once("./inc/footer.inc.php"); ?>
     </body>
 </html>

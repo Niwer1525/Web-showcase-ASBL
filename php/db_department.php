@@ -9,6 +9,7 @@ use DB\DBLink;
 
 class Department {
     const TABLE_NAME = "devweb_departments";
+    public $id = 0;
     public $nameDepartment = "";
     public $descDepartment = "";
 
@@ -24,6 +25,7 @@ class Department {
 
         while ($row = $result->fetch_assoc()) {
             $department = new Department();
+            $department->id = $row['id'];
             $department->nameDepartment = $row['nameDepartment'];
             $department->descDepartment = $row['descDepartment'];
             $departments[] = $department;
@@ -32,21 +34,22 @@ class Department {
         DBLink::disconnect($db); // Disconnect from the database
         return $departments;
     }
-    
+
     /**
-     * Get a department by its name
-     * @param string $name The name of the department
+     * Get a department by its id
+     * @param string $id The id of the department
      */
-    public static function getDepartment($name) {
+    public static function getDepartment($id) {
         $db = DBLink::connect2db(MYDB, $message); // Connect to the database
         
-        $name = $db->real_escape_string($name); // Escape special characters in the values
+        $id = $db->real_escape_string($id); // Escape special characters in the values
 
-        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE nameDepartment = '" . $name . "'"; // SQL query     
+        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id = '" . $id . "'"; // SQL query     
         $result = $db->execute_query($sql); // Execute the query
         $row = $result->fetch_assoc();
 
         $department = new Department();
+        $department->id = $row['id'];
         $department->nameDepartment = $row['nameDepartment'];
         $department->descDepartment = $row['descDepartment'];
 
@@ -54,14 +57,15 @@ class Department {
         return $department;
     }
     
-    public static function updateDepartment($nameDepartment, $descDepartment) {
+    public static function updateDepartment($id, $nameDepartment, $descDepartment) {
         $db = DBLink::connect2db(MYDB, $message); // Connect to the database
 
         // Escape special characters in the values
+        $id = $db->real_escape_string($id);
         $nameDepartment = $db->real_escape_string($nameDepartment);
         $descDepartment = $db->real_escape_string($descDepartment);
 
-        $sql = "UPDATE " . self::TABLE_NAME . " SET nameDepartment = '" . $nameDepartment . "', descDepartment = '" . $descDepartment . "' WHERE nameDepartment = '" . $nameDepartment . "'"; // SQL query
+        $sql = "UPDATE " . self::TABLE_NAME . " SET nameDepartment = '$nameDepartment', descDepartment = '$descDepartment' WHERE id = '" . $id . "'"; // SQL query
         $db->execute_query($sql); // Execute the query
         DBLink::disconnect($db); // Disconnect from the database
     }
@@ -78,12 +82,12 @@ class Department {
         DBLink::disconnect($db); // Disconnect from the database
     }
 
-    public static function deleteDepartment($nameDepartment) {
+    public static function deleteDepartment($id) {
         $db = DBLink::connect2db(MYDB, $message); // Connect to the database
 
-        $nameDepartment = $db->real_escape_string($nameDepartment); // Escape special characters in the values
+        $id = $db->real_escape_string($id); // Escape special characters in the values
 
-        $sql = "DELETE FROM " . self::TABLE_NAME . " WHERE nameDepartment = '" . $nameDepartment . "'"; // SQL query
+        $sql = "DELETE FROM " . self::TABLE_NAME . " WHERE id = '" . $id . "'"; // SQL query
         $db->execute_query($sql); // Execute the query
         DBLink::disconnect($db); // Disconnect from the database
     }

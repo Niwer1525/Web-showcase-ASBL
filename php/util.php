@@ -48,7 +48,24 @@ class Util {
      * @return bool true if the search result is found in the string, false otherwise
      */
     static function search($searchResult, $string) {
+        if($searchResult == null) return true;
+    
+        /* Handling coma (,) and spaces (+) as separator */
+        if(Util::searchLoop($searchResult, ',', $string) || Util::searchLoop($searchResult, '+', $string) || Util::searchLoop($searchResult, ' ', $string))
+            return true;
+
+        /* Default case (No separator(s)) */
         return str_contains(strtolower($string), strtolower($searchResult));
+    }
+
+    static function searchLoop($searchResult, $char, $string) {
+        if(strpos($searchResult, $char) !== false) {
+            $searchResult = explode($char, $searchResult);
+            foreach($searchResult as $search) {
+                if(str_contains(strtolower($string), strtolower($search))) return true;
+            }
+        }
+        return false;
     }
 }
 ?>

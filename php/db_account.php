@@ -9,6 +9,7 @@ use DB\DBLink;
 
 class Member {
     const TABLE_NAME = "devweb_members";
+    public $id = 0;
     public $nameMember = "";
     public $lastNameMember = "";
     public $emailMember = "";
@@ -16,16 +17,19 @@ class Member {
     public $nameDepartment = "";
     public $nameRole = "";
     public $imageMember = "";
+    public $phoneMember = "";
+    public $descMember = "";
 
-    public static function getMember($nameMember) {
+    public static function getMember($id) {
         $db = DBLink::connect2db(MYDB, $message);
 
-        $nameMember = $db->real_escape_string($nameMember); // Escape the nameMember value
+        $id = $db->real_escape_string($id); // Escape the nameMember value
 
-        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE nameMember = '".$nameMember."'";
+        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id = '".$id."'";
         $result = $db->execute_query($sql);
         $row = $result->fetch_assoc();
         $member = new Member();
+        $member->id = $row["id"];
         $member->nameMember = $row["nameMember"];
         $member->lastNameMember = $row["lastnameMember"];
         $member->emailMember = $row["emailMember"];
@@ -33,6 +37,8 @@ class Member {
         $member->nameDepartment = $row["nameDepartment"];
         $member->nameRole = $row["role"];
         $member->imageMember = $row["imageMember"];
+        $member->phoneMember = $row["phoneMember"];
+        $member->descMember = $row["descMember"];
 
         DBLink::disconnect($db); // Disconnect from the database
         return $member;
@@ -48,6 +54,7 @@ class Member {
         $members = [];
         while ($row = $result->fetch_assoc()) {
             $member = new Member();
+            $member->id = $row["id"];
             $member->nameMember = $row["nameMember"];
             $member->lastNameMember = $row["lastnameMember"];
             $member->emailMember = $row["emailMember"];
@@ -55,6 +62,8 @@ class Member {
             $member->nameDepartment = $row["nameDepartment"];
             $member->nameRole = $row["role"];
             $member->imageMember = $row["imageMember"];
+            $member->phoneMember = $row["phoneMember"];
+            $member->descMember = $row["descMember"];
             $members[] = $member;
         }
 
@@ -62,7 +71,7 @@ class Member {
         return $members;
     }
 
-    public static function createMember($nameMember, $lastNameMember, $emailMember, $workMember, $nameDepartment, $role, $imageMember) {
+    public static function createMember($nameMember, $lastNameMember, $emailMember, $workMember, $nameDepartment, $role, $imageMember, $phoneMember, $descMember) {
         $db = DBLink::connect2db(MYDB, $message);
         $nameMember = $db->real_escape_string($nameMember); // Escape the nameMember value
         $lastNameMember = $db->real_escape_string($lastNameMember); // Escape the lastNameMember value
@@ -71,37 +80,42 @@ class Member {
         $nameDepartment = $db->real_escape_string($nameDepartment); // Escape the nameDepartment value
         $role = $db->real_escape_string($role); // Escape the role value
         $imageMember = $db->real_escape_string($imageMember); // Escape the role value
+        $phoneMember = $db->real_escape_string($phoneMember); // Escape the role value
+        $descMember = $db->real_escape_string($descMember); // Escape the role value
 
-        $sql = "INSERT INTO " . self::TABLE_NAME . " (nameMember, lastnameMember, emailMember, workMember, nameDepartment, role, imageMember) VALUES ('".$nameMember."', '".$lastNameMember."', '".$emailMember."', '".$workMember."', '".$nameDepartment."', '".$role."', '".$imageMember."')";
+        $sql = "INSERT INTO " . self::TABLE_NAME . " (nameMember, lastnameMember, emailMember, workMember, nameDepartment, role, imageMember, phoneMember, descMember) VALUES ('".$nameMember."', '".$lastNameMember."', '".$emailMember."', '".$workMember."', '".$nameDepartment."', '".$role."', '".$imageMember."', '".$phoneMember."', '".$descMember."')";
         $db->execute_query($sql);
         DBLink::disconnect($db); // Disconnect from the database
     }
 
-    public static function updateMember($nameMember, $lastNameMember, $emailMember, $workMember, $nameDepartment, $role, $imageMember) {
+    public static function updateMember($id, $nameMember, $lastNameMember, $emailMember, $workMember, $nameDepartment, $role, $imageMember, $phoneMember, $descMember) {
         $db = DBLink::connect2db(MYDB, $message);
         $sql = "";
         
+        $id = $db->real_escape_string($id); // Escape the id value
         $nameMember = $db->real_escape_string($nameMember); // Escape the nameMember value
         $lastNameMember = $db->real_escape_string($lastNameMember); // Escape the lastNameMember value
         $emailMember = $db->real_escape_string($emailMember); // Escape the emailMember value
         $workMember = $db->real_escape_string($workMember); // Escape the workMember value
         $nameDepartment = $db->real_escape_string($nameDepartment); // Escape the nameDepartment value
         $nameRole = $db->real_escape_string($role); // Escape the role value
+        $phoneMember = $db->real_escape_string($phoneMember); // Escape the role value
+        $descMember = $db->real_escape_string($descMember); // Escape the role value
         if($imageMember != NULL) {
             $imageMember = $db->real_escape_string($imageMember); // Escape the role value
-            $sql = "UPDATE " . self::TABLE_NAME . " SET lastnameMember = '".$lastNameMember."', emailMember = '".$emailMember."', workMember = '".$workMember."', nameDepartment = '".$nameDepartment."', role = '".$role."', imageMember = '".$imageMember."' WHERE nameMember = '".$nameMember."'";
-        } else 
-            $sql = "UPDATE " . self::TABLE_NAME . " SET lastnameMember = '".$lastNameMember."', emailMember = '".$emailMember."', workMember = '".$workMember."', nameDepartment = '".$nameDepartment."', role = '".$role."' WHERE nameMember = '".$nameMember."'";
+            $sql = "UPDATE " . self::TABLE_NAME . " SET nameMember = '".$nameMember."', lastnameMember = '".$lastNameMember."', emailMember = '".$emailMember."', workMember = '".$workMember."', nameDepartment = '".$nameDepartment."', role = '".$role."', imageMember = '".$imageMember."', phoneMember = '".$phoneMember."', descMember = '".$descMember."' WHERE id = '".$id."'";
+        } else {
+            $sql = "UPDATE " . self::TABLE_NAME . " SET lastnameMember = '".$lastNameMember."', emailMember = '".$emailMember."', workMember = '".$workMember."', nameDepartment = '".$nameDepartment."', role = '".$role."', imageMember = '".$imageMember."', phoneMember = '".$phoneMember."', descMember = '".$descMember."' WHERE id = '".$id."'";
+        }
         
         $db->execute_query($sql);
         DBLink::disconnect($db); // Disconnect from the database
     }
 
-    /* VERRRRY DANGEROUS */
-    public static function deleteMember($nameMember) {
+    public static function deleteMember($id) {
         $db = DBLink::connect2db(MYDB, $message);
-        $nameMember = $db->real_escape_string($nameMember); // Escape the nameMember value
-        $sql = "DELETE FROM " . self::TABLE_NAME . " WHERE nameMember = '".$nameMember."'";
+        $id = $db->real_escape_string($id); // Escape the id value
+        $sql = "DELETE FROM " . self::TABLE_NAME . " WHERE id = '".$id."'";
         $db->execute_query($sql);
         DBLink::disconnect($db); // Disconnect from the database
     }

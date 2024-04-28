@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php
         $title = 'Erreur';
-        require("./inc/header.inc.php");
+        require_once("./inc/header.inc.php");
     ?>
     <body class="serge">
         <h1>Erreur</h1>

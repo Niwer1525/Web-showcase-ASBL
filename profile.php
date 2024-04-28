@@ -2,8 +2,8 @@
 <html lang="fr">
     <?php
         $title = 'Profile';
-        require("./inc/header.inc.php");
-        require("./php/db_account.php");
+        require_once("./inc/header.inc.php");
+        require_once("./php/db_account.php");
         use DB\User;
         
         if (isset($_GET["mode"])) {
@@ -24,7 +24,7 @@
         <?php
             $user = unserialize($_SESSION["devweb_user"]);
             $pageName = 'profile';
-            require("./inc/nav.inc.php");
+            require_once("./inc/nav.inc.php");
         ?>
         <main>
             <section class="subHeader">
@@ -64,6 +64,6 @@
                 </form>
             </section>
         </main>
-        <?php require("./inc/footer.inc.php"); ?>
+        <?php require_once("./inc/footer.inc.php"); ?>
     </body>
 </html>

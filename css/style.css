@@ -322,21 +322,17 @@ form img {
     margin: 10px;
 }
 
-form>:required {
-
-}
-
-form>:required::after {
-    content: "*";
-    color: red;
-}
-
 form>:focus {
     transition: 0.3s;
     transform: scale(1.05);
 }
 
 form textarea { resize: vertical; }
+
+form .required {
+    color: red;
+    font-size: 1.2em;
+}
 
 /* Useful links in the 'conctact' page */
 .subHeader {

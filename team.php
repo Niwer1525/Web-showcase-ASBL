@@ -2,12 +2,12 @@
 <html lang="fr">
     <?php
         $title = 'Equipe';
-        require("./inc/header.inc.php");
+        require_once("./inc/header.inc.php");
     ?>
     <body>
         <?php
             $pageName = 'team';
-            require("./inc/nav.inc.php");
+            require_once("./inc/nav.inc.php");
         ?>
         <main>
             <section class="subHeader">
@@ -18,7 +18,7 @@
                         echo '<a class="adminButton" href="./update.php?type=member&mode=addition"><i class="fa fa-plus"></i> Ajouter un membre</a>';
                 ?>
             </section>
-            <?php require("./inc/search.inc.php"); ?>
+            <?php require_once("./inc/search.inc.php"); ?>
             <section>
                 <?php
                     require_once("./php/util.php");
@@ -30,10 +30,26 @@
                     use DB\Department;
                     use Utils\Util;
 
+                    $searchDepartmentResult = isset($_GET["searchDepartmentResult"]) && strcmp($_GET["searchDepartmentResult"], 'empty') ? $_GET["searchDepartmentResult"] : null;
                     foreach(Department::getDepartments() as $department) {
+                        if($searchDepartmentResult != null && !Util::search($searchDepartmentResult, $department->nameDepartment)) {
+                            continue;
+                        }
                         echo '<details open><summary>'.$department->nameDepartment.'</summary>
                             <div class="cardsContainer">';
-                            foreach(Member::getMemberByDepartment($department->nameDepartment) as $member) {
+                            $remCount = 0;
+                            $searchResult = isset($_GET["searchResult"]) ? $_GET["searchResult"] : null;
+                            $members = Member::getMemberByDepartment($department->nameDepartment);
+                            foreach($members as $member) {
+                                if($searchResult != null && (
+                                    !Util::search($searchResult, $member->nameMember)
+                                    || !Util::search($searchResult, $member->lastNameMember)
+                                    || !Util::search($searchResult, $member->workMember)
+                                    || !Util::search($searchResult, $member->emailMember)
+                                    // || !Util::search($searchResult, $member->phoneMember)
+                                )) {
+                                    continue;
+                                }
                                 echo'<article class="teamMembers">
                                     <header>
                                         <img src="./uploads/'.Util::computeNameForPath($member->nameMember.' '.$member->lastNameMember).'/'.$member->imageMember.'" alt="Photo de profile de '.$member->nameMember.' '.$member->lastNameMember.'">
@@ -41,22 +57,25 @@
                                     </header>
                                     <ul>
                                         <li>Role: '.$member->nameRole.'</li>
-                                        <li>Departement: '.$member->nameDepartment.'</li>
                                         <li>Profession: '.$member->workMember.'</li>
                                         <li>Addresse E-Mail: '.$member->emailMember.'</li>
+                                        <li>Numéro de téléphone: '.$member->phoneMember.'</li>
+                                        <li>Description: '.$member->descMember.'</li>
                                     </ul>
                                     <footer>';
                                         if(isset($_SESSION["devweb_user"])) { //Very dangerous to use only the name of the member as a parameter
-                                            echo '<a class="adminButton" href="./update.php?type=member&mode=edition&name='. $member->nameMember .'"><i class="fa fa-pencil"></i>Editer</a>
-                                            <a class="adminButton" href="./update.php?type=member&mode=deletion&name='. $member->nameMember .'"><i class="fa fa-trash"></i>Supprimer</a>';
+                                            echo '<a class="adminButton" href="./update.php?type=member&mode=edition&id='. $member->id .'"><i class="fa fa-pencil"></i>Editer</a>
+                                            <a class="adminButton" href="./update.php?type=member&mode=deletion&id='. $member->id .'"><i class="fa fa-trash"></i>Supprimer</a>';
                                         }
                                 echo'</footer></article>';
                             }
+                            if(count($members) == $remCount)
+                                echo '<p>Aucun membre trouvé</p>';
                         echo'</div></details>';
                     }
                 ?>
             </section>
         </main>
-        <?php require("./inc/footer.inc.php"); ?>
+        <?php require_once("./inc/footer.inc.php"); ?>
     </body>
 </html>

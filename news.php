@@ -2,23 +2,23 @@
 <html lang="fr">
     <?php
         $title = 'Actualités';
-        require("./inc/header.inc.php");
+        require_once("./inc/header.inc.php");
     ?>
     <body>
         <?php
             $pageName = 'news';
-            require("./inc/nav.inc.php");
+            require_once("./inc/nav.inc.php");
         ?>
         <main>
             <section class="subHeader">
                 <h1>TOUTES LES ACUTALITES</h1>
                 <hr>
                 <?php
-                    if(isset($_SESSION["devweb_user"])) 
+                    if(isset($_SESSION["devweb_user"]))
                         echo '<a class="adminButton" href="./update.php?type=news&mode=addition"><i class="fa fa-plus"></i> Ajouter un article</a>';
                 ?>
             </section>
-            <?php require("./inc/search.inc.php"); ?>
+            <?php require_once("./inc/search.inc.php"); ?>
             <section>
                 <?php
                     require_once("./php/util.php");
@@ -28,20 +28,24 @@
                     use DB\Article;
                     use Utils\Util;
 
-                    $searchDepartmentResult = isset($_GET["searchDepartmentResult"]) ? $_GET["searchDepartmentResult"] : null;
+                    $searchDepartmentResult = isset($_GET["searchDepartmentResult"]) && strcmp($_GET["searchDepartmentResult"], 'empty') ? $_GET["searchDepartmentResult"] : null;
                     foreach(Department::getDepartments() as $department) {
-                        if($searchDepartmentResult != null && !Util::search($searchDepartmentResult, $department->nameDepartment)) 
-                            continue; //TODO Fix empty
+                        if($searchDepartmentResult != null && !Util::search($searchDepartmentResult, $department->nameDepartment)) {
+                            continue;
+                        }
                         echo '<details open><summary>'.$department->nameDepartment.'</summary>
                             <div class="cardsContainer">';
-                            $searchResult = isset($_GET["search"]) ? $_GET["search"] : null;
-                            foreach(Article::getArticlesByDepartment($department->nameDepartment) as $article) {
+                            $remCount = 0;
+                            $searchResult = isset($_GET["searchResult"]) ? $_GET["searchResult"] : null;
+                            $articles = Article::getArticlesByDepartment($department->nameDepartment);
+                            foreach($articles as $article) {
                                 if($article->visibility != 0 && !isset($_SESSION["devweb_user"])) continue;
                                 if($searchResult != null && (
                                     !Util::search($searchResult, $article->nameArticle)
                                     || !Util::search($searchResult, $article->introArticle)
                                     || !Util::search($searchResult, $article->contentArticle)
                                 )) {
+                                    $remCount++;
                                     continue;
                                 }
                                 echo'<article>
@@ -51,21 +55,23 @@
                                         '<h2>'.$article->nameArticle.'</h2>
                                     </header>
                                     <p>'.$article->introArticle.'</p>
-                                    <a href="./fullNews.php?name='.$article->nameArticle.'">Lire plus</a>
+                                    <a href="./fullNews.php?id='.$article->id.'">Lire plus</a>
                                     <footer>';
                                         if(isset($_SESSION["devweb_user"])) {
-                                            echo '<a class="adminButton" href="./update.php?type=news&mode=edition&name='. $article->nameArticle .'"><i class="fa fa-pencil"></i>Editer</a>
-                                            <a class="adminButton" href="./update.php?type=news&mode=deletion&name='. $article->nameArticle .'"><i class="fa fa-trash"></i>Supprimer</a>';
+                                            echo '<a class="adminButton" href="./update.php?type=news&mode=edition&id='. $article->id .'"><i class="fa fa-pencil"></i>Editer</a>
+                                            <a class="adminButton" href="./update.php?type=news&mode=deletion&id='. $article->id .'"><i class="fa fa-trash"></i>Supprimer</a>';
                                         }
                                        echo'<p>'.$article->datePublicationArticle.'</p>
                                     </footer>
                                 </article>';
                             }
+                            if(count($articles) == $remCount)
+                                echo '<p>Aucun article trouvé</p>';
                         echo'</div></details>';
                     }
                 ?>
             </section>
         </main>
-        <?php require("./inc/footer.inc.php"); ?>
+        <?php require_once("./inc/footer.inc.php"); ?>
     </body>
 </html>

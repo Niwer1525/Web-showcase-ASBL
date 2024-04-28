@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php
         $title = 'Article 1';
-        require("./inc/header.inc.php");
+        require_once("./inc/header.inc.php");
     ?>
     <body>
         <header class="nav-bar">
@@ -14,11 +14,11 @@
             <section>
                 <div class="cardsContainer">
                     <?php
-                        require("./php/util.php");
-                        require("./php/db_article.php");
+                        require_once("./php/util.php");
+                        require_once("./php/db_article.php");
                         use DB\Article;
                         use Utils\Util;
-                        $article = Article::getArticle($_GET['name']);
+                        $article = Article::getArticle($_GET['id']);
 
                         echo '<article class="largeArticle">
                         <header>
@@ -29,8 +29,8 @@
                         <p>'.$article->contentArticle.'</p>
                         <footer>';
                         if(isset($_SESSION["devweb_user"])) {
-                            echo'<a class="adminButton" href="./update.php?type=news&mode=edition&name='.$article->nameArticle.'"><i class="fa fa-pencil"></i>Editer</a>
-                            <a class="adminButton" href="./update.php?type=news&mode=deletion&name='.$article->nameArticle.'"><i class="fa fa-trash"></i>Supprimer</a>';
+                            echo'<a class="adminButton" href="./update.php?type=news&mode=edition&id='.$article->id.'"><i class="fa fa-pencil"></i>Editer</a>
+                            <a class="adminButton" href="./update.php?type=news&mode=deletion&id='.$article->id.'"><i class="fa fa-trash"></i>Supprimer</a>';
                         }
                         echo'<p>'.$article->datePublicationArticle.'</p>';
                         echo'</footer>
@@ -39,6 +39,6 @@
                 </div>
             </section>
         </main>
-        <?php require("./inc/footer.inc.php"); ?>
+        <?php require_once("./inc/footer.inc.php"); ?>
     </body>
 </html>

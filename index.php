@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php
         $title = 'Accueil';
-        require("./inc/header.inc.php");
+        require_once("./inc/header.inc.php");
     ?>
     <body>
         <header class="mainHeader">
@@ -21,7 +21,7 @@
         <main>
             <?php
                 $pageName = 'index';
-                require("./inc/nav.inc.php");
+                require_once("./inc/nav.inc.php");
             ?>
             <!-- Separator with title section -->
             <section class="subHeader">
@@ -32,8 +32,8 @@
             <section id="news" class="news">
                 <div class="cardsContainer">
                     <?php
-                        require("./php/util.php");
-                        require("./php/db_article.php");
+                        require_once("./php/util.php");
+                        require_once("./php/db_article.php");
                         use DB\Article;
                         use Utils\Util;
 
@@ -45,7 +45,7 @@
                                     <h2>'.$article->nameArticle.'</h2>
                                 </header>
                                 <p>'.$article->introArticle.'</p>
-                                <a href="./fullNews.php?name='.$article->nameArticle.'">Lire plus</a>
+                                <a href="./fullNews.php?id='.$article->id.'">Lire plus</a>
                                 <footer>
                                     <p>'.$article->datePublicationArticle.'</p>
                                 </footer>
@@ -69,6 +69,6 @@
                 <p>Nous sommes <span>"Lumière du Savoir"</span>, une ASBL dédiée à l'éclairage des esprits des jeunes en leur offrant un accès à une bibliothèque de connaissances en ligne. Notre mission est de fournir des ressources éducatives de qualité, y compris des livres, des articles et des vidéos, pour aider les jeunes à apprendre et à grandir. Nous croyons que chaque enfant a le droit d'accéder à une éducation de qualité, et nous nous engageons à faire de cette vision une réalité. Ensemble, nous pouvons illuminer le chemin de l'apprentissage pour les générations futures.</p>
             </section>
         </main>
-        <?php require("./inc/footer.inc.php"); ?>
+        <?php require_once("./inc/footer.inc.php"); ?>
     </body>
 </html>

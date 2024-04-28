@@ -18,6 +18,7 @@
     const DEPARTMENT = "department";
     const MEMBER = "member";
     
+    $id = $_POST["id"];
     $type = $_POST["type"]; // Can be : "news", "department" or "member"
     $mode = $_POST["mode"]; // Can be : "addition", "edition" or "deletion"
 
@@ -61,6 +62,7 @@
 
                         /* Add the article */
                         Article::updateArticle(
+                            $id,
                             $_POST["news_title"], 
                             $_POST["news_date"],
                             $_POST["news_message"],
@@ -74,7 +76,7 @@
                 case DELETION:
                     if(isset($_POST["name"])) {
                         Utill::deleteFolder("./uploads/".$_POST["name"]."/");
-                        Article::deleteArticle($_POST["name"]);
+                        Article::deleteArticle($id);
                     }
                     break;
             }
@@ -88,11 +90,10 @@
                     break;
                 case EDITION:
                     if(isset($_POST["department_name"]) && isset($_POST["department_objective"]))
-                        DEPARTMENT::updateDepartment($_POST["department_name"], $_POST["department_objective"]);
+                        DEPARTMENT::updateDepartment($id, $_POST["department_name"], $_POST["department_objective"]);
                     break;
                 case DELETION:
-                    if(isset($_POST["name"]))
-                        DEPARTMENT::deleteDepartment($_POST["name"]);
+                    DEPARTMENT::deleteDepartment($id);
                     break;
             }
             header("Location: ./department.php"); // Redirect to the department page
@@ -137,20 +138,23 @@
 
                         /* Add the article */
                         Member::updateMember(
+                            $id,
                             $_POST["teammate_first_name"],
                             $_POST["teammate_name"],
                             $_POST["teammate_email"],
                             $_POST["teammate_work"],
                             $_POST["teammate_department"],
                             $_POST["teammate_role"],
+                            $_POST["teammate_phone"],
+                            $_POST["teammate_description"],
                             $fileImage != null ? $fileImageName : null
                         );
                     }
                     break;
                 case DELETION:
                     if(isset($_POST["teammate_name"])) {
-                        Util::deleteFolder("./uploads/".Util::computeNameForPath($_POST["teammate_name"])."/");
-                        Member::deleteMember($_POST["teammate_name"]);
+                        Util::deleteFolder("./uploads/".$id."/");
+                        Member::deleteMember($id);
                     }
                     break;
             }
