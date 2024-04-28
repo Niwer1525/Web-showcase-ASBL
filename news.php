@@ -50,7 +50,7 @@
                                 }
                                 echo'<article>
                                     <header>
-                                        <img src="./uploads/'.Util::computeNameForPath($article->nameArticle).'/'.$article->imageArticle.'" alt="Image '.strtolower($article->nameArticle).'">'
+                                        <img src="./uploads/articles/'.$article->id.'/'.$article->imageArticle.'" alt="Image '.strtolower($article->nameArticle).'">'
                                         .($article->visibility != 0 ? '<div class="membersOnly"><span>Seul les membres peuvent voir cet article</span></div>' : '').
                                         '<h2>'.$article->nameArticle.'</h2>
                                     </header>

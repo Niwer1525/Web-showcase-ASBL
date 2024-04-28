@@ -67,5 +67,21 @@ class Util {
         }
         return false;
     }
+
+    static function getDefaultValue($type) {
+        if(!isset($_SESSION["devweb_user"]) || !is_string($_SESSION["devweb_user"])) return "";
+        $user = unserialize($_SESSION["devweb_user"]);
+
+        echo 'value="';
+        switch($type) {
+            case "user_mail":
+                echo $user->emailUser;
+                break;
+            case "user_name":
+                echo $user->nameUser . " " . $user->lastnameUser;
+                break;
+        }
+        echo '"';
+    }
 }
 ?>

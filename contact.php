@@ -8,22 +8,9 @@
         <?php
             $pageName = 'contact';
             require_once("./inc/nav.inc.php");
+            require_once("./php/util.php");
+            use Utils\Util;
 
-            function getDefaultValue($type) {
-                if(!isset($_SESSION["devweb_user"]) || !is_string($_SESSION["devweb_user"])) return "";
-                $user = unserialize($_SESSION["devweb_user"]);
-
-                echo 'value="';
-                switch($type) {
-                    case "user_mail":
-                        echo $user->emailUser;
-                        break;
-                    case "user_name":
-                        echo $user->nameUser . " " . $user->lastnameUser;
-                        break;
-                }
-                echo '"';
-            }
             if(isset($_POST["user_mail"]) && isset($_POST["user_name"]) && isset($_POST["user_subject"]) && isset($_POST["user_message"])) {
                 $user_mail = filter_input(INPUT_POST, 'user_mail', FILTER_VALIDATE_EMAIL);
                 $user_name = filter_input(INPUT_POST, 'user_name', FILTER_SANITIZE_STRING);
@@ -60,9 +47,9 @@
             <section>
                 <form action="./contact.php" method="post">
                     <label for="mail">E-mail<span class="required">*</span></label>
-                    <input type="email" id="mail" name="user_mail" placeholder="john.california@gmail.com" <?php getDefaultValue("user_mail") ?> required>
+                    <input type="email" id="mail" name="user_mail" placeholder="john.california@gmail.com" <?php Util::getDefaultValue("user_mail") ?> required>
                     <label for="name">Nom Prénom<span class="required">*</span></label>
-                    <input type="text" id="name" name="user_name" placeholder="Jhon California" <?php getDefaultValue("user_name") ?> required>
+                    <input type="text" id="name" name="user_name" placeholder="Jhon California" <?php Util::getDefaultValue("user_name") ?> required>
                     <label for="subject">Sujet<span class="required">*</span></label>
                     <input type="text" id="subject" name="user_subject" placeholder="Votre sujet" required>
                     <label for="msg">Message<span class="required">*</span></label>

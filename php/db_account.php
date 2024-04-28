@@ -104,10 +104,9 @@ class Member {
         if($imageMember != NULL) {
             $imageMember = $db->real_escape_string($imageMember); // Escape the role value
             $sql = "UPDATE " . self::TABLE_NAME . " SET nameMember = '".$nameMember."', lastnameMember = '".$lastNameMember."', emailMember = '".$emailMember."', workMember = '".$workMember."', nameDepartment = '".$nameDepartment."', role = '".$role."', imageMember = '".$imageMember."', phoneMember = '".$phoneMember."', descMember = '".$descMember."' WHERE id = '".$id."'";
-        } else {
-            $sql = "UPDATE " . self::TABLE_NAME . " SET lastnameMember = '".$lastNameMember."', emailMember = '".$emailMember."', workMember = '".$workMember."', nameDepartment = '".$nameDepartment."', role = '".$role."', imageMember = '".$imageMember."', phoneMember = '".$phoneMember."', descMember = '".$descMember."' WHERE id = '".$id."'";
-        }
-        
+        } else
+            $sql = "UPDATE " . self::TABLE_NAME . " SET nameMember = '".$nameMember."', lastnameMember = '".$lastNameMember."', emailMember = '".$emailMember."', workMember = '".$workMember."', nameDepartment = '".$nameDepartment."', role = '".$role."', phoneMember = '".$phoneMember."', descMember = '".$descMember."' WHERE id = '".$id."'";
+
         $db->execute_query($sql);
         DBLink::disconnect($db); // Disconnect from the database
     }

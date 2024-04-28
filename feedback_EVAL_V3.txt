@@ -1,13 +1,5 @@
 [Langage HTML]: Il reste des erreurs de standard HTML
 
-[Langage CSS]: 
-
- 	Répétition de blocs de propriétés CSS identiques [CSSBurner: declaration blocks which are identical]
- 		4 occurrences.
-
- 	Trop de valeurs de propriété non optimisées [CSSBurner: unoptimized property values > 20 occurrences]
- 		39 occurrences.
-
 [Langage PHP]:
 
  	Tous les concepts (utilisateurs, groupes, dépenses, tags, factures et versements) ne sont pas modélisés par une classe PHP
@@ -18,11 +10,3 @@
 [Ergonomie]: 
 
 	- Attention aux fautes d'orthographe ou de frappe.
-
-[Fonctionnalités]:
-
- UC-A.4 Consulter équipe:
-
- 		 - Une image ne se charge pas.
-
- 	La visualisation de la fiche complète d'un membre ne correspond pas au cahier des charges (photo, nom, prénom, départements+rôles, description, tél

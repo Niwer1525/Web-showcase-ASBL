@@ -52,7 +52,7 @@
                                 }
                                 echo'<article class="teamMembers">
                                     <header>
-                                        <img src="./uploads/'.Util::computeNameForPath($member->nameMember.' '.$member->lastNameMember).'/'.$member->imageMember.'" alt="Photo de profile de '.$member->nameMember.' '.$member->lastNameMember.'">
+                                        <img src="./uploads/members/'.$member->id.'/'.$member->imageMember.'" alt="Photo de profile de '.$member->nameMember.' '.$member->lastNameMember.'">
                                         <h2>'.$member->nameMember.' '.$member->lastNameMember.'</h2>
                                     </header>
                                     <ul>

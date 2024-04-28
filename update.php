@@ -15,6 +15,11 @@
         $id = $isAddition ? 0 : $_GET["id"]; // Id of the news, department or member
         $title = 'Ajout/Edition '.($type == NEWS_TYPE ? "article" : ($type == DEPARTMENT_TYPE ? "département" : "membre"));
         require_once("./inc/header.inc.php");
+
+        if(!isset($_SESSION["devweb_user"])) {
+            header("Location: ./identification.php");
+            exit();
+        }
     ?>
     <body>
         <header class="nav-bar"><nav>
@@ -72,7 +77,7 @@
                                     <input type="date" id="date" name="news_date" placeholder="25/02/2019" required value="'.$datePublication.'">
                                     
                                     <label for="image">Image</label>'
-                                    .(!$isAddition ? '<img src="./uploads/'.Util::computeNameForPath($article->nameArticle).'/'.$article->imageArticle.'" alt="Image actuel">' : ''). // Display the current article image
+                                    .(!$isAddition ? '<img src="./uploads/articles/'.$article->id.'/'.$article->imageArticle.'" alt="Image actuel">' : ''). // Display the current article image
                                     '<input type="file" id="image" name="news_image" accept="image/*">
 
                                     <label for="primer">Amorce<span class="required">*</span></label>
@@ -107,22 +112,22 @@
 
                                     echo
                                     '<label for="name">Nom<span class="required">*</span></label>
-                                    <input type="text" id="name" name="teammate_name" placeholder="Bernard" required value="' . ($isAddition ? "" : $member->nameMember) . '">
+                                    <input type="text" id="name" name="teammate_name" placeholder="Bernard" required value="' . ($isAddition ? "" : $member->lastNameMember) . '">
 
                                     <label for="first_name">Prénom<span class="required">*</span></label>
-                                    <input type="text" id="first_name" name="teammate_first_name" placeholder="Clément" required value="' . ($isAddition ? "" : $member->lastNameMember) . '">
+                                    <input type="text" id="first_name" name="teammate_first_name" placeholder="Clément" required value="' . ($isAddition ? "" : $member->nameMember) . '">
                                     
                                     <label for="email">Adresse email<span class="required">*</span></label>
                                     <input type="text" id="email" name="teammate_email" placeholder="clember@yahoo.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required value="' . ($isAddition ? "" : $member->emailMember) . '">
                                     
                                     <label for="phone">Numéro de téléphone<span class="required">*</span></label>
-                                    <input type="text" id="phone" name="teammate_phone" placeholder="Clément" required value="' . ($isAddition ? "" : $member->phoneMember) . '">
+                                    <input type="tel" id="phone" name="teammate_phone" placeholder="04 11 11 111" required value="' . ($isAddition ? "" : $member->phoneMember) . '">
                                     
                                     <label for="teammate_description">Texte complet<span class="required">*</span></label>
                                     <textarea id="teammate_description" name="teammate_description" placeholder="Je suis un professeur d\'histoire, ma passion est de partager mes conaissances avec les plus jeunes !" required>'.($isAddition ? "" : $member->descMember).'</textarea>
 
                                     <label for="image">Photo de profile</label>'
-                                    .(!$isAddition ? '<img src="./uploads/'.Util::computeNameForPath($member->nameMember.' '.$member->lastNameMember).'/'.$member->imageMember.'" alt="Photo de profile actuel">' : ''). // Display the current article image
+                                    .(!$isAddition ? '<img src="./uploads/members/'.$member->id.'/'.$member->imageMember.'" alt="Photo de profile actuel">' : ''). // Display the current article image
                                     '<input type="file" id="image" name="teammate_image" accept="image/*">
 
                                     <label for="profession">Profession<span class="required">*</span></label>

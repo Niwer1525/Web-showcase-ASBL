@@ -7,8 +7,8 @@
 
 /* Scroll bar */
 ::-webkit-scrollbar {
-    width: 0.5rem;
-    height: 0.5rem;
+    width: .5rem;
+    height: .5rem;
 }
 
 ::-webkit-scrollbar-track { background: var(--black-color); }
@@ -19,18 +19,18 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    transition: 0.3s;
+    transition: .3s;
     background: #555;
 }
 
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
+    color: #fff;
 }
 
 html { background-color: var(--soft-black-color); }
 
-body { margin: 0px; }
+body { margin: 0; }
 
 ul { list-style: none; } /* Removing the list style by default cause we never needs it */
 
@@ -38,11 +38,11 @@ h1, h2, h3, h4, h5, h6 { color: var(--main-color); }
 
 a {
     text-decoration: none;
-    padding: 0.5rem;
+    padding: .5rem;
 }
 
 a:hover {
-    transition: 0.3s;
+    transition: .3s;
     color: var(--main-color);
 }
 
@@ -60,7 +60,7 @@ a:hover {
 } */
 
 .mainHeader {
-    background-image: url("../images/background.jpg");
+    background-image: url(../images/background.jpg);
     height: 100vh;
     font-size: 1.5em;
     font-weight: bold;
@@ -69,7 +69,7 @@ a:hover {
 .mainHeader img { height: 25%; }
 
 .mainHeader nav { /* Apply blur and "shadow" to the background */
-    backdrop-filter: blur(10px) brightness(0.5);
+    backdrop-filter: blur(10px) brightness(.5);
     height: 100%;
 }
 
@@ -97,8 +97,8 @@ a:hover {
 
 .currentPage:hover {
     background-color: var(--soft-black-color);
-    color: white;
-    transition: 0.3s;
+    color: #fff;
+    transition: .3s;
 }
 
 /* Search box */
@@ -114,23 +114,23 @@ a:hover {
     flex-direction: row;
     justify-content: end;
     align-items: center;
-    margin: 0.5rem;
+    margin: .5rem;
 }
 
 .searchBox input, .searchButton {
     background-color: var(--grey-color);
-    color: white;
+    color: #fff;
     border: 0;
     border-radius: 8px;
     text-align: center;
     font-size: 1.15em;
-    margin: 0.2rem;
+    margin: .2rem;
 }
 
 /* Article style, specific home page button */
 .seeAllNews {
     text-align: center;
-    margin: 5% 20% 0 20%;
+    margin: 5% 20%;
     color: var(--main-color);
     text-decoration: none;
     font-size: 1.5em;
@@ -143,7 +143,7 @@ a:hover {
 }
 
 .seeAllNews:hover {
-    transition: 0.3s;
+    transition: .3s;
     transform: scale(1.1); 
 }
 
@@ -204,8 +204,8 @@ article button {
     background-color: rgba(0, 0, 0, 0);
     border: 0;
     cursor: pointer;
-    color: white;
-    font-size: 0rem;
+    color: #fff;
+    font-size: 0;
 }
 
 /* Cards style (News, Team members, Departmens, ... */
@@ -218,7 +218,7 @@ article button {
 /* Section style */
 section {
     padding: 0 25px;
-    margin: 3rem 0 3rem 0;
+    margin: 3rem 0
 }
 
 /* Footer style */
@@ -227,7 +227,7 @@ footer {
     border-top: 2px solid var(--main-color);
     font-weight: bold;
     text-align: center;
-    padding: 0.5rem;
+    padding: .5rem;
     /* position: absolute;
     bottom: 0;
     width: 100%; */
@@ -249,7 +249,7 @@ footer .fa {
 }
 
 footer .fa:hover {
-    transition: 0.3s;
+    transition: .3s;
     transform: scale(1.2);
 }
 
@@ -260,27 +260,27 @@ span { color: var(--main-color); }
 hr {
     border: 1px solid var(--main-color);
     width: 75%;
-    margin-bottom: 0%;
+    margin-bottom: 0;
 }
 
 /* "Details" section */
 details {
     text-align: center;
-    margin: 1.2rem 0 1.2rem 0;
+    margin: 1.2rem 0;
 }
 
 details summary {
     font-size: 1.5em;
     font-weight: bold;
     color: var(--main-color);
-    margin: 1.5rem 0 1.5rem 0;
+    margin: 1.5rem 0;
 }
 
 .faq>details summary {
     font-size: 1.2em;
     font-weight: bold;
     color: var(--main-color);
-    margin: 1.5rem 0 1.5rem 0;
+    margin: 1.5rem 0;
 }
 
 .faq {
@@ -294,16 +294,16 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 2rem 0 2rem 0;
+    margin: 2rem 0;
 }
 
 form input, form textarea, form button, form select {
     background-color: var(--grey-color);
     border: 1px solid var(--main-color);
-    color: white;
+    color: #fff;
     width: 100%;
-    padding: 0.8rem;
-    margin: 0.6rem 0;
+    padding: .8rem;
+    margin: .6rem 0;
     border-radius: 8px;
     width: 50%;
 }
@@ -312,7 +312,7 @@ form button {
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    margin-top: 0.6rem;
+    margin-top: .6rem;
     cursor: pointer;
 }
 
@@ -323,7 +323,7 @@ form img {
 }
 
 form>:focus {
-    transition: 0.3s;
+    transition: .3s;
     transform: scale(1.05);
 }
 
@@ -345,14 +345,14 @@ form .required {
 
 /* All kind of buttons should grow up when hovering */
 button:hover, .searchButton:hover, .adminButton:hover {
-    transition: 0.3s;
+    transition: .3s;
     transform: scale(1.05);
 }
 
-/* All kind of textareas or inputs should have a small white border when hovering */
+/* All kind of textareas or inputs should have a small #fff border when hovering */
 input:hover, textarea:hover, select:hover {
-    transition: 0.3s;
-    border: 1px solid white;
+    transition: .3s;
+    border: 1px solid #fff;
 }
 
 /* Serge */
@@ -371,7 +371,7 @@ input:hover, textarea:hover, select:hover {
 @keyframes breath {
     0%, 100% {
         transform: scale(1);
-        transform: rotate(0deg);
+        transform: rotate(0);
     }
     25% {
         transform: scale(1.1);

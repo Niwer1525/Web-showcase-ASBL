@@ -41,7 +41,7 @@
                         foreach (Article::getHomeArticle() as $article) {
                             echo '<article>
                                 <header>
-                                    <img src="./uploads/'.Util::computeNameForPath($article->nameArticle).'/'.$article->imageArticle.'" alt="Image '.strtolower($article->nameArticle).'">
+                                    <img src="./uploads/articles/'.$article->id.'/'.$article->imageArticle.'" alt="Image '.strtolower($article->nameArticle).'">
                                     <h2>'.$article->nameArticle.'</h2>
                                 </header>
                                 <p>'.$article->introArticle.'</p>
