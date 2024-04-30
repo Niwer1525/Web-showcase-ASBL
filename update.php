@@ -29,7 +29,7 @@
             <section class="subHeader">
                 <h1>
                     <?php // Display the title of the page
-                    if($isAddition) echo "Ajout d'un " . $type;
+                    if($isAddition) echo "Ajout d'un " . ($type == NEWS_TYPE ? "article" : ($type == DEPARTMENT_TYPE ? "département" : "membre"));
                     else {
                         switch($type) {
                             case NEWS_TYPE:

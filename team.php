@@ -11,7 +11,7 @@
         ?>
         <main>
             <section class="subHeader">
-                <h1>NOTRE EQUIPE</h1>
+                <h1>NOTRE ÉQUIPE</h1>
                 <hr>
                 <?php
                     if(isset($_SESSION["devweb_user"])) 
@@ -56,11 +56,11 @@
                                         <h2>'.$member->nameMember.' '.$member->lastNameMember.'</h2>
                                     </header>
                                     <ul>
-                                        <li>Role: '.$member->nameRole.'</li>
-                                        <li>Profession: '.$member->workMember.'</li>
-                                        <li>Addresse E-Mail: '.$member->emailMember.'</li>
-                                        <li>Numéro de téléphone: '.$member->phoneMember.'</li>
-                                        <li>Description: '.$member->descMember.'</li>
+                                        <li>Rôle : <span>'.$member->nameRole.'</span></li>
+                                        <li>Profession : <span>'.$member->workMember.'</span></li>
+                                        <li>Addresse E-Mail : <span>'.$member->emailMember.'</span></li>
+                                        <li>Numéro de téléphone : <span>'.$member->phoneMember.'</span></li>
+                                        <li>Description : <span>'.$member->descMember.'</span></li>
                                     </ul>
                                     <footer>';
                                         if(isset($_SESSION["devweb_user"])) { //Very dangerous to use only the name of the member as a parameter

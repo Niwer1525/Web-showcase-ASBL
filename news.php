@@ -11,7 +11,7 @@
         ?>
         <main>
             <section class="subHeader">
-                <h1>TOUTES LES ACUTALITES</h1>
+                <h1>TOUTES LES ACUTALITÉS</h1>
                 <hr>
                 <?php
                     if(isset($_SESSION["devweb_user"]))
@@ -51,7 +51,7 @@
                                 echo'<article>
                                     <header>
                                         <img src="./uploads/articles/'.$article->id.'/'.$article->imageArticle.'" alt="Image '.strtolower($article->nameArticle).'">'
-                                        .($article->visibility != 0 ? '<div class="membersOnly"><span>Seul les membres peuvent voir cet article</span></div>' : '').
+                                        .($article->visibility != 0 ? '<div class="membersOnly"><span>Seuls les membres peuvent voir cet article</span></div>' : '').
                                         '<h2>'.$article->nameArticle.'</h2>
                                     </header>
                                     <p>'.$article->introArticle.'</p>

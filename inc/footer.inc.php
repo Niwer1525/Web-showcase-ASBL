@@ -16,7 +16,7 @@
     <p>
         <span>Confidentialité :</span> Nous respectons la confidentialité de tous nos visiteurs. Aucune information personnelle n’est collectée
         sans votre consentement explicite.<br>
-        <span>Responsabilité :</span> Toutes les images ont été crées en utilisant l'Intelligence Artificielle (OpenAI & Bing chat) <span>Excepté le fond de la page d'Accueil !</span>
+        <span>Responsabilité :</span> Toutes les images ont été créées en utilisant l'Intelligence Artificielle (OpenAI & Bing chat) <span>Excepté le fond de la page d'Accueil !</span>
     </p>
     <!-- Copyright -->
     <p><span>2023 &copy; Lumière du Savoir - Tout droits réservé</span></p>

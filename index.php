@@ -25,7 +25,7 @@
             ?>
             <!-- Separator with title section -->
             <section class="subHeader">
-                <h2>DERNIERE ACTUALITES</h2>
+                <h2>DERNIÈRES ACTUALITÉS</h2>
                 <hr>
             </section>
             <!-- News section -->

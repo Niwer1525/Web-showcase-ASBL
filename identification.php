@@ -56,7 +56,7 @@
                     <input type="text" id="create_name" name="name" placeholder="John California" required>
                     <label for="create_password">Mot de passe :<span class="required">*</span></label>
                     <input type="password" id="create_password" name="password" placeholder="mot2pass3*" pattern="^(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$" title="Le mot de passe doit contenir au moins 8 caractères et un caractère spécial" required>
-                    <label for="create_age">Age :<span class="required">*</span></label>
+                    <label for="create_age">Âge :<span class="required">*</span></label>
                     <input type="number" id="create_age" name="age" placeholder="25" min="16" max="100" required>
                     <button type="submit">Créer un compte</button>
                 </form>

@@ -83,5 +83,16 @@ class Util {
         }
         echo '"';
     }
+
+    /**
+     * E.G : "John Doe" -> "JOHN DOE", "Clément Bernard" -> "CLÉMENT BERNARD"
+     * @param string $name
+     */
+    static function computeNameForDisplay($name) {
+        $name = strtoupper($name);
+        $name = str_replace('é', 'É', $name);
+        $name = str_replace('è', 'È', $name);
+        return $name;
+    }
 }
 ?>

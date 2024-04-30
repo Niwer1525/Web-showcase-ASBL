@@ -22,11 +22,6 @@
     $type = $_POST["type"]; // Can be : "news", "department" or "member"
     $mode = $_POST["mode"]; // Can be : "addition", "edition" or "deletion"
 
-    if(!isset($_SESSION["devweb_user"])) {
-        header("Location: ./identification.php");
-        exit();
-    }
-
     switch($type) {
         case NEWS:
             switch($mode) {

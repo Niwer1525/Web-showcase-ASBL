@@ -12,10 +12,8 @@
                     User::logout();
                     header("Location: ./");
                     break;
-                case "update_infos": 
+                case "update_infos":
                     if (isset($_GET["passwordUser"]) && isset($_GET["passwordUserConfirm"]) && $_GET["passwordUser"] != $_GET["passwordUserConfirm"]) break;
-                    // User::updateInfos($_GET["nameUser"], $_GET["lastnameUser"], $_GET["ageUser"], $_GET["emailUser"], $_GET["passwordUser"]), $_GET["addressUser"]);
-                    // $user = unserialize($_SESSION["devweb_user"]);
                     break;
                 }
             }
@@ -25,10 +23,12 @@
             $user = unserialize($_SESSION["devweb_user"]);
             $pageName = 'profile';
             require_once("./inc/nav.inc.php");
+            require_once("./php/util.php");
+            use Utils\Util;
         ?>
         <main>
             <section class="subHeader">
-                <h1>PROFILE DE <?php echo strtoupper($user->nameUser).' '.strtoupper($user->lastnameUser) ?></h1>
+                <h1>PROFIL DE <?php echo Util::computeNameForDisplay($user->nameUser).' '.Util::computeNameForDisplay($user->lastnameUser) ?></h1>
                 <hr>
             </section>
             <section>
@@ -45,7 +45,7 @@
                     <label for="lastnameUser">Prénom</label>
                     <input type="text" name="lastnameUser" placeholder="Solann" value="<?php echo $user->nameUser ?>"></input>
 
-                    <label for="ageUser">Age</label>
+                    <label for="ageUser">Âge</label>
                     <input type="number" name="ageUser" placeholder="25" value="<?php echo $user->ageUser ?>"></input>
 
                     <label for="emailUser">Email</label>

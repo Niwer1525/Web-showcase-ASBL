@@ -6,7 +6,3 @@
  		- Pas toujours, tu as mélangé les deux concepts qui plus est. Sépare bien les classes "entités" et des "repository".
 
  	Les données de formulaire doivent toujours être vérifiées côté serveur (attribut required en html ou type='email' ne suffit pas), toutes les erreurs sont affichées et le formulaire contient les données encodées
-
-[Ergonomie]: 
-
-	- Attention aux fautes d'orthographe ou de frappe.

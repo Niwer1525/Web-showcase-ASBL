@@ -11,7 +11,7 @@
         ?>
         <main>
             <section class="subHeader">
-                <h1>DEPARTEMENTS</h1>
+                <h1>DÉPARTEMENTS</h1>
                 <hr>
                 <?php
                     if(isset($_SESSION["devweb_user"])) 
