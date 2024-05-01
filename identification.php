@@ -19,15 +19,16 @@
                     $user = new User();
                     $user->nameUser = $name;
                     $user->lastnameUser = $lastname;
-                    $user->ageUser = $_POST["age"];
-                    $user->emailUser = $_POST["email"];
-                    $user->passwordUser = $_POST["password"];
+                    $user->ageUser = htmlspecialchars($_POST["age"]);
+                    $user->emailUser = htmlspecialchars($_POST["email"]);
+                    $user->passwordUser = htmlspecialchars($_POST["password"]);
                     $user->addressUser = "";
                     User::createUser($user->nameUser, $user->lastnameUser, $user->ageUser, $user->emailUser, $user->passwordUser, $user->addressUser);
                     $_SESSION["temp_user"] = $user;
                 } else {
-                    if (User::login($_POST["email"], $_POST["password"]) != NULL) {
-                        $_SESSION["devweb_user"] = serialize(User::login($_POST["email"], $_POST["password"]));
+                    $logged = User::login(htmlspecialchars($_POST["email"]), htmlspecialchars($_POST["password"]));
+                    if ($logged != NULL) {
+                        $_SESSION["devweb_user"] = serialize($logged);
                         header("Location: ./");
                     }
                 }

@@ -2,6 +2,10 @@
 namespace Utils;
 
 class Util {
+    static function getCookiesPath() {
+        return "/~q230242/";
+    }
+
     static function deleteFolder($folderPath) {
         if (is_dir($folderPath)) {
             $files = glob($folderPath . '/*');

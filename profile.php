@@ -7,13 +7,13 @@
         use DB\User;
         
         if (isset($_GET["mode"])) {
-            switch($_GET["mode"]) {
+            switch(htmlspecialchars($_GET["mode"])) {
                 case "disconnect":
                     User::logout();
                     header("Location: ./");
                     break;
                 case "update_infos":
-                    if (isset($_GET["passwordUser"]) && isset($_GET["passwordUserConfirm"]) && $_GET["passwordUser"] != $_GET["passwordUserConfirm"]) break;
+                    if (isset($_GET["passwordUser"]) && isset($_GET["passwordUserConfirm"]) && htmlspecialchars($_GET["passwordUser"]) != htmlspecialchars($_GET["passwordUserConfirm"])) break;
                     break;
                 }
             }

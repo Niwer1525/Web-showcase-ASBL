@@ -18,7 +18,7 @@
                         require_once("./php/db_article.php");
                         use DB\Article;
                         use Utils\Util;
-                        $article = Article::getArticle($_GET['id']);
+                        $article = Article::getArticle(htmlspecialchars($_GET['id']));
 
                         echo '<article class="largeArticle">
                         <header>

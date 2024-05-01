@@ -9,10 +9,10 @@
         define("DELETION_MODE", "deletion");
         define("ADDITION_MODE", "addition");
 
-        $type = $_GET["type"]; // Can be : "news", "department" or "member"
-        $mode = $_GET["mode"]; // Can be : "edition", "deletion" or "addition"
+        $type = htmlspecialchars($_GET["type"]); // Can be : "news", "department" or "member"
+        $mode = htmlspecialchars($_GET["mode"]); // Can be : "edition", "deletion" or "addition"
         $isAddition = $mode == ADDITION_MODE; // Check if the mode is an addition
-        $id = $isAddition ? 0 : $_GET["id"]; // Id of the news, department or member
+        $id = $isAddition ? 0 : htmlspecialchars($_GET["id"]); // Id of the news, department or member
         $title = 'Ajout/Edition '.($type == NEWS_TYPE ? "article" : ($type == DEPARTMENT_TYPE ? "département" : "membre"));
         require_once("./inc/header.inc.php");
 

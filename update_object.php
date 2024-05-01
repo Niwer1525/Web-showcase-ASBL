@@ -18,9 +18,9 @@
     const DEPARTMENT = "department";
     const MEMBER = "member";
     
-    $id = $_POST["id"];
-    $type = $_POST["type"]; // Can be : "news", "department" or "member"
-    $mode = $_POST["mode"]; // Can be : "addition", "edition" or "deletion"
+    $id = htmlspecialchars($_POST["id"]);
+    $type = htmlspecialchars($_POST["type"]); // Can be : "news", "department" or "member"
+    $mode = htmlspecialchars($_POST["mode"]); // Can be : "addition", "edition" or "deletion"
 
     switch($type) {
         case NEWS:
@@ -38,13 +38,13 @@
 
                         /* Add the article */
                         Article::createArticle(
-                            $_POST["news_title"], 
-                            $_POST["news_date"],
-                            $_POST["news_message"],
-                            $_POST["news_primer"], 
-                            $_POST["news_Department"], 
-                            $_POST["news_visibility"],
-                            $fileImageName
+                            htmlspecialchars($_POST["news_title"]), 
+                            htmlspecialchars($_POST["news_date"]),
+                            htmlspecialchars($_POST["news_message"]),
+                            htmlspecialchars($_POST["news_primer"]), 
+                            htmlspecialchars($_POST["news_Department"]), 
+                            htmlspecialchars($_POST["news_visibility"]),
+                            htmlspecialchars($fileImageName)
                         );
                     }
                     break;
@@ -63,21 +63,19 @@
                         /* Add the article */
                         Article::updateArticle(
                             $id,
-                            $_POST["news_title"], 
-                            $_POST["news_date"],
-                            $_POST["news_message"],
-                            $_POST["news_primer"], 
-                            $_POST["news_Department"], 
-                            $_POST["news_visibility"], 
-                            $fileImage != null ? $fileImageName : null
+                            htmlspecialchars($_POST["news_title"]),
+                            htmlspecialchars($_POST["news_date"]),
+                            htmlspecialchars($_POST["news_message"]),
+                            htmlspecialchars($_POST["news_primer"]),
+                            htmlspecialchars($_POST["news_Department"]),
+                            htmlspecialchars($_POST["news_visibility"]),
+                            $fileImage != null ? htmlspecialchars($fileImageName) : null
                         );
                     }
                     break;
                 case DELETION:
-                    if(isset($_POST["name"])) {
-                        Utill::deleteFolder("./uploads/".$_POST["name"]."/");
-                        Article::deleteArticle($id);
-                    }
+                    Util::deleteFolder("./uploads/articles/".$id."/");
+                    Article::deleteArticle($id);
                     break;
             }
             header("Location: ./news.php"); // Redirect to the news page
@@ -86,11 +84,11 @@
             switch($mode) {
                 case ADDITION:
                     if(isset($_POST["department_name"]) && isset($_POST["department_objective"]))
-                        DEPARTMENT::createDepartment($_POST["department_name"], $_POST["department_objective"]);
+                        DEPARTMENT::createDepartment(htmlspecialchars($_POST["department_name"]), htmlspecialchars($_POST["department_objective"]));
                     break;
                 case EDITION:
                     if(isset($_POST["department_name"]) && isset($_POST["department_objective"]))
-                        DEPARTMENT::updateDepartment($id, $_POST["department_name"], $_POST["department_objective"]);
+                        DEPARTMENT::updateDepartment($id, htmlspecialchars($_POST["department_name"]), htmlspecialchars($_POST["department_objective"]));
                     break;
                 case DELETION:
                     DEPARTMENT::deleteDepartment($id);
@@ -106,22 +104,22 @@
                     && isset($_POST["teammate_role"]) && isset($_POST["teammate_department"]) && isset($_POST["teammate_email"]) 
                     && isset($_POST["teammate_phone"]) && isset($_POST["teammate_description"]) && $fileImage != null) {
                         $fileImageName = basename($_FILES["teammate_image"]["name"]);
-                        $targetPath = "./uploads/members".$id."/";
+                        $targetPath = "./uploads/members/".$id."/";
                         if (!file_exists($targetPath)) 
                             mkdir($targetPath, 0777, true); // Create the directory if it doesn't exist (0777 is the permission for the directory)
                         move_uploaded_file($_FILES["teammate_image"]["tmp_name"], $targetPath.$fileImageName);
 
                         /* Add the article */
                         Member::createMember(
-                            $_POST["teammate_first_name"], 
-                            $_POST["teammate_name"],
-                            $_POST["teammate_email"],
-                            $_POST["teammate_work"],
-                            $_POST["teammate_department"],
-                            $_POST["teammate_role"],
-                            $fileImageName,
-                            $_POST["teammate_phone"],
-                            $_POST["teammate_description"]
+                            htmlspecialchars($_POST["teammate_first_name"]),
+                            htmlspecialchars($_POST["teammate_name"]),
+                            htmlspecialchars($_POST["teammate_email"]),
+                            htmlspecialchars($_POST["teammate_work"]),
+                            htmlspecialchars($_POST["teammate_department"]),
+                            htmlspecialchars($_POST["teammate_role"]),
+                            htmlspecialchars($fileImageName),
+                            htmlspecialchars($_POST["teammate_phone"]),
+                            htmlspecialchars($_POST["teammate_description"])
                         );
                     }
                     break;
@@ -142,23 +140,21 @@
                         /* Add the article */
                         Member::updateMember(
                             $id,
-                            $_POST["teammate_first_name"],
-                            $_POST["teammate_name"],
-                            $_POST["teammate_email"],
-                            $_POST["teammate_work"],
-                            $_POST["teammate_department"],
-                            $_POST["teammate_role"],
-                            $fileImage != null ? $fileImageName : null,
-                            $_POST["teammate_phone"],
-                            $_POST["teammate_description"]
+                            htmlspecialchars($_POST["teammate_first_name"]),
+                            htmlspecialchars($_POST["teammate_name"]),
+                            htmlspecialchars($_POST["teammate_email"]),
+                            htmlspecialchars($_POST["teammate_work"]),
+                            htmlspecialchars($_POST["teammate_department"]),
+                            htmlspecialchars($_POST["teammate_role"]),
+                            htmlspecialchars($fileImage != null ? $fileImageName : null),
+                            htmlspecialchars($_POST["teammate_phone"]),
+                            htmlspecialchars($_POST["teammate_description"])
                         );
                     }
                     break;
                 case DELETION:
-                    if(isset($_POST["teammate_name"])) {
-                        Util::deleteFolder("./uploads/".$id."/");
-                        Member::deleteMember($id);
-                    }
+                    Util::deleteFolder("./uploads/".$id."/");
+                    Member::deleteMember($id);
                     break;
             }
             header("Location: ./team.php"); // Redirect to the team page

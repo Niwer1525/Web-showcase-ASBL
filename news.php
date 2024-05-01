@@ -28,7 +28,7 @@
                     use DB\Article;
                     use Utils\Util;
 
-                    $searchDepartmentResult = isset($_GET["searchDepartmentResult"]) && strcmp($_GET["searchDepartmentResult"], 'empty') ? $_GET["searchDepartmentResult"] : null;
+                    $searchDepartmentResult = isset($_GET["searchDepartmentResult"]) && strcmp($_GET["searchDepartmentResult"], 'empty') ? htmlspecialchars($_GET["searchDepartmentResult"]) : null;
                     foreach(Department::getDepartments() as $department) {
                         if($searchDepartmentResult != null && !Util::search($searchDepartmentResult, $department->nameDepartment)) {
                             continue;
@@ -36,14 +36,14 @@
                         echo '<details open><summary>'.$department->nameDepartment.'</summary>
                             <div class="cardsContainer">';
                             $remCount = 0;
-                            $searchResult = isset($_GET["searchResult"]) ? $_GET["searchResult"] : null;
+                            $searchResult = isset($_GET["searchResult"]) ? htmlspecialchars($_GET["searchResult"]) : null;
                             $articles = Article::getArticlesByDepartment($department->nameDepartment);
                             foreach($articles as $article) {
                                 if($article->visibility != 0 && !isset($_SESSION["devweb_user"])) continue;
                                 if($searchResult != null && (
                                     !Util::search($searchResult, $article->nameArticle)
-                                    || !Util::search($searchResult, $article->introArticle)
-                                    || !Util::search($searchResult, $article->contentArticle)
+                                    && !Util::search($searchResult, $article->introArticle)
+                                    && !Util::search($searchResult, $article->contentArticle)
                                 )) {
                                     $remCount++;
                                     continue;

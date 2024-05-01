@@ -30,7 +30,7 @@
                     use DB\Department;
                     use Utils\Util;
 
-                    $searchDepartmentResult = isset($_GET["searchDepartmentResult"]) && strcmp($_GET["searchDepartmentResult"], 'empty') ? $_GET["searchDepartmentResult"] : null;
+                    $searchDepartmentResult = isset($_GET["searchDepartmentResult"]) && strcmp($_GET["searchDepartmentResult"], 'empty') ? htmlspecialchars($_GET["searchDepartmentResult"]) : null;
                     foreach(Department::getDepartments() as $department) {
                         if($searchDepartmentResult != null && !Util::search($searchDepartmentResult, $department->nameDepartment)) {
                             continue;
@@ -38,15 +38,16 @@
                         echo '<details open><summary>'.$department->nameDepartment.'</summary>
                             <div class="cardsContainer">';
                             $remCount = 0;
-                            $searchResult = isset($_GET["searchResult"]) ? $_GET["searchResult"] : null;
+                            $searchResult = isset($_GET["searchResult"]) ? htmlspecialchars($_GET["searchResult"]) : null;
                             $members = Member::getMemberByDepartment($department->nameDepartment);
                             foreach($members as $member) {
                                 if($searchResult != null && (
                                     !Util::search($searchResult, $member->nameMember)
-                                    || !Util::search($searchResult, $member->lastNameMember)
-                                    || !Util::search($searchResult, $member->workMember)
-                                    || !Util::search($searchResult, $member->emailMember)
-                                    // || !Util::search($searchResult, $member->phoneMember)
+                                    && !Util::search($searchResult, $member->lastNameMember)
+                                    && !Util::search($searchResult, $member->workMember)
+                                    && !Util::search($searchResult, $member->emailMember)
+                                    && !Util::search($searchResult, $member->phoneMember)
+                                    && !Util::search($searchResult, $member->descMember)
                                 )) {
                                     continue;
                                 }
