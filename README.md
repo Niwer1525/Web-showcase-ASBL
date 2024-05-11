@@ -1,5 +1,6 @@
-# Web-Project-HELMo
+# Web showcase
 This is a site made for my web dev. course.
+But will also a great showcase for my future which show my ability to learn a new language (php) in a relatively reduced time.
 
 See the final (non-static) result here : https://youtu.be/R0O3X-5hgCw
 
